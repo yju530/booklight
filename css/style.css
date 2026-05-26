@@ -166,7 +166,7 @@
 /* 메인 홈 화면 기본 상태 */
 .main-home {
   width: 100%;
-  background: #F3EBDF;
+  background: #fffdf9;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -200,7 +200,7 @@ a {
 
 body {
   font-family: 'Pretendard';
-  background: #FFFDF9;
+  background: #FFFfff;
   color: #1e1d1c;
   line-height: 1.4;
   font-size: 14px;
@@ -292,13 +292,16 @@ body {
 
 .bn_text_box {
   z-index: 100;
-  position: absolute;
-  top: 20%;
-  left: 5%;
   display: flex;
   align-items: flex-start;
   justify-content: flex-end;
   gap: 12px;
+  position: absolute;
+}
+
+.bn_text {
+  top: 20%;
+  left: 5%;
 }
 
 #header_wrap {
@@ -399,6 +402,7 @@ body {
 
 .brand_keyword_wrap {
   height: 1080px;
+  text-align: center;
   background: url(../images/Artboard\ 1.png) no-repeat center;
 }
 
@@ -406,9 +410,10 @@ body {
   width: 1320px;
   height: 100%;
   margin: 0 auto;
-}s
+  padding-top: 80px;
+}
 
-.bg_upflow_text {
+s .bg_upflow_text {
   text-align: center;
   padding-top: 80px;
 }
@@ -504,7 +509,7 @@ body {
   z-index: 10;
   position: relative;
   box-sizing: border-box;
-  padding: 0 30px;
+  padding: 80px 30px;
 }
 
 .section01_content_top_wrap {
@@ -966,14 +971,13 @@ body {
 }
 
 .map_wrap {
-  width: 600px;
-  height: 600px;
   overflow: hidden;
-  position: relative;
   margin-bottom: 48px;
+  position: relative;
 }
 
 .map {
+  overflow: hidden;
   width: 100%;
   height: 263px;
   position: absolute;
@@ -988,7 +992,7 @@ body {
   color: #FFFDF9;
   background: linear-gradient(0deg, #1e1d1c, rgba(30, 29, 28, 0));
   /* --- 애니메이션을 위한 추가 코드 --- */
-  transform: translateY(100%);
+  transform: translateY(20%);
   /* 처음에는 아래로 100% 내려서 숨김 */
   transition: transform 0.5s ease, opacity 0.5s ease;
   /* 0.5초 동안 부드럽게 변함 */
@@ -1470,6 +1474,7 @@ body {
   width: 1920px;
   height: 1580px;
   overflow: hidden;
+  position: relative;
   background: url(../images/contents04_bg\(big\).png);
 }
 
@@ -1506,6 +1511,10 @@ body {
   text-align: center;
 }
 
+.title>.light {
+  margin-top: 80px;
+}
+
 .title>h1 {
   color: #1e1d1c;
   font-size: 36px;
@@ -1516,9 +1525,1233 @@ body {
   color: #c56928;
 }
 
+#sub01_section02_wrap>.Brutalism3 {
+  top: 400px;
+  right: 380px;
+}
+
+#sub01_section02_wrap>.Brutalism4 {
+  top: 700px;
+  right: 470px;
+}
+
+
 /* sub01_section03_wrap */
 #sub01_section03_wrap {
   width: 1920px;
   height: 1080px;
+  position: relative;
+  background: #fffdf9 url(../images/Vector.png) no-repeat top 100px right 200px;
+}
+
+#sub01_section03_wrap>.text_box {
+  display: inline-block;
+  float: none;
+  margin-left: 348px;
+  margin-top: -180px;
+}
+
+.main_title {
+  font-size: 36px;
+}
+
+.sub_title {
+  color: #888780;
+  font-size: 20px;
+}
+
+#contents {
+  width: 1320px;
+  margin: 0 auto;
+  padding-top: 30px;
+}
+
+/* kensington common main page style */
+.mainpage .main_visual .mainviewcont.main_visual_fixed {
+  position: relative;
+  padding-top: 41.7%;
+  overflow: hidden;
+}
+
+.mainpage .main_visual .mainviewcont.main_visual_fixed .visual_view {
+  width: 100%;
+  height: 100%;
+  font-size: 0;
+}
+
+.mainpage .main_visual .mainviewcont.main_visual_fixed .visual_view .viewbg_wrap {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  background-size: cover;
+}
+
+.mainpage .main_visual .mainviewcont.main_visual_fixed .visual_view .viewbg_wrap .viewbg {
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: 50% 50%;
+  opacity: 0;
+  transition: opacity .1s ease, transform 5s ease 1s;
+}
+
+.mainpage .main_visual .mainviewcont.main_visual_fixed .visual_view .viewbg_wrap.hover {
+  z-index: 1;
+}
+
+.mainpage .main_visual .mainviewcont.main_visual_fixed .visual_view .viewbg_wrap.hover .viewbg {
+  visibility: visible;
+  opacity: 1;
+  transform: scale(1.03);
+}
+
+.mainpage .main_visual .mainviewcont.main_visual_fixed .visual {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: table;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  table-layout: fixed;
+}
+
+.mainpage .main_visual .mainviewcont.main_visual_fixed .visual a {
+  position: relative;
+  display: table-cell;
+}
+
+.mainpage .main_visual .mainviewcont.main_visual_fixed .visual a:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.mainpage .main_visual .mainviewcont.main_visual_fixed .visual a .text_wrap {
+  position: absolute;
+  top: 22%;
+  left: 70px;
+  right: 70px;
+  display: block;
+}
+
+.mainpage .main_visual .mainviewcont.main_visual_fixed .visual a .text_wrap .title {
+  display: block;
+  margin-bottom: 20px;
+  font-family: 'Noto Sans KR';
+  font-size: 28px;
+  font-weight: 500;
+  color: #fff;
+  letter-spacing: 0
+}
+
+.mainpage .main_visual .mainviewcont.main_visual_fixed .visual a .text_wrap .desc {
+  font-size: 17px;
+  font-weight: 200;
+  color: #fff;
+  line-height: 1.5;
+}
+
+.mainpage .main_visual .mainviewcont.main_visual_fixed .visual a.on {
+  background: rgba(0, 0, 0, 0.26);
+}
+
+
+.mainpage .main_visual .mainviewcont.main_visual_fixed .visual a.off {
+  background: none;
+}
+
+.mainpage .main_visual .mainviewcont.main_visual_fixed .visual a.off .text_wrap {
+  opacity: 0;
+}
+
+/* ========================================== 책볕자리 ============================================== */
+#sub02_bg {
+  height: 944px;
+  /* background: url(../images/sub02_main_bg.png) no-repeat center center */
+}
+
+.sub02_bn_text_box {
+  color: #fffdf9;
+  display: block;
+  gap: 12px;
+  top: 400px;
+}
+
+.sub02_bn_text_box>h1 {
+  font-family: "MapoFlowerIsland";
+  font-weight: 400;
+  font-size: 150px;
+}
+
+.sub02_bn_text_box>p {
+  font-size: 18px;
+}
+
+/* sub02_section01_wrap */
+#sub02_section01_wrap {
+  height: 1080px;
+  width: 1920px;
+  padding: 80px 0;
+  position: relative;
+}
+
+/* 기본 초기화 및 컨테이너 */
+.slider-container {
+  padding: 80px 80px 0px 0px;
+  position: relative;
+  width: 100%;
+  height: 500px;
+  max-width: 1320px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.slider-track {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+/* 기본적으로 모든 아이템의 내부 요소는 숨김 처리 */
+.slider-item .main-content {
+  display: none;
+}
+
+.slider-item .thumb-content {
+  display: none;
+}
+
+/* 1. 맨 왼쪽 첫 번째 아이템: 큰 메인 화면으로 변신 */
+.slider-item:first-child {
+  display: flex;
+  width: 55%;
+  /* 왼쪽 큰 영역 비율 조정 */
+  flex-shrink: 0;
+}
+
+.slider-item:first-child .main-content {
+  display: flex;
+  gap: 30px;
+  width: 500px;
+  align-items: flex-start;
+}
+
+.slider-item:first-child .book-cover {
+  width: 240px;
+  flex-shrink: 0;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.slider-item:first-child .book-cover img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.slider-item:first-child .book-info {
+  width: 220px;
+}
+
+.bookname {
+  font-size: 22px;
+  line-height: 1.3;
+  /* [보완] 구조가 깨지지 않도록 block 상태를 유지하되 내부 내용을 정렬 */
+  display: block;
+  position: relative;
+  /* 기존에 들어가 있던 호버 시 위로 올라가는 애니메이션 설정 */
+  transform: translateY(0);
+  transition: color 0.3s ease, transform 0.3s ease;
+  /* [수정] fit-content 대신 block을 유지하여 우측 끝에 하트 공간을 일정하게 확보합니다 */
+  display: block;
+  position: relative;
+  /* 하트 아이콘이 배치될 우측 공간 (이미지 크기에 맞춰 조절) */
+  padding-right: 30px;
+  box-sizing: border-box;
+}
+
+.author {
+  display: block;
+  color: #888780;
+  padding: 4px 0;
+  box-sizing: border-box;
+}
+
+.rate {
+  width: 70px;
+  background: url(../images/Star\ 1.png) no-repeat left 0;
+  padding-left: 24px;
+  align-items: center;
+}
+
+
+.desc {
+  margin-top: 80px;
+  color: #888780;
+}
+
+/* 2. 두 번째 이후 아이템들: 오른쪽 미니 리스트 썸네일로 변신 */
+.slider-item:not(:first-child) {
+  display: block;
+  width: calc(15% - 15px);
+  /* 우측 썸네일들 크기 균등 배분 */
+  flex-shrink: 0;
+}
+
+.slider-item:not(:first-child) .thumb-content {
+  display: block;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform 0.4s ease;
+}
+
+.slider-item:not(:first-child) .thumb-content img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 다음 버튼 클릭 시 메인 카드가 왼쪽에서 오른쪽으로 나타나는 효과 */
+.slider-item:first-child {
+  display: flex;
+  width: 50%;
+  flex-shrink: 0;
+  animation: slideInFromLeft 0.4s ease-in-out forwards;
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* 버튼들의 새로운 부모 선택자 */
+.slider-controls {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  /* 밑에 있는 책 카드나 링크가 클릭되도록 통과시킴 */
+  z-index: 10;
+}
+
+/* 버튼 공통 - 이제 부모가 controls이므로 항상 일정한 높이를 유지합니다 */
+.nav-btn {
+  position: absolute;
+  cursor: pointer;
+  top: 35%;
+  pointer-events: auto;
+  /* 버튼은 다시 클릭이 되어야 하므로 활성화 */
+  transition: all 0.2s ease;
+}
+
+/* 왼쪽 버튼: 피그마 시안 상 메인화면 오른쪽 경계선 쪽에 배치하고 싶다면 */
+.prev-btn {
+  left: 42%;
+  /* 메인 카드 너비가 55%이므로 그 부근에 배치 */
+  margin-left: -22px;
+  /* 버튼 크기의 절반만큼 보정하여 경계선에 걸치기 */
+}
+
+/* 오른쪽 버튼: 전체 컨테이너의 오른쪽 끝 */
+.next-btn {
+  right: 50px;
+}
+
+.section01_bn {
+  width: 1320px;
+  height: 200px;
+  position: relative;
+}
+
+.section01_bn>.event {
+  position: absolute;
+  top: 60px;
+  left: 80px;
+  color: #fffdf9;
+}
+
+.section01_bn>.event>h1 {
+  display: inline-block;
+  padding-right: 40px;
+  background: url(../images/light_10_white.png) no-repeat center right 0;
+  margin-bottom: 12px;
+}
+
+.section01_bn>.event>p {
+  font-size: 18px;
+}
+
+/* sub02_section02_wrap */
+#sub02_section02_wrap {
+  width: 1920px;
+  height: 1080px;
+  background: url(../images/sub02_section02_bg.png) no-repeat center;
+  overflow: hidden;
+}
+
+#sub02_section02_wrap>#section02 {
+  width: 1320px;
+  margin: 0 auto;
+  height: 100%;
+  text-align: center;
+  padding: 80px 0;
+  position: relative;
+}
+
+.main_white {
+  color: #fffdf9;
+  margin-top: 30px;
+}
+
+.sub_white {
+  color: #e8dea7;
+}
+
+/* 서류철 전체를 감싸는 바깥 영역 */
+.folder-wrap {
+  width: 1320px;
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.folder_overlay {
+  width: 100%;
+  height: 420px;
+  background: url(../images/paper_9.png) no-repeat center;
+  background-size: cover;
+  position: absolute;
+  bottom: 0;
+  z-index: 20;
+}
+
+/* 서류철 상단 북마크 바 정렬 */
+#folder-container {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+  /* 컨텐츠 박스 선보다 위로 올리기 위한 설정 */
+}
+
+.folder-item {
+  margin-right: 5px;
+}
+
+/* 북마크 버튼 기본 상태 (뒤로 살짝 밀려나 있음) */
+.bookmark-btn {
+  display: block;
+  padding: 12px 25px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 15px;
+  color: #555;
+  background-color: #e0e0e0;
+  border: 1px solid #ccc;
+  border-bottom: none;
+  border-radius: 10px 10px 0 0;
+
+  position: relative;
+  top: 6px;
+  /* 닫혀있을 때는 아래로 6px 내려앉음 */
+  transition: all 0.3s ease;
+}
+
+/* 활성화된 북마크 버튼 (.on 상태 - 앞으로 튀어나오며 위로 이동) */
+.folder-item.on .bookmark-btn {
+  top: 0;
+  /* 원래 높이로 상승 */
+  color: #fffdf9;
+  border-color: #667759;
+  background-color: #667759;
+}
+
+/* ==========================================================
+   [버그 수정] 컨텐츠 박스 정렬 및 애니메이션 제어 구역
+   ========================================================== */
+
+.folder-content-wrap {
+  position: relative;
+  width: 100%;
+  height: 900px;
+}
+
+.folder-content-wrap img {
+  border-radius: 8px;
+}
+
+/* 모든 컨텐츠 박스의 기본 숨김 상태 정의 */
+.folder_content {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 40px 30px 80px 200px;
+  background: url(../images/paper_bg.jpg) no-repeat center;
+  background-size: cover;
   background-color: #fff;
+  border: 1px solid #667759;
+  /* 기본 오렌지 테두리 매칭 */
+  border-radius: 0 10px 10px 10px;
+  display: flex;
+  gap: 50px;
+
+
+  position: absolute;
+  top: -1px;
+  /* 북마크 탭 하단 선과 자연스럽게 물리도록 설정 */
+  left: 0;
+
+  /* 영상 속 서류철 애니메이션 무드 (투명하다가 아래로 스르륵 내려앉음) */
+  opacity: 0;
+  transform: translateY(-15px);
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+}
+
+/* [핵심] 클래스 .on이 붙어 활성화된 컨텐츠 박스 강제 노출 */
+.folder_content.on {
+  opacity: 1;
+  transform: translateY(0);
+  /* 제자리로 안착 */
+  pointer-events: auto;
+  visibility: visible;
+  z-index: 1;
+  /* 열린 서류철 내용이 맨 위로 올라오도록 지정 */
+}
+
+/* 오늘의 도서 탭 메뉴 */
+.box {
+  width: 300px;
+  text-align: left;
+  padding: 30px;
+  box-sizing: border-box;
+  background-color: #fffdf9;
+}
+
+.rating_author {
+  display: inline-block;
+  margin-bottom: 4px;
+  font-size: 22px;
+}
+
+.rating_text {
+  color: #888780;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.box2 {
+  width: 400px;
+  text-align: left;
+  background-color: #fffdf9;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+.book_text {
+  color: #888780;
+  margin-top: 30px;
+  font-size: 16px;
+}
+
+/* 신간 도서 탭 메뉴 */
+.all_list {
+  width: 1320px;
+  display: flex;
+  gap: 30px;
+
+  /* [수정] 가로 스크롤 허용 및 세로 스크롤 차단 */
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  /* [추가] 마우스 올렸을 때 잡을 수 있는 손모양 커서 표시 */
+  cursor: grab;
+
+  /* [추가] 자석처럼 스크롤이 카드 단위로 딱딱 끊어져서 멈추는 효과 */
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+
+  /* 브라우저 기본 내장 스크롤바 숨기기 (디자인 최적화) */
+  -ms-overflow-style: none;
+  /* IE */
+  scrollbar-width: none;
+  /* 파이어폭스 */
+}
+
+/* 크롬, 사파리, 오페라에서 지저분한 스크롤바 숨김 */
+.all_list::-webkit-scrollbar {
+  display: none;
+}
+
+/* 드래그하고 있는 순간에는 꽉 쥔 손모양으로 변경 */
+.all_list:active {
+  cursor: grabbing;
+}
+
+.all_list>li {
+  display: flex;
+  gap: 20px;
+  text-align-last: left;
+  background-color: #fffdf9;
+  padding: 30px;
+  box-sizing: border-box;
+
+  /* [핵심 추가] 가로로 나열될 때 카드 크기가 강제로 줄어들지 않도록 크기 고정 */
+  flex: 0 0 540px;
+  /* 원하는 카드 한 장의 가로 너비 수치로 조절 가능합니다 */
+
+  /* [핵심 추가] 스크롤 자석이 멈출 때 카드의 왼쪽 시작선에 딱 맞춰 멈추도록 고정 */
+  scroll-snap-align: start;
+}
+
+/* 기존 작성해주신 나머지 스타일 유지 */
+.all_text {
+  width: 300px;
+}
+
+.all_plus_btn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.all_plus_btn a {
+  color: #888780;
+  padding-right: 30px;
+  background: url(../images02/right-arrow.png) no-repeat center right 0;
+  display: block;
+}
+
+.all_plus_btn a:hover {
+  color: #c56928;
+}
+
+/* 오늘의 명언 */
+
+.box_wrap>li {
+  font-family: 'mapoflowerisland';
+  max-height: 180px;
+  display: block;
+  margin-bottom: 30px;
+}
+
+.novel_book {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.img_box>li:nth-child(1) a {
+  display: block;
+  transition: all 0.3s linear;
+  transform: rotate(12deg) translateY(30px);
+}
+
+.img_box>li:nth-child(1) a:hover {
+  transform: rotate(12deg) translateY(-5px);
+  transition: all 0.3s linear;
+}
+
+.img_box>li:nth-child(2) a {
+  display: block;
+  transition: all 0.3s linear;
+  transform: rotate(-8deg) translate(0, -20px);
+}
+
+.img_box>li:nth-child(2) a:hover {
+  transform: rotate(-8deg) translateY(-30px);
+  transition: all 0.3s linear;
+}
+
+/* sub02_section03_wrap */
+#sub02_section03_wrap {
+  width: 1920px;
+  height: 2160px;
+
+}
+
+#sub02_section03_wrap>.section03 {
+  width: 1320px;
+  margin: 0 auto;
+  display: block;
+}
+
+#sub02_section03_wrap>.section03>.sub_title {
+  color: #888780;
+}
+
+/* 탭 메뉴 설정 */
+#tap {
+  width: 1320px;
+  margin: 50px;
+  display: flex;
+  gap: 10px;
+  position: relative;
+  border-bottom: 1px solid #e8d1a7;
+  padding-bottom: 20px;
+}
+
+#tap>li {
+  width: 8%;
+}
+
+#tap>li>a {
+  display: block;
+  border: 1px solid #888780;
+  text-align: center;
+  padding: 8px 12px;
+  border-radius: 25px;
+  color: #888780;
+  transition: all 0.2s ease;
+  /* 부드러운 변화를 위해 ease 적용 */
+}
+
+#tap>li:first-child {
+  border-right: 1px solid #e8d1a7;
+  padding-right: 12px;
+}
+
+#tap>li:first-child>a {
+  color: #E6683D;
+  border: #E6683D 1px solid;
+}
+
+#tap>li>a:hover {
+  color: rgb(255, 136, 0);
+  border: 1px solid rgb(255, 136, 0);
+  background-color: rgba(255, 166, 0, 0.158);
+}
+
+#tap>li:first-child>a:hover {
+  background-color: #E6683D;
+  color: #fffdf9;
+  border: none;
+}
+
+
+
+
+/* on이 들어왔을 때 */
+#tap>li.on>a {
+  color: rgb(255, 136, 0);
+  border: 1px solid rgb(255, 136, 0);
+  background-color: rgba(255, 166, 0, 0.158);
+}
+
+#tap>li:first-child.on>a {
+  background-color: #E6683D;
+  color: #fffdf9;
+  border: none;
+}
+
+#tap>li.on div {
+  width: 1320px;
+  height: 1900px;
+  box-sizing: border-box;
+  padding: 20px;
+  position: absolute;
+  top: 40px;
+  left: 0;
+
+}
+
+/* on이 안 들어왔을 때 */
+#tap>li div {
+  height: 0;
+  overflow: hidden;
+}
+
+/* 책 리스트 */
+.tab_content>ul {
+  padding: 50px 0;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.tab_content>ul>li>a {
+  display: block;
+  /* 영역 전체를 인식하도록 블록화 */
+  padding: 20px 20px 40px 20px;
+  /* 패딩을 기본 상태로 고정 */
+  box-sizing: border-box;
+  transition: transform 0.3s ease, color 0.3s ease;
+  /* 움직임과 색상 변화만 타겟팅 */
+}
+
+.tab_content>ul>li>a>img {
+  border-radius: 8px;
+}
+
+.tab_content>ul>li>a:hover {
+  transform: translateY(-5px);
+  transition: all 0.3s linear;
+}
+
+.tab_content>ul>li>a:hover .bookname {
+  color: #c56928;
+}
+
+/* 찜하기 기능 */
+.tab_content>.bookname {
+  padding-right: 35px;
+}
+
+
+/* 2. 가상 요소로 이미지 하트 아이콘 배치 */
+.bookname::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  background: url('../images02/heart_off.png') no-repeat center / contain;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.bookname.on::before {
+  background-image: url('../images02/heart_on.png');
+}
+
+/* ====================== 책볕자리 ======================================================= */
+
+/* section01 */
+#sub03_section01_wrap {
+  width: 1920px;
+  height: 1080px;
+}
+
+.sub02_section01_content {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 0;
+}
+
+.recommand_hashtag {
+  margin-bottom: 8px;
+}
+
+/* 탭 메뉴 */
+/* 새로 삽입된 장르 탭 메뉴 스타일 */
+/* 장르 탭메뉴 */
+.sub02_sec01_tab_menu {
+  display: flex;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sub02_sec01_tab_item {
+  padding: 8px 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 20px;
+  font-size: 14px;
+  color: #999;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sub02_sec01_tab_item.active,
+.sub02_sec01_tab_item:hover {
+  border-color: #e28743;
+  color: #e28743;
+  background-color: #fffdfa;
+}
+
+/* 콘텐츠 판넬 디스플레이 토글 */
+.sub02_sec01_pane {
+  display: none;
+}
+
+.sub02_sec01_pane.active {
+  display: block;
+}
+
+/* 슬라이더 트랙 */
+.sub02_sec01_slider_container {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.sub02_sec01_slider_track {
+  display: flex;
+  gap: 16px;
+  overflow: hidden;
+}
+
+/* 개별 카드 */
+.sub02_sec01_card {
+  display: none;
+  flex: 1;
+  display: flex;
+  gap: 20px;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.sub02_sec01_card.active {
+  display: flex;
+}
+
+/* 카드별 배경 색상 칩 */
+.sub02_card_blue {
+  background-color: #eef5fc;
+}
+
+.sub02_card_orange {
+  background-color: #fcefe9;
+}
+
+.sub02_card_yellow {
+  background-color: #fbf9e6;
+}
+
+.sub02_card_green {
+  background-color: rgb(245, 255, 245);
+}
+
+.sub02_sec01_cover_zone img {
+  width: 120px;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.sub02_sec01_detail_zone {
+  flex: 1;
+}
+
+.sub02_sec01_meta_count {
+  color: #ff6b35;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.sub02_sec01_main_title {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+}
+
+.sub02_sec01_sub_author {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 12px;
+}
+
+.sub02_sec01_summary_text {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* 푸터 및 참여자 요소 */
+.sub02_sec01_footer_bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.sub02_sec01_user_status {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sub02_sec01_profile_stack {
+  display: flex;
+}
+
+.sub02_sec01_p_thumb {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: bold;
+  color: #fff;
+  margin-right: -8px;
+  border: 2px solid #fff;
+}
+
+.thumb_a {
+  background-color: #4a90e2;
+}
+
+.thumb_b {
+  background-color: #2ecc71;
+}
+
+.thumb_c {
+  background-color: #ff6b6b;
+}
+
+.thumb_d {
+  background-color: #a55eea;
+}
+
+.sub02_sec01_status_msg {
+  font-size: 14px;
+  color: #555;
+  margin: 0;
+}
+
+.sub02_sec01_accent {
+  color: #ff6b35;
+  font-weight: 700;
+}
+
+/* 우측 하단 버튼 호버 이벤트 효과 */
+.sub02_sec01_link_btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border: 1px solid #e28743;
+  border-radius: 24px;
+  color: #e28743;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+
+.sub02_sec01_link_btn:hover {
+  background-color: #e28743;
+  color: #fff;
+}
+
+/* 카운터 박스 스타일 */
+.counter_box {
+  display: flex;
+  gap: 20px;
+}
+
+.counter_box>span {
+  color: #888780;
+}
+
+.counter {
+  padding: 0px 18px;
+  border-left: 1px solid #c56928;
+  font-size: 36px;
+  font-weight: bold;
+  color: #1e1d1c;
+}
+
+/* sub03_section02_wrap */
+#sub03_section02_wrap {
+  height: 1080px;
+  width: 1920px;
+  overflow: hidden;
+  position: relative;
+  background: url(../images/sub03_section02_bg.png) no-repeat center;
+}
+.drawer_wrap_bg{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+.section02 {
+  height: 100%;
+  padding: 100px 0;
+  background: url(../images/sub03_section02_bg02.png) no-repeat center;
+}
+.banner_wrap{
+  height: 300px;
+  width: 1320px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  z-index: 5;
+  padding: 0 20px;
+}
+.drawer_wrap {
+  height: 1080px;
+  width: 1920px;
+  display: flex;
+  justify-content: center;
+  z-index: 5;
+  gap: 80px;
+  padding-top: 60px;
+}
+
+.recommend_group {
+  width: 840px;
+  height: 400px;
+  z-index: 5;
+
+}
+
+.group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.group>li {
+  width: 268px;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 4px;
+  padding: 30px;
+  box-sizing: border-box;
+  background: url(../images/sub02_section02_bg.png) no-repeat center;
+  transition: all 0.3s linear;
+
+}
+.group>li:hover{
+  box-shadow: 0px 5px 15px #0000008a;
+  transform: translateY(-10px);
+  transition: all 0.3s linear;
+}
+.group_top {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hashtag {
+  background-color: #fff;
+  padding: 4px 12px;
+  border-radius: 50px;
+  color: #c56928;
+}
+
+.bottom {
+  transform: translateY(220px);
+  color: #fffdf9;
+}
+
+.bottom>h1 {
+  font-size: 22px;
+}
+
+/* 하트 버튼 기본 스타일 초기화 및 정렬 */
+.heart_btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+  display: inline-block;
+  transition: transform 0.1s ease;
+  /* 부드러운 기본 반응 */
+}
+
+/* 애니메이션 클래스가 붙었을 때 실행할 효과 */
+.heart_btn.ani-bounce {
+  animation: heartBounce 0.45s ease-in-out;
+}
+
+/* 통통 튀는 하트 키프레임 정의 */
+@keyframes heartBounce {
+  0% {
+    transform: scale(1);
+  }
+
+  30% {
+    transform: scale(1.4);
+    /* 1.4배로 커짐 */
+  }
+
+  60% {
+    transform: scale(0.8);
+    /* 살짝 작아짐 */
+  }
+
+  80% {
+    transform: scale(1.1);
+    /* 다시 살짝 커짐 */
+  }
+
+  100% {
+    transform: scale(1);
+    /* 원래 크기 복귀 */
+  }
+}
+
+.bottom_sub {
+  display: flex;
+  justify-content: space-between;
+}
+
+.people {
+  background: url(../images/group_icon.png) no-repeat center left 0;
+  padding-left: 30px;
+}
+
+.recommend_books {
+  width: 300px;
+  z-index: 5;
+  height: 400px;
+}
+.books{
+  display: flex;
+  gap: 12px;
+}
+.books>li{
+  width: 50px;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.img_overlay{
+  width: 100%;
+  height: 100%;
+  background-color: #00000049;
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  color: #fffdf9;
+  padding-top: 300px;
+}
+.img_overlay>p{
+  background: url(../images02/right-up.png) no-repeat top 0 right 50%;
+  padding-top: 28px;
+}
+
+/* sub03_section03_wrap */
+#sub03_section03_wrap{
+  height: 2160px;
+  width: 1920px;
 }
