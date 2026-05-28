@@ -403,6 +403,7 @@ body {
 .brand_keyword_wrap {
   height: 1080px;
   text-align: center;
+  padding: 80px;
   background: url(../images/Artboard\ 1.png) no-repeat center;
 }
 
@@ -413,9 +414,8 @@ body {
   padding-top: 80px;
 }
 
-s .bg_upflow_text {
+.bg_upflow_text {
   text-align: center;
-  padding-top: 80px;
 }
 
 .bg_upflow_text>.title>h1 {
@@ -486,6 +486,11 @@ s .bg_upflow_text {
 
 
 /* section01 */
+/* ==========================================================================
+   [수정완료] index.html - section01 텍스트 가림 및 정렬 버그 해결
+   ========================================================================== */
+
+/* 1. 섹션 전체를 감싸는 큰 거실 (위치 기준점 설정) */
 .section_wrap01 {
   height: 2500px;
   width: 1920px;
@@ -493,52 +498,73 @@ s .bg_upflow_text {
   position: relative;
 }
 
+/* 배경 비디오 - 맨 뒤로 보내기 */
 .section_wrap01>video {
   width: 3000px;
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 5;
+  z-index: 1;
+  /* 가장 아래에 배치 */
 }
 
+/* 2. 실제 콘텐츠가 담기는 중심 컨테이너 */
 .section01 {
   width: 1320px;
   height: 100%;
   margin: 0 auto;
-  height: 100%;
-  z-index: 10;
   position: relative;
   box-sizing: border-box;
   padding: 80px 30px;
+  z-index: 10;
+  /* 배경 비디오보다 무조건 위로 올림 */
 }
 
-.section01_content_top_wrap {
-  width: 100%;
-  height: 1250px;
-}
-
+/* 상단(Read Alone) / 하단(Read Together) 블록 각각의 높이 통제 */
+.section01_content_top_wrap,
 .section01_content_bottom_wrap {
   width: 100%;
   height: 1250px;
+  position: relative;
+  /* 내부의 텍스트와 폴라로이드의 기준점이 됨 */
 }
 
+/* 3. 텍스트를 담고 있는 실제 HTML 내부의 클래스 정렬 */
 .section01_content {
   position: absolute;
-  width: 1320px;
-  height: 1250px;
+  width: 100%;
+  /* 1320px 전체를 활용하도록 변경 */
+  height: 100%;
   color: #FFFDF9;
-  z-index: 100;
+  z-index: 30;
+  /* 폴라로이드와 빛 요소를 제치고 최상단으로 유도 */
+  pointer-events: none;
+  /* 글자 박스 영역이 사진을 가려도 사진이 클릭되게 방지 */
 }
 
-.text_box {
+/* 실제 원본 글자 박스 스타일 보정 */
+.section01_content .text_box {
+  position: relative;
+  z-index: 40;
+  pointer-events: auto;
+  /* 텍스트 링크나 버튼은 다시 클릭이 되도록 복구 */
+  display: inline-block;
+  margin-top: 320px;
+}
+
+/* 상단 텍스트는 오른쪽 배치 */
+.section01_content_top_wrap .text_box {
   float: right;
-  padding-top: 320px;
+  text-align: left;
 }
 
-.left_text {
+/* 하단 텍스트는 왼쪽 배치 */
+.section01_content_bottom_wrap .text_box {
   float: left;
+  text-align: left;
 }
 
+/* 4. 몽환적인 빛 효과 (은은하게 뒤로 배치) */
 .bg_light {
   width: 600px;
   height: 600px;
@@ -551,6 +577,8 @@ s .bg_upflow_text {
   opacity: 0.5;
   position: absolute;
   mix-blend-mode: color-dodge;
+  z-index: 2;
+  /* 비디오 바로 위, 사진과 글자보다는 아래 */
 }
 
 .ellipse1 {
@@ -571,6 +599,17 @@ s .bg_upflow_text {
 .ellipse4 {
   bottom: 0;
   left: -50px;
+}
+
+/* 5. 폴라로이드 사진 수직 층위 분리 (글자 밑으로 내리기) */
+.Polaroid_box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  /* text_box(z-index: 40)보다 낮게 주어 텍스트가 덮이지 않게 함 */
 }
 
 .section01_content>.text_box>h3 {
@@ -634,6 +673,7 @@ s .bg_upflow_text {
 .polaroid1 {
   position: absolute;
   top: 210px;
+  left: -100px;
   animation: polaroid 2s infinite linear;
 
 }
@@ -642,7 +682,7 @@ s .bg_upflow_text {
   position: absolute;
   top: 500px;
   animation: polaroid 1.5s infinite linear;
-  left: 210px;
+  left: 100px;
 }
 
 .polaroid3 {
@@ -679,22 +719,22 @@ s .bg_upflow_text {
 .Brutalism1 {
   position: absolute;
   top: 800px;
-  left: 400px;
+  left: 300px;
   z-index: 500;
   animation: star2 2s linear infinite;
 }
 
 .Brutalism2 {
   position: absolute;
-  top: 500px;
-  left: 150px;
+  top: 400px;
+  left: 100px;
   z-index: 500;
   animation: star 3s linear infinite;
 }
 
 .Brutalism3 {
   position: absolute;
-  top: 1300px;
+  bottom: 670px;
   right: 750px;
   z-index: 500;
   animation: star2 3s linear infinite;
@@ -703,7 +743,7 @@ s .bg_upflow_text {
 .Brutalism4 {
   position: absolute;
   bottom: 320px;
-  right: 430px;
+  right: 410px;
   z-index: 500;
   animation: star 2.5s linear infinite;
 }
@@ -736,7 +776,7 @@ s .bg_upflow_text {
 .section_wrap02 {
   height: 1080px;
   text-align: center;
-  background: url(../images/main_section02_bg.png) no-repeat center;
+  background: url(../images/Artboard\ 1.png) no-repeat center;
 }
 
 .mapo {
@@ -752,52 +792,31 @@ s .bg_upflow_text {
   width: 100%;
   overflow: hidden;
   position: relative;
-  padding-bottom: 30px;
+  padding: 30px 0;
+  box-sizing: border-box;
 }
 
 /*width를 본인에 맞게 수정하여 사용하세요! --아래 3개*/
 .slide_inner {
-  width: 4800px;
+  width: 10000px;
   /*ul길이의 두배!*/
   display: flex;
-  animation: rotate 15s linear infinite;
+  padding: 30px 0;
+  box-sizing: border-box;
+  animation: rotate 25s linear infinite;
 }
 
 .slide_inner ul {
   display: flex;
-  width: 2400px;
+  width: 5000px;
   /*li크기를 전부합한것보다 더 여유있게.*/
   justify-content: space-between;
 }
 
 .slide_inner ul li {
-  width: 360px;
-}
-
-/*width를 본인에 맞게 수정하여 사용하세요!*/
-
-.slide_inner ul li:nth-child(1) {
-  padding-top: 150px;
-}
-
-.slide_inner ul li:nth-child(2) {
-  padding-top: 200px
-}
-
-.slide_inner ul li:nth-child(3) {
-  padding-top: 100px
-}
-
-.slide_inner ul li:nth-child(4) {
-  padding-top: 250px
-}
-
-.slide_inner ul li:nth-child(5) {
-  padding-top: 150px
-}
-
-.slide_inner ul li:nth-child(6) {
-  padding-top: 300px
+  width: 800px;
+  overflow: hidden;
+  border-radius: 25px;
 }
 
 .slide_inner ul li img {
@@ -824,14 +843,12 @@ s .bg_upflow_text {
   }
 
   100% {
-    margin-left: -2400px;
+    margin-left: -4000px;
     /*slide_inner의 ul길이와 동일하게 - 설정합니다!*/
   }
 }
 
 .text {
-  width: 636px;
-  height: 46px;
   font-size: 18px;
   line-height: 130%;
   font-family: Pretendard;
@@ -1542,11 +1559,16 @@ s .bg_upflow_text {
   background: #fffdf9 url(../images/Vector.png) no-repeat top 100px right 200px;
 }
 
-#sub01_section03_wrap>.text_box {
-  display: inline-block;
-  float: none;
-  margin-left: 348px;
-  margin-top: -180px;
+.section03 {
+  width: 1320px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.section03 .text_box {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .main_title {
@@ -1562,12 +1584,13 @@ s .bg_upflow_text {
   width: 1320px;
   margin: 0 auto;
   padding-top: 30px;
+  margin-top: 60px;
 }
 
 /* kensington common main page style */
 .mainpage .main_visual .mainviewcont.main_visual_fixed {
   position: relative;
-  padding-top: 41.7%;
+  padding-top: 50%;
   overflow: hidden;
 }
 
@@ -2711,9 +2734,11 @@ s .bg_upflow_text {
   overflow: hidden;
   position: relative;
 }
-.books>li:last-child{
+
+.books>li:last-child {
   transform: rotate(-6deg) translateX(15px);
 }
+
 .img_overlay {
   width: 100%;
   height: 100%;
@@ -2877,37 +2902,64 @@ s .bg_upflow_text {
   align-items: center;
 }
 
-.search_box {
-  position: relative;
-  width: 340px;
+/* ==========================================================================
+   [수정완료] sub05_1.html - 검색창 내부 필터 인라인 합류 전용 스타일
+   ========================================================================== */
+
+/* 공지사항 전용 와이드 서치박스 명확한 기준점 수립 */
+.notice_search_block {
+  width: 1300px !important;
+  position: relative !important;
+  display: flex !important;
+  align-items: center;
 }
 
-.search_box input {
-  width: 100%;
-  padding: 16px 45px 16px 20px;
-  border: none;
-  border-radius: 25px;
-  background-color: #f3ebdf;
+/* 검색창 인풋 - 양쪽에 전용 여백(Padding)을 주어 글자가 아이콘들과 겹치지 않게 방지 */
+.notice_search_block input {
+  width: 100% !important;
+  background-color: transparent !important;
+  border: 1px solid #88878066 !important;
+  border-radius: 8px !important;
+  /* 좌측 패딩 45px(돋보기 공간), 우측 패딩 85px(필터 단추 공간) 확보 */
+  padding: 14px 85px 14px 45px !important;
   font-size: 14px;
   outline: none;
 }
 
-.search_btn {
-  position: absolute;
-  right: 15px;
-  top: 50%;
-  transform: translateY(-50%);
+/* 왼쪽 돋보기 버튼 정렬 고정 */
+.notice_search_block .search_btn {
+  position: absolute !important;
+  left: 16px !important;
+  right: auto !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 16px;
-  color: #c56928;
+  z-index: 10;
 }
 
-.sort_select {
+/* 우측 끝 필터 버튼 정렬 고정 (인풋 레이어 위로 끌어올림) */
+.notice_search_block .notice_filter_btn {
+  position: absolute !important;
+  right: 20px !important;
+  left: auto !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  margin: 0 !important; /* 기존 마이너스 마진 마법 걷어내기 */
+  z-index: 10;
+  color: #888780;
   font-size: 14px;
-  color: #555;
   cursor: pointer;
+}
+
+/* 필터 내부의 작은 주황 화살표 아이콘 시안 매칭 */
+.notice_filter_btn img {
+  width: 12px !important;
+  height: auto !important;
+  margin-left: 6px !important;
+  transform: rotate(0deg) !important; /* 모임 전용 회전 속성 초기화 */
+  vertical-align: middle;
 }
 
 /* 5. 총 개수 카운터 */
@@ -3214,22 +3266,28 @@ s .bg_upflow_text {
 
 /* sub03_section04_wrap */
 /* 모임 만들기 */
-#sub03_section04_wrap{
+#sub03_section04_wrap {
   height: 1380px;
+  width: 1920px;
+  position: relative;
 }
-.section04{
+
+.section04 {
+  padding: 80px 0;
   width: 1320px;
   margin: 0 auto;
   height: 100%;
   text-align: center;
 }
-.group_method_wrap{
+
+.group_method_wrap {
   width: 100%;
   height: 600px;
   margin-top: 120px;
   display: flex;
 }
-.group_method_wrap li{
+
+.group_method_wrap li {
   display: block;
   width: 420px;
   height: 440px;
@@ -3239,12 +3297,13 @@ s .bg_upflow_text {
   z-index: 1;
 }
 
-.text_box{
+.text_box {
   position: absolute;
   bottom: 50px;
   left: 50px;
 }
-.step{
+
+.step {
   display: inline-block;
   background-color: #fff;
   border-radius: 25px;
@@ -3253,20 +3312,23 @@ s .bg_upflow_text {
   margin-bottom: 12px;
   color: #1E1D1C;
 }
-.method01{
+
+.method01 {
   background: url(../images/group_method_bg\(1\).png) no-repeat;
   transition: all 0.2s linear;
   background-size: cover;
   transform: rotate(-15deg);
 }
-.method02{
+
+.method02 {
   transition: all 0.2s linear;
   color: #fff;
   transform: rotate(7deg);
   background-size: cover;
   background: url(../images/group_method_bg\(2\).png) no-repeat;
 }
-.method03{
+
+.method03 {
   transition: all 0.2s linear;
   background-size: cover;
   transform: rotate(15deg);
@@ -3275,16 +3337,18 @@ s .bg_upflow_text {
 
 .method01:hover,
 .method02:hover,
-.method03:hover{
+.method03:hover {
   transform: rotate(0deg);
   transition: all 0.2s linear;
   box-shadow: 5px 5px 5px #00000063;
   z-index: 10;
 }
-.section04 .main_title{
+
+.section04 .main_title {
   font-size: 48px;
 }
-.sec04_link_btn{
+
+.sec04_link_btn {
   margin-top: 30px;
   width: 400px;
   justify-content: center;
@@ -3292,10 +3356,578 @@ s .bg_upflow_text {
 }
 
 /* ============================책볕굿즈=================================== */
-#sub04_section01_wrap{
-  height: 1080px;
+#sub04_section01_wrap {
+  height: 944px;
+  box-sizing: border-box;
+  padding: 80px 0;
 }
 
-#sub04_section02_wrap{
+.swiper {
+  margin-top: 60px;
+  width: 1280px;
+  height: 520px;
+  background: #000;
+  border-radius: 35px;
+  box-sizing: border-box;
+}
+
+.swiper-slide {
+  display: block;
+  font-size: 18px;
+  color: #fff;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding-top: 300px;
+  padding-left: 60px;
+}
+
+.goods01 {
+  background: url(../images/goods_slider01.png) no-repeat center;
+}
+
+.goods02 {
+  background: url(../images/goods_slider02.png) no-repeat center;
+}
+
+.goods03 {
+  background: url(../images/goods_slider03.png) no-repeat center;
+}
+
+.swiper-slide .title {
+  font-size: 42px;
+  font-weight: 600;
+}
+
+.swiper-slide .subtitle {
+  font-size: 21px;
+  font-weight: 400;
+}
+
+.swiper-slide .text {
+  font-size: 16px;
+  max-width: 400px;
+  line-height: 1.3;
+  background-color: #fff;
+  padding: 10px 20px;
+  border-radius: 25px;
+  margin-top: 12px;
+}
+
+.goods02 .text {
+  background-color: #78AC77;
+}
+
+/* section02 */
+#sub04_section02_wrap {
   height: 2160px;
+  width: 1920px;
+  position: relative;
+}
+
+.section02 {
+  width: 1320px;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   [정밀 보정 및 통합] sub04.html - 굿즈 스토어 전용 레이아웃 (인라인 스타일 이관)
+   ========================================================================== */
+
+/* 굿즈 컨테이너 안의 그리드 리스트 4열 배치 통합 */
+#sub04_section02_wrap .meetings_grid_list {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  /* 인라인에 있던 4열 배열 이관 */
+  gap: 40px !important;
+  /* 인라인에 있던 40px 간격 이관 */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* 굿즈 스토어 영역 내부에 있는 카드 기본 뼈대 틀 고정 */
+#sub04_section02_wrap .meetings_grid_list li {
+  background-color: transparent !important;
+  /* 배경을 투명하게 하여 테두리 갇힌 느낌 제거 */
+  box-shadow: none !important;
+  /* 기존 모임 카드의 그림자 제거 */
+  border-radius: 0 !important;
+}
+
+#sub04_section02_wrap .card_link {
+  display: block;
+}
+
+/* 1. 상단 제품 이미지 박스 라운딩 처리 */
+#sub04_section02_wrap .meetings_grid_list .group_top {
+  width: 100%;
+  height: 300px;
+  border-radius: 8px;
+  /* 인라인에 있던 상단 모서리 라운딩 이관 */
+  overflow: hidden;
+  position: relative;
+}
+
+/* 2. 하단 정보 텍스트 영역 (상단 이미지와 완전히 따로 떨어뜨리는 핵심 구역) */
+#sub04_section02_wrap .meetings_card_bottom {
+  padding: 16px 0 0 0 !important;
+  /* 좌우 패딩을 없애고 패딩 탑으로 여백 분리 */
+  text-align: left;
+}
+
+#sub04_section02_wrap .meetings_card_top {
+  display: block !important;
+  /* 인라인에 있던 블록 처리 이관 */
+}
+
+/* 제품명 타이틀 여백 및 스타일 조정 */
+#sub04_section02_wrap .book_title {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: #1e1d1c !important;
+  margin-top: 4px !important;
+  margin-bottom: 2px !important;
+  /* 하단 브랜드명(책볕서점)과의 세부 여백 */
+}
+
+/* 브랜드명 텍스트 스타일 */
+#sub04_section02_wrap .author {
+  font-size: 13px !important;
+  color: #888780 !important;
+  margin-bottom: 8px !important;
+  /* 인라인에 있던 하단 마진 8px 이관 */
+}
+
+/* 3. 가격 및 아이콘 배치 하단선 분리 구역 */
+#sub04_section02_wrap .meetings_bottom_sub {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* 인라인에 있던 수직 중앙 정렬 이관 */
+  margin-top: 8px !important;
+  /* 인라인에 있던 마진 탑 8px 이관 */
+  padding-top: 8px !important;
+  /* 인라인에 있던 패딩 탑 8px 이관 */
+  border-top: none !important;
+  /* 기존 모임 카드에 있던 가로 구분선 완벽 제거 */
+}
+
+/* 제품 가격 스타일 */
+#sub04_section02_wrap .price {
+  font-size: 16px !important;
+  /* 인라인에 있던 굿즈 가격 크기 16px 이관 */
+  font-weight: 700 !important;
+  color: #1e1d1c !important;
+  margin: 0 !important;
+}
+
+/* 장바구니, 하트 아이콘 정렬 행 보정 */
+#sub04_section02_wrap .tag_heart_row {
+  display: flex;
+  align-items: center;
+  gap: 12px !important;
+  /* 인라인에 있던 아이콘 간격 12px 이관 */
+}
+
+/* 버튼 기본 마진 제거 */
+#sub04_section02_wrap .cart_btn,
+#sub04_section02_wrap .heart_btn {
+  display: flex;
+  align-items: center;
+  background: none !important;
+  /* 인라인에 있던 배경 제거 이관 */
+  border: none !important;
+  /* 인라인에 있던 테두리 제거 이관 */
+  padding: 0 !important;
+  cursor: pointer !important;
+  /* 인라인에 있던 포인터 커서 이관 */
+}
+
+#sub04_section02_wrap>.light07 {
+  top: 1600px;
+  right: 100px;
+}
+
+#sub04_section02_wrap>.light06 {
+  right: 150px;
+}
+
+/* ==========================================================================
+   [추가] sub04.html - 제품명(book_title) 호버 시 왼쪽->오른쪽 밑줄 애니메이션
+   ========================================================================== */
+
+#sub04_section02_wrap .book_title {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: #1e1d1c !important;
+  margin-top: 4px !important;
+  margin-bottom: 2px !important;
+
+  /* 밑줄 가상 요소를 글자 밑에 붙이기 위해 기준점 설정 */
+  display: inline-block !important;
+  /* [핵심] 글자 너비만큼만 밑줄이 생기도록 설정 */
+  position: relative !important;
+  padding-bottom: 2px;
+  /* 글자와 밑줄 사이의 다정한 간격 */
+}
+
+/* 1. 처음에는 가로 너비가 0인 투명한 밑줄을 글자 밑에 준비 */
+#sub04_section02_wrap .book_title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  /* 왼쪽에서부터 시작하도록 설정 */
+  width: 0;
+  /* 처음 너비는 0 */
+  height: 2px;
+  /* 밑줄의 두께 */
+  background-color: #c56928;
+  /* 책볕 브랜드 특유의 은은한 오렌지 브라운 색상 */
+  transition: width 0.3s ease-in-out;
+  /* 0.3초 동안 부드럽게 너비가 늘어나는 애니메이션 */
+}
+
+/* 2. 카드가 담긴 li 혹은 전체 링크(card_link)에 마우스를 올렸을 때 밑줄을 100%로 확장 */
+#sub04_section02_wrap .card_link:hover .book_title::after {
+  width: 100% !important;
+  /* 호버 시 왼쪽에서 오른쪽으로 100% 스르륵 채워짐 */
+}
+
+/* ===============================공지사항============================================= */
+/* sub05_section01_wrap */
+#sub05_section01_wrap {
+  height: 1600px;
+  padding-top: 120px;
+  min-height: 400px;
+  width: 1920px;
+  text-align: center;
+}
+
+.green_header {
+  color: #26321F !important;
+}
+
+/* ==========================================================================
+   sub05_1.html - 안내(공지사항) 페이지 전용 헤더 고정 및 폰트 컬러 수정
+   ========================================================================== */
+
+/* 1. 이 페이지의 헤더 wrap은 스크립트에 의해 위로 숨겨지는 효과(nav-up)를 완전히 무력화하고 top에 고정 */
+#header_wrap:has(.green_header) {
+  top: 0px !important;
+  position: fixed !important;
+}
+
+/* 2. 헤더 내부의 메뉴 글자색을 26321F 딥그린 컬러로 변경 */
+.green_header .gnb>li>a,
+.green_header .util>li>a {
+  color: #26321F !important;
+}
+
+/* 3. 글자 밑에 생기는 호버 라인 컬러도 글자색과 자연스럽게 통일 */
+.green_header .gnb>li>a {
+  background-image: linear-gradient(#26321F, #26321F) !important;
+}
+
+.green_header .util>li>a {
+  background-image: linear-gradient(#26321F, #26321F) !important;
+}
+
+/* 4. 서브메뉴(공지사항 등) 드롭다운 텍스트와 호버 효과 컬러 매칭 */
+.green_header .sub li a {
+  color: #26321F !important;
+}
+
+.green_header .sub li a:hover {
+  color: #FFFDF9 !important;
+  background-color: #26321F !important;
+  /* 호버 시 딥그린 배경으로 다정하게 반전 */
+}
+
+/* ==========================================================================
+   [새로작성] sub05_1.html - 공지사항 게시판 테이블 전용 전용 스타일
+   ========================================================================== */
+
+/* 게시판 전체 레이아웃 바깥 틀 */
+#sub05_section01_wrap {
+  width: 1920px;
+  background-color: #fffdf9; /* 책볕 감성 미색 무드 유지 */
+  padding: 140px 0 100px 0 !important; /* 상단 고정 헤더 영역을 피해 여백 확보 */
+  display: flex;
+  justify-content: center;
+}
+
+.notice_container {
+  width: 1320px;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+/* 이미지 속 좌측 상단 대제목 */
+.notice_main_title {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 42px;
+  font-weight: 800;
+  color: #1e1d1c;
+  text-align: left;
+  margin-bottom: 40px;
+}
+
+/* 이미지 속 타원형 검색 바 전용 보정 */
+.notice_container .meetings_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: none !important; /* 모임 전용 하단 라인 해제 */
+  padding-bottom: 0;
+  margin-bottom: 16px;
+}
+
+.notice_container .search_box {
+  width: 1300px; /* 시안처럼 화면 끝까지 늘어나는 와이드 서치바 조율 */
+}
+
+.notice_container .search_box input {
+  background-color: transparent !important;
+  border: 1px solid #88878066 !important; /* 이미지 속 가느다란 스크롤 라인 매칭 */
+  border-radius: 8px !important;           /* 사각형에 가까운 부드러운 곡선 변경 */
+  padding: 14px 20px 14px 45px;
+}
+
+/* 돋보기 아이콘을 시안처럼 인풋 박스 왼쪽 앞으로 재배치 */
+.notice_container .search_btn {
+  left: 15px !important;
+  right: auto !important;
+}
+
+/* 필터 버튼 정렬 보정 */
+.notice_container .header_right .sort_select {
+  position: absolute;
+  right: 30px;
+  margin-top: -46px; /* 서치바 안쪽 우측 끝으로 합류 유도 */
+  color: #888780;
+  font-size: 14px;
+}
+
+/* 총 개수 카운터 분리 */
+.notice_container .total_count {
+  text-align: left;
+  font-size: 14px;
+  color: #888780;
+  margin-bottom: 24px;
+}
+
+/* 게시판 테이블 핵심 디자인 스타일 */
+.notice_table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 40px;
+}
+
+/* 헤더 상단 이름 칸 */
+.notice_table th {
+  font-size: 13px;
+  font-weight: 500;
+  color: #888780;
+  padding: 16px 0;
+  border-bottom: 1px solid #88878033;
+}
+
+/* 데이터 레코드 칸들 */
+.notice_table td {
+  font-size: 14px;
+  color: #555555;
+  padding: 18px 0;
+  border-bottom: 1px solid #8887801a; /* 은은하게 들어가는 회색 가로선 */
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* 마우스 올렸을 때 행 전체 연한 피드백 효과 */
+.notice_table tbody tr:hover {
+  background-color: rgba(243, 235, 223, 0.25);
+}
+
+/* 이미지 속 제목 열 좌측 정렬 전용 예외 처리 클래스 */
+.notice_table .txt_left {
+  text-align: left;
+  padding-left: 20px;
+  color: #1e1d1c;
+}
+
+.notice_table .txt_left a {
+  transition: color 0.2s ease;
+}
+
+.notice_table .txt_left a:hover {
+  color: #c56928; /* 제목 호버 시 책볕 테마 컬러 강조 */
+  text-decoration: underline;
+}
+
+/* 새글 표시 이모지 마진 */
+.badge_new {
+  font-size: 12px;
+  margin-left: 4px;
+}
+
+/* 첨부 파일 클립/다큐먼트 아이콘 색상 조율 */
+.table_file_icon {
+  opacity: 0.7;
+}
+
+/* 페이지네이션 정렬 바 마진 추가 확보 */
+.notice_container .meetings_pagination_bar {
+  margin-top: 40px;
+}
+
+/* =======================안내사항========================== */
+#sub05_2_section01_wrap{
+  width: 1320px;
+  height: 1600px;
+  background-color: #fffdf9; /* 책볕 감성 미색 무드 유지 */
+  padding: 140px 0 100px 0 !important; /* 상단 고정 헤더 영역을 피해 여백 확보 */
+}
+
+.section01_top{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+}
+.alert{
+  width: 630px;
+  height: 364px;
+  border-collapse: collapse;
+
+}
+.alert tr{
+  border-bottom: 0.5px solid #888780;
+}
+.alert th{
+  background-color: #F3EBDF;
+  padding: 30px;
+  width: 30%;
+  font-weight: 400;
+  color: #1E1D1C;
+}
+.alert td{
+  padding: 30px;
+  color: #888780;
+}
+/* ==========================================================================
+   [수정완료] sub05_2.html - 이메일 구독 박스 찌그러짐 해결 및 가로 너비 확장
+   ========================================================================== */
+
+/* 알림 구독 전체 상자의 내부 레이아웃 정돈 */
+.section01_top .alarm {
+  width: 600px;
+  height: 300px;
+  border: 1px solid #E5E5E5;
+  padding: 30px;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 25px;
+  
+  /* 자식 요소들이 수직으로 예쁘게 흐르도록 설정 */
+  display: flex;
+  flex-direction: column;
+}
+
+/* 입력창과 구독 버튼을 담은 가로 행 컨테이너 정렬 보정 */
+.section01_top .alarm .container2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 12px; /* 입력창과 구독 버튼 사이의 다정한 여백 확보 */
+  margin-bottom: 18px;
+}
+
+/* 이메일 입력창 감싸는 박스의 비율 최적화 */
+.section01_top .alarm .email_input {
+  flex: 1; /* 남은 가로 공간을 채우도록 유도 */
+}
+
+.section01_top .alarm .input_wrap {
+  width: 100% !important; /* 부모 너비에 꽉 차게 설정 */
+}
+
+/* [핵심 보정] 이메일 인풋 창 내부 속성 초기화 */
+.section01_top .alarm .input_wrap input {
+  width: 100% !important; /* 인라인에 박혀있던 고정 500px를 무력화하고 유연하게 대처 */
+  box-sizing: border-box;  /* 패딩이 너비(width)를 침범하여 찌그러트리는 버그 방지 */
+}
+
+/* [핵심 수정] 구독 버튼이 찌그러지지 않도록 가로 width 확대 및 고정 */
+.section01_top .alarm .subscribe_button {
+  width: 120px !important;       /* 원하시는 만큼 버튼 가로 너비를 넓게 확장 완료 */
+  height: 48px;
+  flex-shrink: 0 !important;    /* [가장 중요] 공간이 부족해도 절대 버튼이 찌그러지지 않도록 차단 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  background-color: #c56928;
+  font-size: 14px;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+/* 구독 버튼 호버 시 은은한 피드백 효과 추가 */
+.section01_top .alarm .subscribe_button:hover {
+  background-color: #a3531b;
+}
+
+.section01_bottom{
+  margin-top: 160px;
+}
+.section01_bottom .main_title{
+  margin-bottom: 30px;
+}
+.road li{
+  margin: 20px 0;
+  color: #888780;
+  font-size: 20px;
+}
+
+/* ==========================================================================
+   sub05_3.html - 밝은 배경 전용 폰트 및 더하기 버튼 색상 보정
+   ========================================================================== */
+
+/* 1. 질문(기본 상태) 폰트 컬러를 선명한 차콜 브라운(#1E1D1C)으로 변경 */
+.fq_page_container .notice_fq_style .title {
+  color: #1e1d1c !important; /* 가독성을 위해 어두운 톤으로 강제 지정 */
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+/* 2. 질문에 마우스 호버 시 책볕 브랜드 아이덴티티 시그니처 오렌지 컬러로 다정하게 강조 */
+.fq_page_container .notice_fq_style ul li:hover .title {
+  color: #c56928 !important;
+}
+
+/* 3. 더하기(+) 버튼 색상 및 대비 보정 */
+.fq_page_container .notice_fq_style .plus img {
+  width: 14px !important;
+  height: auto;
+  /* 밝은 배경에서 흰색 플러스를 가독성 있게 차콜 그린(#26321F) 무드로 전환하는 필터 기믹 
+    (만약 다크 브라운을 원하시면 brightness(0) invert(0.1) 등으로 변경 가능합니다)
+  */
+  filter: brightness(0) saturate(100%) invert(13%) sepia(21%) saturate(992%) mix-blend-mode: multiply;
+  opacity: 0.8;
+  transition: transform 0.5s ease, opacity 0.2s ease;
+}
+
+/* 질문 호버 시 더하기 버튼도 함께 반응하도록 연출 */
+.fq_page_container .notice_fq_style ul li:hover .plus img {
+  opacity: 1;
+}
+
+/* 4. 클릭 시 열리는 답변(text_info) 상자 내부 텍스트 컬러 보정 */
+.fq_page_container .notice_fq_style .text_info {
+  color: #444444 !important; /* 연한 회색 배경 위에 또렷하게 읽히도록 다크 그레이 매칭 */
+  font-size: 15px;
+  line-height: 1.75;
 }
