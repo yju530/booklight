@@ -741,7 +741,7 @@ s .bg_upflow_text {
 
 .mapo {
   margin-top: 80px;
-  font-size: 52px;
+  font-size: 48px;
   line-height: 130%;
   font-family: "MapoFlowerIsland";
   color: #1e1d1c;
@@ -753,7 +753,6 @@ s .bg_upflow_text {
   overflow: hidden;
   position: relative;
   padding-bottom: 30px;
-  padding-top: 30px;
 }
 
 /*width를 본인에 맞게 수정하여 사용하세요! --아래 3개*/
@@ -839,7 +838,6 @@ s .bg_upflow_text {
   color: #1e1d1c;
   text-align: center;
   display: inline-block;
-  padding-top: 30px;
 }
 
 /* section03 */
@@ -1708,7 +1706,7 @@ s .bg_upflow_text {
 
 /* 기본 초기화 및 컨테이너 */
 .slider-container {
-  padding: 80px 80px 0px 0px;
+  padding: 40px 80px 0px 0px;
   position: relative;
   width: 100%;
   height: 500px;
@@ -1800,6 +1798,18 @@ s .bg_upflow_text {
 .desc {
   margin-top: 80px;
   color: #888780;
+  width: 100%;
+  /* 기준 너비 설정 */
+  overflow: hidden;
+  /* 넘치는 부분은 숨김 처리 */
+  text-overflow: ellipsis;
+  /* 넘치는 텍스트를 ... 처리 */
+
+  /* 멀티라인 처리를 위한 핵심 속성들 */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
+  /* 보여주고 싶은 줄 수를 여기에 입력 (예: 3줄) */
 }
 
 /* 2. 두 번째 이후 아이템들: 오른쪽 미니 리스트 썸네일로 변신 */
@@ -1861,7 +1871,7 @@ s .bg_upflow_text {
 .nav-btn {
   position: absolute;
   cursor: pointer;
-  top: 35%;
+  top: 45%;
   pointer-events: auto;
   /* 버튼은 다시 클릭이 되어야 하므로 활성화 */
   transition: all 0.2s ease;
@@ -1895,13 +1905,15 @@ s .bg_upflow_text {
 
 .section01_bn>.event>h1 {
   display: inline-block;
-  padding-right: 40px;
-  background: url(../images/light_10_white.png) no-repeat center right 0;
   margin-bottom: 12px;
 }
 
 .section01_bn>.event>p {
   font-size: 18px;
+}
+
+.section01_bn:hover {
+  opacity: 0.8;
 }
 
 /* sub02_section02_wrap */
@@ -2205,87 +2217,6 @@ s .bg_upflow_text {
   color: #888780;
 }
 
-/* 탭 메뉴 설정 */
-#tap {
-  width: 1320px;
-  margin: 50px;
-  display: flex;
-  gap: 10px;
-  position: relative;
-  border-bottom: 1px solid #e8d1a7;
-  padding-bottom: 20px;
-}
-
-#tap>li {
-  width: 8%;
-}
-
-#tap>li>a {
-  display: block;
-  border: 1px solid #888780;
-  text-align: center;
-  padding: 8px 12px;
-  border-radius: 25px;
-  color: #888780;
-  transition: all 0.2s ease;
-  /* 부드러운 변화를 위해 ease 적용 */
-}
-
-#tap>li:first-child {
-  border-right: 1px solid #e8d1a7;
-  padding-right: 12px;
-}
-
-#tap>li:first-child>a {
-  color: #E6683D;
-  border: #E6683D 1px solid;
-}
-
-#tap>li>a:hover {
-  color: rgb(255, 136, 0);
-  border: 1px solid rgb(255, 136, 0);
-  background-color: rgba(255, 166, 0, 0.158);
-}
-
-#tap>li:first-child>a:hover {
-  background-color: #E6683D;
-  color: #fffdf9;
-  border: none;
-}
-
-
-
-
-/* on이 들어왔을 때 */
-#tap>li.on>a {
-  color: rgb(255, 136, 0);
-  border: 1px solid rgb(255, 136, 0);
-  background-color: rgba(255, 166, 0, 0.158);
-}
-
-#tap>li:first-child.on>a {
-  background-color: #E6683D;
-  color: #fffdf9;
-  border: none;
-}
-
-#tap>li.on div {
-  width: 1320px;
-  height: 1900px;
-  box-sizing: border-box;
-  padding: 20px;
-  position: absolute;
-  top: 40px;
-  left: 0;
-
-}
-
-/* on이 안 들어왔을 때 */
-#tap>li div {
-  height: 0;
-  overflow: hidden;
-}
-
 /* 책 리스트 */
 .tab_content>ul {
   padding: 50px 0;
@@ -2347,6 +2278,8 @@ s .bg_upflow_text {
 #sub03_section01_wrap {
   width: 1920px;
   height: 1080px;
+  padding: 80px 0;
+  box-sizing: border-box;
 }
 
 .sub02_section01_content {
@@ -2462,6 +2395,13 @@ s .bg_upflow_text {
   font-size: 20px;
   font-weight: 700;
   margin: 0 0 4px 0;
+  width: 200px;
+  /* 텍스트가 넘칠 기준 너비 지정 (필수) */
+  white-space: nowrap;
+  /* 텍스트가 줄바꿈되지 않도록 설정 */
+  overflow: hidden;
+  /* 넘치는 부분은 숨김 처리 */
+  text-overflow: ellipsis;
 }
 
 .sub02_sec01_sub_author {
@@ -2475,6 +2415,17 @@ s .bg_upflow_text {
   color: #666;
   line-height: 1.5;
   margin: 0;
+  width: 100%;
+  /* 기준 너비 설정 */
+  overflow: hidden;
+  /* 넘치는 부분은 숨김 처리 */
+  text-overflow: ellipsis;
+  /* 넘치는 텍스트를 ... 처리 */
+
+  /* 멀티라인 처리를 위한 핵심 속성들 */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
 }
 
 /* 푸터 및 참여자 요소 */
@@ -2548,19 +2499,19 @@ s .bg_upflow_text {
   font-size: 14px;
   font-weight: 600;
   text-decoration: none;
-  background-color: #fff;
   transition: all 0.3s ease;
 }
 
 .sub02_sec01_link_btn:hover {
   background-color: #e28743;
-  color: #fff;
+  color: #fffdf9;
 }
 
 /* 카운터 박스 스타일 */
 .counter_box {
   display: flex;
-  gap: 20px;
+  gap: 10px;
+  align-items: center;
 }
 
 .counter_box>span {
@@ -2583,18 +2534,21 @@ s .bg_upflow_text {
   position: relative;
   background: url(../images/sub03_section02_bg.png) no-repeat center;
 }
-.drawer_wrap_bg{
+
+.drawer_wrap_bg {
   position: absolute;
   top: 0;
   left: 0;
   z-index: 1;
 }
+
 .section02 {
   height: 100%;
   padding: 100px 0;
   background: url(../images/sub03_section02_bg02.png) no-repeat center;
 }
-.banner_wrap{
+
+.banner_wrap {
   height: 300px;
   width: 1320px;
   margin: 0 auto;
@@ -2603,6 +2557,7 @@ s .bg_upflow_text {
   z-index: 5;
   padding: 0 20px;
 }
+
 .drawer_wrap {
   height: 1080px;
   width: 1920px;
@@ -2625,24 +2580,41 @@ s .bg_upflow_text {
   justify-content: space-between;
 }
 
-.group>li {
+.group>li a {
+  display: block;
   width: 268px;
   height: 400px;
   overflow: hidden;
   border-radius: 4px;
-  padding: 30px;
   box-sizing: border-box;
-  background: url(../images/sub02_section02_bg.png) no-repeat center;
   transition: all 0.3s linear;
 
 }
-.group>li:hover{
+
+.group>li:nth-child(1) a {
+  background: url(../bookcover/book\ \(24\).jpg) no-repeat center;
+  background-size: cover;
+}
+
+.group>li:nth-child(2) a {
+  background: url(../bookcover/book\ \(15\).jpg) no-repeat center;
+  background-size: cover;
+}
+
+.group>li:nth-child(3) a {
+  background: url(../bookcover/book\ \(31\).jpg) no-repeat center;
+  background-size: cover;
+}
+
+.group>li:hover {
   box-shadow: 0px 5px 15px #0000008a;
   transform: translateY(-10px);
   transition: all 0.3s linear;
 }
-.group_top {
+
+.recommend_group .group_top {
   width: 100%;
+  padding: 50px 30px;
   height: 60px;
   display: flex;
   justify-content: space-between;
@@ -2657,8 +2629,11 @@ s .bg_upflow_text {
 }
 
 .bottom {
-  transform: translateY(220px);
+  transform: translateY(200px);
   color: #fffdf9;
+  background: linear-gradient(0deg, #1e1d1c, rgba(30, 29, 28, 0));
+  width: 100%;
+  padding: 12px 30px 50px 30px;
 }
 
 .bottom>h1 {
@@ -2724,17 +2699,22 @@ s .bg_upflow_text {
   z-index: 5;
   height: 400px;
 }
-.books{
+
+.books {
   display: flex;
   gap: 12px;
 }
-.books>li{
+
+.books>li {
   width: 50px;
   height: 100%;
   overflow: hidden;
   position: relative;
 }
-.img_overlay{
+.books>li:last-child{
+  transform: rotate(-6deg) translateX(15px);
+}
+.img_overlay {
   width: 100%;
   height: 100%;
   background-color: #00000049;
@@ -2745,13 +2725,577 @@ s .bg_upflow_text {
   color: #fffdf9;
   padding-top: 300px;
 }
-.img_overlay>p{
+
+.img_overlay>p {
   background: url(../images02/right-up.png) no-repeat top 0 right 50%;
   padding-top: 28px;
 }
 
 /* sub03_section03_wrap */
-#sub03_section03_wrap{
+#sub03_section03_wrap {
   height: 2160px;
   width: 1920px;
+  padding: 80px 0;
+}
+
+/* ==========================================================
+   [구조 깨짐 수정] section03 전체 모임 그리드 영역 완벽본
+   ========================================================== */
+
+/* 1. 배경 및 컨테이너 레이아웃 */
+#sub03_section03_wrap {
+  height: 2160px;
+  width: 1920px;
+  padding: 80px 0;
+}
+
+.meetings_container {
+  width: 1320px;
+  margin: 0 auto;
+  padding: 80px 10px;
+}
+
+/* 2. 헤더 상단 레이아웃 */
+.meetings_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-bottom: 1px solid #f3ebdf;
+  padding-bottom: 30px;
+  margin-bottom: 24px;
+}
+
+.meetings_header .title {
+  font-size: 32px;
+  font-weight: 800;
+  color: #1e1d1c;
+  margin-bottom: 8px;
+}
+
+.meetings_header .subtitle {
+  font-size: 15px;
+  color: #888780;
+  margin-bottom: 30px;
+}
+
+/* 3. 필터 탭 메뉴 스타일 */
+/* ==========================================================
+   [추가] sub02 전체도서 구역 전용 탭 컨트롤 디자인
+   ========================================================== */
+
+/* 1. 상단 장르 탭 버튼바 (sub03 레이아웃 계승) */
+.filter_tab_menu {
+  margin-top: 24px;
+  display: flex;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+}
+
+.filter_tab_menu .tab_item {
+  padding: 8px 18px;
+  border: 1px solid #888780;
+  border-radius: 20px;
+  font-size: 14px;
+  color: #888780;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+/* 마우스를 올렸을 때와 활성화 상태 연출 */
+.filter_tab_menu .tab_item:hover,
+.filter_tab_menu .tab_item.active {
+  color: rgb(255, 136, 0);
+  border-color: rgb(255, 136, 0);
+  background-color: rgba(255, 166, 0, 0.08);
+}
+
+/* 첫 번째 BEST 버튼 강조 전용 효과 */
+.filter_tab_menu .tab_item:first-child.active,
+.filter_tab_menu .tab_item:first-child:hover {
+  background-color: #E6683D;
+  color: #fffdf9;
+  border-color: #E6683D;
+}
+
+/* 2. 하단 탭 콘텐츠 활성화 처리 제어 구역 */
+.sub02_tab_container {
+  position: relative;
+  width: 1320px;
+  margin-top: 20px;
+}
+
+/* 기본적으로 판넬들은 숨김 처리 */
+.sub02_tab_container .tab_content {
+  display: none;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+/* active 클래스가 붙은 카테고리 판넬만 화면 노출 */
+.sub02_tab_container .tab_content.active {
+  display: block;
+}
+
+/* [추가 및 수정] 한 줄에 4권씩 배치하기 위한 각 책(li)의 너비 계산 */
+.sub02_tab_container .tab_content ul li {
+  width: 300px;
+  padding: 20px;
+  margin-bottom: 10px;
+  /* 하단 여백 추가 조정 */
+  box-sizing: border-box;
+}
+
+/* 책 내부 이미지 및 텍스트 스타일 보정 */
+.sub02_tab_container .tab_content ul li a {
+  display: block;
+}
+
+.sub02_tab_container .tab_content ul li img {
+  height: 340px;
+  object-fit: cover;
+  /* 이미지 비율 깨짐 방지 */
+  border-radius: 8px;
+  /* 부드러운 모서리 효과 */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  /* 입체감 효과 */
+  transition: transform 0.3s ease;
+}
+
+.sub02_tab_container .tab_content ul li:hover img {
+  transform: translateY(-5px);
+  /* 마우스 올렸을 때 살짝 들리는 효과 */
+}
+
+/* 4. 우측 검색창 및 정렬 */
+.header_right {
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+  align-items: center;
+}
+
+.search_box {
+  position: relative;
+  width: 340px;
+}
+
+.search_box input {
+  width: 100%;
+  padding: 16px 45px 16px 20px;
+  border: none;
+  border-radius: 25px;
+  background-color: #f3ebdf;
+  font-size: 14px;
+  outline: none;
+}
+
+.search_btn {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #c56928;
+}
+
+.sort_select {
+  font-size: 14px;
+  color: #555;
+  cursor: pointer;
+}
+
+/* 5. 총 개수 카운터 */
+.total_count {
+  font-size: 15px;
+  color: #1e1d1c;
+  margin-bottom: 20px;
+}
+
+.count_num {
+  color: #c56928;
+  font-weight: 700;
+}
+
+/* 6. 카드 그리드 배치 (2열 구조) */
+.meetings_grid_wrap {
+  width: 1320px;
+}
+
+.meetings_grid_wrap .meetings_grid_list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.meetings_grid_wrap .meetings_grid_list li {
+  background-color: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s ease;
+}
+
+.meetings_grid_wrap .meetings_grid_list li:hover {
+  transform: translateY(-6px);
+}
+
+/* 7. 카드 상단 썸네일 영역 */
+.meetings_grid_list .group_top {
+  position: relative;
+  width: 100%;
+  height: 260px;
+  overflow: hidden;
+}
+
+.card_main_img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-color: #fcefe9;
+}
+
+.meetings_card_top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tag_heart_row {
+  display: flex;
+  gap: 8px;
+  z-index: 5;
+}
+
+.hashtag {
+  padding: 8px 14px;
+  border-radius: 15px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.hashtag.novel {
+  background-color: #fcefe9;
+  color: #e28743;
+}
+
+.hashtag.science {
+  background-color: #eef5fc;
+  color: #4a90e2;
+}
+
+/* 8. 카드 하단 텍스트 정보 구역 (요청하신 누락 부분 포함 전체) */
+.meetings_card_bottom {
+  padding: 24px;
+  text-align: left;
+  /* 정렬 깨짐 방지 */
+}
+
+.book_title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1e1d1c;
+  margin-bottom: 12px;
+}
+
+.info_list p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 6px;
+}
+
+.location,
+.date {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.meetings_bottom_sub {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid #f3ebdf;
+}
+
+.meetings_people {
+  font-size: 14px;
+  color: #555;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.meetings_people strong {
+  color: #1e1d1c;
+  font-weight: 700;
+}
+
+.seat_status {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.seat_status.alert {
+  color: #ff6b35;
+}
+
+/* 기본적으로 서랍장 내부 모든 장르 판넬 숨김 */
+.meetings_container .meetings_grid_wrap {
+  display: none;
+  width: 100%;
+}
+
+/* active 클래스가 붙은 순서 번호판만 제자리 노출 제어 */
+.meetings_container .meetings_grid_wrap.active {
+  display: block;
+}
+
+/* ==========================================================
+   [추가] section03 전용 멀티 페이지네이션 스타일 시트
+   ========================================================== */
+
+/* 기본 페이지 그룹 숨김 제어 */
+.meetings_grid_wrap .page-group {
+  display: none;
+  width: 100%;
+}
+
+/* active 클래스가 붙은 현재 페이지 그룹만 스위칭 노출 */
+.meetings_grid_wrap .page-group.active {
+  display: block;
+}
+
+/* 페이지네이션 하단 바 레이아웃 정렬 */
+.meetings_pagination_bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  margin-top: 60px;
+  width: 100%;
+}
+
+.meetings_pagination_bar .page_btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  align-items: center;
+}
+
+.meetings_pagination_bar .page_btn img {
+  width: 32px;
+  /* 프로젝트 디자인 크기에 따라 수정 가능 */
+  height: auto;
+}
+
+.page_number_list {
+  display: flex;
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.page_number_list .num_item {
+  width: 36px;
+  height: 36px;
+  border: 1px solid #e0e0e0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: #888780;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* 활성화 상태 및 마우스 오버 전용 컬러 칩 */
+.page_number_list .num_item:hover,
+.page_number_list .num_item.active {
+  background-color: #c56928;
+  border-color: #c56928;
+  color: #fff;
+  font-weight: 700;
+}
+
+/* ==========================================================
+   [추가] 전체 탭 맨 마지막 '더보러 가기' 전용 카드 스타일
+   ========================================================== */
+.meetings_grid_list li.more_card_box {
+  background-color: #f3ebdf !important;
+  /* 책볕 베이지 배경색과 매칭 */
+  box-shadow: none !important;
+}
+
+.more_card_link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 410px;
+  /* 기존 meetings_card_bottom을 포함한 카드 전체 높이와 맞춤 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px 24px;
+  box-sizing: border-box;
+}
+
+.more_card_content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+/* 동그란 아이콘 박스 */
+.more_card_content .icon_circle {
+  width: 64px;
+  height: 64px;
+  background-color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+/* 피그마 시안에 있던 화살표 이미지를 오른쪽 방향으로 살짝 회전시킴 */
+.more_card_content .icon_circle img {
+  width: 20px;
+  height: auto;
+  transform: rotate(-90deg);
+}
+
+.more_card_content h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1e1d1c;
+}
+
+.more_card_content p {
+  font-size: 14px;
+  color: #888780;
+  line-height: 1.6;
+}
+
+.more_card_content p strong {
+  color: #c56928;
+  font-weight: 700;
+}
+
+/* 마우스 올렸을 때 화살표 원형이 통통 튀어오르는 효과 */
+.more_card_link:hover .icon_circle {
+  transform: translateY(-6px);
+  background-color: #c56928;
+}
+
+.more_card_link:hover .icon_circle img {
+  filter: brightness(0) invert(1);
+  /* 마우스 호버 시 화살표 흰색으로 반전 */
+}
+
+/* sub03_section04_wrap */
+/* 모임 만들기 */
+#sub03_section04_wrap{
+  height: 1380px;
+}
+.section04{
+  width: 1320px;
+  margin: 0 auto;
+  height: 100%;
+  text-align: center;
+}
+.group_method_wrap{
+  width: 100%;
+  height: 600px;
+  margin-top: 120px;
+  display: flex;
+}
+.group_method_wrap li{
+  display: block;
+  width: 420px;
+  height: 440px;
+  border-radius: 25px;
+  text-align: left;
+  position: relative;
+  z-index: 1;
+}
+
+.text_box{
+  position: absolute;
+  bottom: 50px;
+  left: 50px;
+}
+.step{
+  display: inline-block;
+  background-color: #fff;
+  border-radius: 25px;
+  padding: 8px 16px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #1E1D1C;
+}
+.method01{
+  background: url(../images/group_method_bg\(1\).png) no-repeat;
+  transition: all 0.2s linear;
+  background-size: cover;
+  transform: rotate(-15deg);
+}
+.method02{
+  transition: all 0.2s linear;
+  color: #fff;
+  transform: rotate(7deg);
+  background-size: cover;
+  background: url(../images/group_method_bg\(2\).png) no-repeat;
+}
+.method03{
+  transition: all 0.2s linear;
+  background-size: cover;
+  transform: rotate(15deg);
+  background: url(../images/group_method_bg\(3\).png) no-repeat;
+}
+
+.method01:hover,
+.method02:hover,
+.method03:hover{
+  transform: rotate(0deg);
+  transition: all 0.2s linear;
+  box-shadow: 5px 5px 5px #00000063;
+  z-index: 10;
+}
+.section04 .main_title{
+  font-size: 48px;
+}
+.sec04_link_btn{
+  margin-top: 30px;
+  width: 400px;
+  justify-content: center;
+  font-size: 20px;
+}
+
+/* ============================책볕굿즈=================================== */
+#sub04_section01_wrap{
+  height: 1080px;
+}
+
+#sub04_section02_wrap{
+  height: 2160px;
 }
