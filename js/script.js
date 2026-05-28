@@ -9,44 +9,63 @@ $(function () {
     });
 
     // === [공통] 탑버튼 및 헤더 스크롤 제어 ===
-    $(window).scroll(function () {
-        var height = $(window).scrollTop();
-        if (height > 1080) {
-            $('.top').fadeIn();
-        } else {
-            $('.top').fadeOut();
-        }
-    });
+    $(function () {
+        // === [공통] 탑버튼 클릭 시 부드럽게 최상단 이동 (Smooth Scroll) ===
+        $('.top').on('click', function (e) {
+            e.preventDefault(); // a 태그의 기본 순간 이동 막기
+            $('html, body').stop().animate({
+                scrollTop: 0
+            }, 800, 'swing'); // 0.8초 동안 부드럽게 상승 (작동 안 될 경우 'swing'으로 변경 가능)
+        });
 
-    var didScroll;
-    var lastScrollTop = 0;
-    var delta = 5;
-    var navbarHeight = $('#header_wrap').outerHeight();
-
-    $(window).scroll(function (event) {
-        didScroll = true;
-    });
-
-    setInterval(function () {
-        if (didScroll) {
-            hasScrolled();
-            didScroll = false;
-        }
-    }, 250);
-
-    function hasScrolled() {
-        var st = $(this).scrollTop();
-        if (Math.abs(lastScrollTop - st) <= delta) return;
-
-        if (st > lastScrollTop && st > navbarHeight) {
-            $('#header_wrap').removeClass('nav-down').addClass('nav-up');
-        } else {
-            if (st + $(window).height() < $(document).height()) {
-                $('#header_wrap').removeClass('nav-up').addClass('nav-down');
+        // === [공통] 탑버튼 노출 및 헤더 스크롤 제어 ===
+        $(window).scroll(function () {
+            var height = $(window).scrollTop();
+            if (height > 1080) {
+                $('.top').fadeIn();
+            } else {
+                $('.top').fadeOut();
             }
+        });
+
+        var didScroll;
+        var lastScrollTop = 0;
+        var delta = 5;
+        var navbarHeight = $('#header_wrap').outerHeight();
+
+        $(window).scroll(function (event) {
+            didScroll = true;
+        });
+
+        setInterval(function () {
+            if (didScroll) {
+                hasScrolled();
+                didScroll = false;
+            }
+        }, 250);
+
+        function hasScrolled() {
+            var st = $(this).scrollTop();
+            if (Math.abs(lastScrollTop - st) <= delta) return;
+
+            if (st > lastScrollTop && st > navbarHeight) {
+                $('#header_wrap').removeClass('nav-down').addClass('nav-up');
+            } else {
+                if (st + $(window).height() < $(document).height()) {
+                    $('#header_wrap').removeClass('nav-up').addClass('nav-down');
+                }
+            }
+            lastScrollTop = st;
         }
-        lastScrollTop = st;
-    }
+    });
+
+    // === [공통] 탑버튼 클릭 시 부드럽게 위로 이동 (Smooth Scroll) ===
+    $('.top').on('click', function (e) {
+        e.preventDefault(); // a 태그 기본 이동 막기
+        $('html, body').stop().animate({
+            scrollTop: 0
+        }, 800, 'easeInOutQuint'); // 800ms(0.8초) 동안 부드럽게 상승 (속도는 취향에 맞게 수정 가능)
+    });
 
     // === [공통] 안내(FAQ) 아코디언 제어 ===
     $(".fq_wrap> ul> li").click(function () {
@@ -71,27 +90,41 @@ $(function () {
         });
     }
 
-    // === [공통] 하트 찜하기 튕김 애니메이션 통합 관리 (모든 섹션 연동) ===
-    // 중복되던 하트 클릭 이벤트를 단 하나로 묶어 충돌을 방지합니다.
+    // === [공통] 하트 찜하기 튕김 애니메이션 통합 관리 (기존 하트 & 새 하트 동시 지원) ===
     $(document).on('click', '.recommend_group .heart_btn, .meetings_grid_wrap .heart_btn', function (e) {
         e.preventDefault();
         e.stopPropagation();
 
         var $btn = $(this);
         var $heartImg = $btn.find('img');
-        var currentSrc = $heartImg.attr('src');
+        var currentSrc = $heartImg.attr('src'); // 현재 클릭한 하트의 이미지 경로 추출
 
+        // 1. 기존에 돌고 있던 애니메이션 클래스 제거 (연타 시 오작동 방지) 
         $btn.removeClass('ani-bounce');
 
+        // 2. 미세한 딜레이를 주어 애니메이션을 재가동하고, 이미지 종류별로 각각 토글 처리 
         setTimeout(function () {
             $btn.addClass('ani-bounce');
-            if (currentSrc.indexOf('like btn off.png') !== -1) {
-                $heartImg.attr('src', '../images/like btn on.png');
-            } else {
-                $heartImg.attr('src', '../images/like btn off.png');
+
+            // [조건 1] 만약 클릭한 하트가 'images02' 폴더의 새 하트라면 [cite: 69, 70]
+            if (currentSrc.indexOf('heart_off.png') !== -1 || currentSrc.indexOf('heart_on.png') !== -1) {
+                if (currentSrc.indexOf('heart_off.png') !== -1) {
+                    $heartImg.attr('src', '../images02/heart_on.png');  // 새 하트 켜기 [cite: 70]
+                } else {
+                    $heartImg.attr('src', '../images02/heart_off.png'); // 새 하트 끄기 [cite: 70]
+                }
+            }
+            // [조건 2] 그 외에 기존 'images' 폴더의 모임용 하트라면 [cite: 49]
+            else {
+                if (currentSrc.indexOf('like btn off.png') !== -1) {
+                    $heartImg.attr('src', '../images/like btn on.png');  // 기존 하트 켜기
+                } else {
+                    $heartImg.attr('src', '../images/like btn off.png'); // 기존 하트 끄기
+                }
             }
         }, 5);
 
+        // 3. 애니메이션이 종료되면 클래스 자동 제거
         $btn.one('animationend webkitAnimationEnd oAnimationEnd', function () {
             $btn.removeClass('ani-bounce');
         });
@@ -296,5 +329,49 @@ $(function () {
                 el: ".swiper-pagination",
             },
         });
+    }
+
+    var swiper = new Swiper(".mySwiper", {
+        spaceBetween: 30,
+        centeredSlides: true,
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+        },
+        speed: 600,
+        parallax: true,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+    });
+});
+
+// === [sub04 전용] 굿즈 스토어 카테고리 필터 및 페이지네이션 자동 제어 ===
+$('.meetings_header .filter_tab_menu').on('click', '.tab_item', function () {
+    var tabIndex = $(this).index();
+
+    $('.meetings_header .tab_item').removeClass('active');
+    $(this).addClass('active');
+
+    // 1. 장르 상판 박스 스위칭 (기존 로직 유지)
+    $('.meetings_container .meetings_grid_wrap').eq(tabIndex).addClass('active').siblings('.meetings_grid_wrap').removeClass('active');
+
+    // 2. 무조건 1페이지 상태로 강제 복구 리셋
+    $('.page_number_list .num_item').eq(0).addClass('active').siblings().removeClass('active');
+    $('.meetings_grid_wrap.active .page-group').eq(0).addClass('active').siblings().removeClass('active');
+
+    // [핵심 추가 로직] 현재 활성화된 탭 내부의 실제 제품(li) 개수를 판별
+    var productCount = $('.meetings_grid_wrap.active .meetings_grid_list li').length;
+
+    // 한 화면 기준인 12개 이하일 경우 하단 페이지네이션 바 자체를 자동으로 숨김 처리
+    if (productCount <= 12) {
+        $('.meetings_pagination_bar').hide(); // 12개 이하면 2페이지로 갈 필요가 없으므로 숨김
+    } else {
+        $('.meetings_pagination_bar').show(); // 12개를 초과하는 '전체' 탭 등에서는 다시 노출
     }
 });
