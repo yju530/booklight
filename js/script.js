@@ -1,305 +1,79 @@
 $(function () {
+    // === [공통] GNB 서브메뉴 제어 ===
     $(".sub").hide();
     $(".gnb>li:last-child").mouseenter(function () {
         $(this).children(".sub").stop().fadeIn(400);
-    })
+    });
     $(".gnb>li:last-child").mouseleave(function () {
         $(this).children(".sub").stop().fadeOut(400);
-    })
-    let current = 0;
-    const slides = $('.slide');
-    const total = slides.length;
-
-    const cursor = document.querySelector('.custom-cursor');
-    // 1. querySelectorAll을 사용하고, 클래스 사이에 쉼표(,)를 넣어줍니다.
-    const targetSections = document.querySelectorAll('.section03_left, .section03_right');
-
-    // 마우스 움직임 (이건 그대로 두시면 됩니다)
-    document.addEventListener('mousemove', (e) => {
-        cursor.style.left = `${e.clientX}px`;
-        cursor.style.top = `${e.clientY}px`;
     });
 
-    // 2. 여러 개의 섹션이므로 forEach를 사용해 각각 이벤트를 걸어줍니다.
-    targetSections.forEach((section) => {
-        section.addEventListener('mouseenter', () => {
-            cursor.classList.add('active');
-        });
-
-        section.addEventListener('mouseleave', () => {
-            cursor.classList.remove('active');
-        });
+    // === [공통] 탑버튼 및 헤더 스크롤 제어 ===
+    $(window).scroll(function () {
+        var height = $(window).scrollTop();
+        if (height > 1080) {
+            $('.top').fadeIn();
+        } else {
+            $('.top').fadeOut();
+        }
     });
 
+    var didScroll;
+    var lastScrollTop = 0;
+    var delta = 5;
+    var navbarHeight = $('#header_wrap').outerHeight();
+
+    $(window).scroll(function (event) {
+        didScroll = true;
+    });
+
+    setInterval(function () {
+        if (didScroll) {
+            hasScrolled();
+            didScroll = false;
+        }
+    }, 250);
+
+    function hasScrolled() {
+        var st = $(this).scrollTop();
+        if (Math.abs(lastScrollTop - st) <= delta) return;
+
+        if (st > lastScrollTop && st > navbarHeight) {
+            $('#header_wrap').removeClass('nav-down').addClass('nav-up');
+        } else {
+            if (st + $(window).height() < $(document).height()) {
+                $('#header_wrap').removeClass('nav-up').addClass('nav-down');
+            }
+        }
+        lastScrollTop = st;
+    }
+
+    // === [공통] 안내(FAQ) 아코디언 제어 ===
     $(".fq_wrap> ul> li").click(function () {
         $(this).children(".text_info").slideToggle();
         $(this).siblings().children(".text_info").slideUp();
-    });
-    $(".fq_wrap> ul> li").click(function () {
-        $(this).toggleClass("turn");
-
-        if ($(this).hasClass("turn") === true) {
-            $(this).siblings().removeClass("turn");
-
-        }
-
-    });
-    var swiper = new Swiper(".mySwiper4", {
-        effect: "coverflow",
-        grabCursor: true,
-        centeredSlides: true,
-        slidesPerView: "auto",
-        coverflowEffect: {
-            rotate: 50,
-            stretch: 0,
-            depth: 100,
-            modifier: 1,
-            slideShadows: true,
-        },
-        pagination: {
-            el: ".swiper-pagination",
-        },
+        $(this).toggleClass("turn").siblings().removeClass("turn");
     });
 
-})
+    // === [공통] 커스텀 마우스 커서 이벤트 (section03 영역) ===
+    const cursor = document.querySelector('.custom-cursor');
+    const targetSections = document.querySelectorAll('.section03_left, .section03_right');
 
-$(window).scroll(function () {
-    var height = $(window).scrollTop();
-    if (height > 1080) {//아이콘이 나타나길 원하는 높이를 설정하세요
-        $('.top').fadeIn();//나타날 아이콘 클래스 수정!
-    } else {
-        $('.top').fadeOut();//나타날 아이콘 클래스 수정!
-    }
-
-
-
-});
-
-var didScroll;
-var lastScrollTop = 0;
-var delta = 5;
-var navbarHeight = $('#header_wrap').outerHeight();
-
-$(window).scroll(function (event) {
-    didScroll = true;
-});
-
-setInterval(function () {
-    if (didScroll) {
-        hasScrolled();
-        didScroll = false;
-    }
-}, 250);
-
-function hasScrolled() {
-    var st = $(this).scrollTop();
-
-    // Make sure they scroll more than delta
-    if (Math.abs(lastScrollTop - st) <= delta)
-        return;
-
-    // If they scrolled down and are past the navbar, add class .nav-up.
-    // This is necessary so you never see what is "behind" the navbar.
-    if (st > lastScrollTop && st > navbarHeight) {
-        // Scroll Down
-        $('#header_wrap').removeClass('nav-down').addClass('nav-up');
-    } else {
-        // Scroll Up
-        if (st + $(window).height() < $(document).height()) {
-            $('#header_wrap').removeClass('nav-up').addClass('nav-down');
-        }
-    }
-
-    lastScrollTop = st;
-};
-
-// sub01 호버 시 이미지가 커지는 슬라이드
-$(function () {
-
-    var winW = $(".mainviewcont").outerWidth(),
-        target = $('.main_visual .visual'),
-        target2 = $('.main_visual .visual_view'),
-        textBox = target.find('.text_wrap'),
-        length = 4,//박스 갯수
-        idx = 0,
-        css = [],
-        ease = "easeInOutQuint",
-        time = 1000;
-
-    target2.find('.viewbg_wrap').each(function (e) {
-        css.push({ 'width': 100 / length + '%', 'left': e * (100 / length) + '%', 'left2': -e * 100 + '%' });
-        $(this).css({ 'width': css[e].width, 'left': css[e].left })
-            .find('.viewbg').css({ 'width': winW, 'left': css[e].left2 });
-    });
-
-    target.find('>a').on("mouseenter", function () {
-        idx = $(this).index();
-        $(this).addClass('on').siblings().addClass('off');
-        $('.main_visual .visual_view .viewbg_wrap').eq(idx).addClass('hover')
-            .stop().animate({ 'left': '0', 'width': '100%' }, time, ease)
-            .find('.viewbg').stop().animate({ 'left': 0 }, time, ease);
-    });
-
-    target.find('>a').on("mouseleave", function () {
-        idx = $(this).index();
-        $(this).removeClass('on').siblings().removeClass('off');
-        $('.main_visual .visual_view .viewbg_wrap').eq(idx).removeClass('hover').stop().css({ 'width': css[idx].width, 'left': css[idx].left })
-            .find('.viewbg').stop().css({ 'left': css[idx].left2 });
-    });
-
-});
-
-
-// 책볕도서 section 01 슬라이드
-$(document).ready(function () {
-    // 슬라이더 이동 가로 너비 계산 (컨테이너 크기 대비 약 55%)
-    var moveWidth = $('.slider-container').width() * 0.55;
-
-    // 1. 다음 버튼 클릭 시 (왼쪽에서 오른쪽으로 밀려오는 애니메이션)
-    $('.next-btn').on('click', function () {
-        if ($('.slider-track').is(':animated')) return; // 중복 클릭 방지
-
-        var $lastItem = $('.slider-item').last();
-
-        /* [방향 수정] 
-          왼쪽에서 오른쪽으로 밀려오는 느낌을 주기 위해 
-          트랙 좌표를 미리 마이너스(-moveWidth) 영역으로 밀어둔 뒤,
-          맨 뒤 아이템을 맨 앞으로 밀어 넣고 0 좌표로 부드럽게 당겨옵니다.
-        */
-        $('.slider-track').css('left', -moveWidth).prepend($lastItem);
-        $('.slider-track').animate({ left: 0 }, 400, 'swing');
-    });
-
-    // 2. 이전 버튼 클릭 시 (오른쪽에서 왼쪽으로 밀려나가는 애니메이션)
-    $('.prev-btn').on('click', function () {
-        if ($('.slider-track').is(':animated')) return; // 중복 클릭 방지
-
-        var $firstItem = $('.slider-item').first();
-
-        /* [방향 수정] 
-          오른쪽에서 왼쪽으로 화면이 흘러가게 만들기 위해 
-          트랙을 마이너스(-moveWidth) 방향으로 먼저 밀어낸 후,
-          애니메이션이 끝나면 첫 아이템을 뒤로 보내고 좌표를 0으로 리셋합니다.
-        */
-        $('.slider-track').animate({ left: -moveWidth }, 400, 'swing', function () {
-            $('.slider-track').append($firstItem);
-            $('.slider-track').css('left', 0);
+    if (cursor) {
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = `${e.clientX}px`;
+            cursor.style.top = `${e.clientY}px`;
         });
-    });
 
-    // 브라우저 창 크기가 변할 때 이동 너비 자동 재계산
-    $(window).on('resize', function () {
-        moveWidth = $('.slider-container').width() * 0.55;
-    });
-});
-
-// 책볕도서 section02 부분 폴더 기능
-$(document).ready(function () {
-    $('.bookmark-btn').on('click', function (e) {
-        e.preventDefault();
-
-        var $currentIdx = $(this).parent('.folder-item').index();
-        var $currentFolder = $(this).parent('.folder-item');
-
-        // 이미 열려있는 탭을 다시 누른 거라면 리턴 처리
-        if ($currentFolder.hasClass('on')) return;
-
-        // 1. 상단 북마크 버튼 활성화 클래스 토글
-        $currentFolder.addClass('on').siblings('.folder-item').removeClass('on');
-
-        // 2. 아래쪽 컨텐츠 박스 그룹 중에서 동일한 순서의 박스에 .on을 붙여 강제 노출
-        $('.folder_content').eq($currentIdx).addClass('on').siblings('.folder_content').removeClass('on');
-    });
-});
-// 신간도서 
-$(document).ready(function () {
-    let isDown = false;
-    let startX;
-    let scrollLeft;
-
-    // 드래그 기능을 적용할 대상 리스트 선택
-    const $scrollList = $('.all_list');
-
-    $scrollList.on('mousedown', function (e) {
-        isDown = true;
-        startX = e.pageX - this.offsetLeft;
-        scrollLeft = this.scrollLeft;
-    });
-
-    $scrollList.on('mouseleave mouseup', function () {
-        isDown = false;
-    });
-
-    $scrollList.on('mousemove', function (e) {
-        if (!isDown) return; // 마우스 클릭 상태가 아니면 작동 안 함
-        e.preventDefault();
-
-        // 마우스 이동 거리 계산
-        const x = e.pageX - this.offsetLeft;
-        const walk = (x - startX) * 1.5; // 곱해지는 숫자가 높을수록 드래그 속도가 빨라집니다.
-
-        // 리스트의 스크롤 위치를 실시간으로 갱신
-        this.scrollLeft = scrollLeft - walk;
-    });
-});
-
-// 책볕도서 section03 책 리스트
-$(function () {
-    $("#tap>li").click(function () {
-        $(this).addClass("on").siblings().removeClass("on");
-    })
-    // 페이지 내의 모든 .bookname 요소를 가져옵니다.
-    document.querySelectorAll('.bookname').forEach(function (element) {
-        element.addEventListener('click', function (e) {
-            // 링크 이동(a 태그) 효과가 작동하여 페이지가 넘어가는 것을 막고 하트만 토글되도록 처리
-            e.preventDefault();
-
-            /* 클릭할 때마다 on 클래스를 넣었다 뺐다(토글) 합니다. 
-               클래스가 붙으면 CSS에 의해 채워진 하트로 변경됩니다. */
-            this.classList.toggle('on');
+        targetSections.forEach((section) => {
+            section.addEventListener('mouseenter', () => cursor.classList.add('active'));
+            section.addEventListener('mouseleave', () => cursor.classList.remove('active'));
         });
-    });
-});
+    }
 
-// 책볕자리 기능
-// section01 기능
-$(document).ready(function () {
-
-    // 탭 메뉴 버튼 클릭 이벤트 개시
-    $('.sub02_sec01_tab_menu').on('click', '.sub02_sec01_tab_item', function () {
-
-        // 1. 클릭된 탭 메뉴 스타일 활성화 및 기존 활성 상태 해제
-        $('.sub02_sec01_tab_item').removeClass('active');
-        $(this).addClass('active');
-
-        // 2. 고유 속성 data-tab 문자열 추출
-        var selectedTab = $(this).attr('data-tab');
-
-        // 3. 전체 콘텐츠 판넬 숨김 후 클릭 대상 판넬 노출 처리
-        $('.sub02_sec01_pane').removeClass('active');
-
-        // 매칭되는 ID 영역 판넬 활성화 (#sub02_pane_all, #sub02_pane_essay 등)
-        var $targetPane = $('#sub02_pane_' + selectedTab);
-        $targetPane.addClass('active');
-
-        // 4. 탭 교체 시 해당 판넬 내 도서 슬라이드 리스트를 항상 첫 번째 카드가 보이도록 강제 세팅
-        $targetPane.find('.sub02_sec01_card').removeClass('active');
-        $targetPane.find('.sub02_sec01_card').first().addClass('active');
-    });
-
-});
-
-// 카운터 박스
-$(document).ready(function ($) {
-    $('.counter').counterUp({
-        delay: 10,
-        time: 1000
-    });
-});
-
-// 검정 원형 배경이 있는 찜 버튼 
-$(document).ready(function () {
-    $('.recommend_group').on('click', '.heart_btn', function (e) {
+    // === [공통] 하트 찜하기 튕김 애니메이션 통합 관리 (모든 섹션 연동) ===
+    // 중복되던 하트 클릭 이벤트를 단 하나로 묶어 충돌을 방지합니다.
+    $(document).on('click', '.recommend_group .heart_btn, .meetings_grid_wrap .heart_btn', function (e) {
         e.preventDefault();
         e.stopPropagation();
 
@@ -307,15 +81,10 @@ $(document).ready(function () {
         var $heartImg = $btn.find('img');
         var currentSrc = $heartImg.attr('src');
 
-        // 1. 이미 활성화된 애니메이션 클래스가 있다면 중복 실행 방지를 위해 제거
         $btn.removeClass('ani-bounce');
 
-        // 브라우저가 클래스 제거를 인식할 수 있도록 미세한 딜레이 후 클래스 및 이미지 변경
         setTimeout(function () {
-            // 2. 애니메이션 클래스 추가 (통통 튀기 시작)
             $btn.addClass('ani-bounce');
-
-            // 3. 이미지 경로 변경 (켜기 / 끄기)
             if (currentSrc.indexOf('like btn off.png') !== -1) {
                 $heartImg.attr('src', '../images/like btn on.png');
             } else {
@@ -323,26 +92,209 @@ $(document).ready(function () {
             }
         }, 5);
 
-        // 4. 애니메이션이 끝나는 시점(0.45초 후)에 클래스를 제거해 다음 클릭을 준비함
         $btn.one('animationend webkitAnimationEnd oAnimationEnd', function () {
             $btn.removeClass('ani-bounce');
         });
     });
-});
 
-// 추천 도서 호버 시
-$(function () {
-    // 처음에 모든 오버레이를 숨깁니다.
-    $(".img_overlay").hide();
+    // === [sub01] 메인 비주얼 호버 슬라이드 ===
+    var winW = $(".mainviewcont").outerWidth(),
+        target = $('.main_visual .visual'),
+        target2 = $('.main_visual .visual_view'),
+        length = 4,
+        idx = 0,
+        css = [],
+        ease = "easeInOutQuint",
+        time = 1000;
 
-    $(".books>li").mouseenter(function () {
-        // $(this) : 현재 마우스가 올라간 그 'li' 태그만 의미합니다.
-        // .find(".img_overlay") : 그 'li' 자식들 중에서 .img_overlay만 골라냅니다.
-        $(this).find(".img_overlay").stop().fadeIn(200);
+    if (target.length > 0) {
+        target2.find('.viewbg_wrap').each(function (e) {
+            css.push({ 'width': 100 / length + '%', 'left': e * (100 / length) + '%', 'left2': -e * 100 + '%' });
+            $(this).css({ 'width': css[e].width, 'left': css[e].left })
+                .find('.viewbg').css({ 'width': winW, 'left': css[e].left2 });
+        });
+
+        target.find('>a').on("mouseenter", function () {
+            idx = $(this).index();
+            $(this).addClass('on').siblings().addClass('off');
+            $('.main_visual .visual_view .viewbg_wrap').eq(idx).addClass('hover')
+                .stop().animate({ 'left': '0', 'width': '100%' }, time, ease)
+                .find('.viewbg').stop().animate({ 'left': 0 }, time, ease);
+        });
+
+        target.find('>a').on("mouseleave", function () {
+            idx = $(this).index();
+            $(this).removeClass('on').siblings().removeClass('off');
+            $('.main_visual .visual_view .viewbg_wrap').eq(idx).removeClass('hover').stop().css({ 'width': css[idx].width, 'left': css[idx].left })
+                .find('.viewbg').stop().css({ 'left': css[idx].left2 });
+        });
+    }
+
+    // === [sub02] 지금 가장 많이 읽는 책 슬라이드 (section01) ===
+    var moveWidth = $('.slider-container').width() * 0.55;
+
+    $('.next-btn').on('click', function () {
+        if ($('.slider-track').is(':animated')) return;
+        var $lastItem = $('.slider-item').last();
+        $('.slider-track').css('left', -moveWidth).prepend($lastItem);
+        $('.slider-track').animate({ left: 0 }, 400, 'swing');
     });
 
-    $(".books>li").mouseleave(function () {
-        // 마우스가 떠난 그 'li' 안의 .img_overlay만 사라지게 합니다.
+    $('.prev-btn').on('click', function () {
+        if ($('.slider-track').is(':animated')) return;
+        var $firstItem = $('.slider-item').first();
+        $('.slider-track').animate({ left: -moveWidth }, 400, 'swing', function () {
+            $('.slider-track').append($firstItem);
+            $('.slider-track').css('left', 0);
+        });
+    });
+
+    $(window).on('resize', function () {
+        moveWidth = $('.slider-container').width() * 0.55;
+    });
+
+    // === [sub02] 오늘의 서랍 폴더 기능 (section02) ===
+    $('.bookmark-btn').on('click', function (e) {
+        e.preventDefault();
+        var $currentFolder = $(this).parent('.folder-item');
+        if ($currentFolder.hasClass('on')) return;
+
+        var $currentIdx = $currentFolder.index();
+        $currentFolder.addClass('on').siblings('.folder-item').removeClass('on');
+        $('.folder_content').eq($currentIdx).addClass('on').siblings('.folder_content').removeClass('on');
+    });
+
+    // === [sub02] 신간도서 마우스 드래그 스크롤 ===
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+    const $scrollList = $('.all_list');
+
+    $scrollList.on('mousedown', function (e) {
+        isDown = true;
+        startX = e.pageX - this.offsetLeft;
+        scrollLeft = this.scrollLeft;
+    });
+    $scrollList.on('mouseleave mouseup', function () {
+        isDown = false;
+    });
+    $scrollList.on('mousemove', function (e) {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - this.offsetLeft;
+        const walk = (x - startX) * 1.5;
+        this.scrollLeft = scrollLeft - walk;
+    });
+
+    // === [sub02] 전체도서 4열 그리드 탭 전환 통합 기능 (section03) ===
+    $('#sub02_section03_wrap .filter_tab_menu').on('click', '.tab_item', function () {
+        var tabIndex = $(this).index();
+        $(this).addClass('active').siblings().removeClass('active');
+        $('#sub02_section03_wrap .tab_content').eq(tabIndex).addClass('active').siblings().removeClass('active');
+    });
+
+    // 기존 단순 북마크용 온 오프 바인딩 처리 (기능 유지)
+    document.querySelectorAll('.sub02_tab_container .bookname').forEach(function (element) {
+        element.addEventListener('click', function (e) {
+            e.preventDefault();
+            this.classList.toggle('on');
+        });
+    });
+
+    // === [sub03] 책볕자리 장르 필터 판넬 스위칭 (section01) ===
+    $('.sub02_sec01_tab_menu').on('click', '.sub02_sec01_tab_item', function () {
+        $('.sub02_sec01_tab_item').removeClass('active');
+        $(this).addClass('active');
+
+        var selectedTab = $(this).attr('data-tab');
+        $('.sub02_sec01_pane').removeClass('active');
+
+        var $targetPane = $('#sub02_pane_' + selectedTab);
+        $targetPane.addClass('active');
+        $targetPane.find('.sub02_sec01_card').removeClass('active').first().addClass('active');
+    });
+
+    // === [sub03] 추천 도서 상세 오버레이 페이드 효과 ===
+    $(".img_overlay").hide();
+    $(".books>li").mouseenter(function () {
+        $(this).find(".img_overlay").stop().fadeIn(200);
+    }).mouseleave(function () {
         $(this).find(".img_overlay").stop().fadeOut(200);
     });
+
+    // === [sub03] 전체 모임 장르 필터 스위칭 기능 + 장르 변경 시 페이지네이션 1페이지 강제 초기화 ===
+    $('.meetings_header .filter_tab_menu').on('click', '.tab_item', function () {
+        var tabIndex = $(this).index();
+
+        $('.meetings_header .tab_item').removeClass('active');
+        $(this).addClass('active');
+
+        // 장르 상판 박스 스위칭
+        $('.meetings_container .meetings_grid_wrap').eq(tabIndex).addClass('active').siblings('.meetings_grid_wrap').removeClass('active');
+
+        // [추가 핵심] 장르 탭을 바꿨을 때는 하단 번호 및 내부 페이지를 무조건 '1페이지' 상태로 강제 복구 리셋합니다.
+        $('.page_number_list .num_item').eq(0).addClass('active').siblings().removeClass('active');
+        $('.meetings_grid_wrap.active .page-group').eq(0).addClass('active').siblings().removeClass('active');
+    });
+
+    // === [sub03 추가] 하단 페이지 번호 및 이전/다음 버튼 동작 스크립트 기능 ===
+
+    // 1. 페이지 넘버 클릭 제어
+    $('.meetings_pagination_bar').on('click', '.num_item', function () {
+        var pageIndex = $(this).index(); // 클릭한 숫자의 인덱스 추출 (0=1p, 1=2p, 2=3p)
+
+        // 버튼 번호 시각 효과 토글
+        $(this).addClass('active').siblings().removeClass('active');
+
+        // 현재 활성화된 장르(.active)의 서랍 내부 안에서만 해당 페이지 그룹 노출
+        $('.meetings_grid_wrap.active .page-group').eq(pageIndex).addClass('active').siblings().removeClass('active');
+    });
+
+    // 2. 이전 페이지 버튼 클릭 제어
+    $('.meetings_pagination_bar').on('click', '.prev_page_btn', function () {
+        // 활성화된 페이지 숫자의 형제 번호 추출
+        var currentPageIdx = $('.page_number_list .num_item.active').index();
+
+        if (currentPageIdx > 0) { // 1페이지보다 클 때만 뒤로 이동 가능
+            $('.page_number_list .num_item').eq(currentPageIdx - 1).trigger('click');
+        }
+    });
+
+    // 3. 다음 페이지 버튼 클릭 제어
+    $('.meetings_pagination_bar').on('click', '.next_page_btn', function () {
+        var currentPageIdx = $('.page_number_list .num_item.active').index();
+        var totalPages = $('.page_number_list .num_item').length; // 총 페이지 수 = 3
+
+        if (currentPageIdx < totalPages - 1) { // 마지막 페이지 번호 전까지만 작동
+            $('.page_number_list .num_item').eq(currentPageIdx + 1).trigger('click');
+        }
+    });
+
+    // === [공통] 카운터 애니메이션 실행 명령어 ===
+    if ($('.counter').length > 0 && typeof $.fn.counterUp !== 'undefined') {
+        $('.counter').counterUp({
+            delay: 10,
+            time: 1500
+        });
+    }
+
+    // === [공통] Swiper 플러그인 컴포넌트 초기화 ===
+    if ($('.mySwiper4').length > 0) {
+        var swiper = new Swiper(".mySwiper4", {
+            effect: "coverflow",
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: "auto",
+            coverflowEffect: {
+                rotate: 50,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: true,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+            },
+        });
+    }
 });
