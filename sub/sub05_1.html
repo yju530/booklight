@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="1320">
+    <meta name="description" content="Counter Up - jQuery Plugin Demo">
+    <meta name="author" content="Benjamin Intal">
+    <link rel="author" href="https://plus.google.com/113101541449927918834" />
+    <link rel="icon" type="../image/png" sizes="32x32" href="../images/favicon.png">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./index.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=MapoFlowerIsland:wght@400&display=swap" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+    <title>책·볕</title>
+</head>
+
+<body>
+    <div id="wrap_wrap">
+        <main class="main-home">
+            <a href="#wrap_wrap" class="top">
+                <img src="../images/top_long_arrow.png" alt="top버튼" width="40%">
+            </a>
+
+            <div id="header_wrap">
+                <div class="container header green_header">
+                    <h1 class="logo"><a href="../index.html"><img src="../images/logo_green.png" alt="책볕" width="56px"
+                                style="filter: brightness(0) cubic-bezier(0,0,0,0); stroke: #26321F;"></a></h1>
+                    <ul class="gnb">
+                        <li><a href="sub01.html">책볕소개</a></li>
+                        <li><a href="sub02.html">책볕도서</a></li>
+                        <li><a href="sub03.html">책볕자리</a></li>
+                        <li><a href="sub04.html">책볕굿즈</a></li>
+                        <li>
+                            <a href="sub05_1.html">안내</a>
+                            <ul class="sub">
+                                <li><a href="sub05_1.html">공지사항</a></li>
+                                <li><a href="sub05_2.html">안내사항</a></li>
+                                <li><a href="sub05_3.html">F&Q</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="util">
+                        <li><a href="#">나의 서재</a></li>
+                        <li><a href="#">알림</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ==========================================================================
+     [구현완료] sub05_1.html - 공지사항 게시판 레이아웃 (image_acfb07.png 반영)
+     ========================================================================== -->
+            <div id="sub05_section01_wrap">
+                <div class="notice_container">
+
+                    <!-- 대제목 -->
+                    <h1 class="notice_main_title">공지사항</h1>
+
+                    <!-- 상단 컨트롤러 바 (기존 검색창 및 정렬 클래스 적극 재활용) -->
+                    <div class="meetings_header">
+                        <div class="header_left">
+                            <!-- 인풋 상자 내부에 검색 버튼과 필터 버튼을 모두 자식 요소로 포함시킵니다 -->
+                            <div class="search_box notice_search_block">
+                                <!-- 1. 왼쪽 돋보기 아이콘 -->
+                                <button type="button" class="search_btn">
+                                    <img src="../images02/search02.png" alt="검색하기">
+                                </button>
+
+                                <!-- 2. 중앙 입력창 -->
+                                <input type="text" placeholder="검색어를 입력해주세요">
+
+                                <!-- 3. 우측 끝 필터 버튼 (인풋 내부 정렬을 위해 서치박스 안으로 합류) -->
+                                <div class="sort_select notice_filter_btn">
+                                    <span>필터 <img src="../images02/down-arrow.png" alt="더보기"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 총 개수 카운터 (기존 클래스 재활용) -->
+                    <div class="total_count">
+                        총 <span class="count_num">30</span>개
+                    </div>
+
+                    <!-- 게시판 데이터 테이블 (새로 설계) -->
+                    <table class="notice_table">
+                        <thead>
+                            <tr>
+                                <th style="width: 8%;">번호</th>
+                                <th style="width: 54%;">제목</th>
+                                <th style="width: 10%;">파일</th>
+                                <th style="width: 18%;">날짜</th>
+                                <th style="width: 10%;">조회</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- 중요 공지사항 또는 최신글 라인들 -->
+                            <tr>
+                                <td>01</td>
+                                <td class="txt_left"><a href="#">서점 이용 안내 관련 공지사항</a> <span class="badge_new">🆕</span>
+                                </td>
+                                <td><img src="../images/file_icon.png" alt="파일" class="table_file_icon"
+                                        style="width:14px;"></td>
+                                <td>2026.04.15</td>
+                                <td>218</td>
+                            </tr>
+                            <tr>
+                                <td>02</td>
+                                <td class="txt_left"><a href="#">라운지 이용 안내 관련 공지사항</a> <span class="badge_new">🆕</span>
+                                </td>
+                                <td></td>
+                                <td>2026.04.15</td>
+                                <td>218</td>
+                            </tr>
+                            <tr>
+                                <td>03</td>
+                                <td class="txt_left"><a href="#">주차장 이용 안내 관련 공지사항</a> <span class="badge_new">🆕</span>
+                                </td>
+                                <td></td>
+                                <td>2026.04.15</td>
+                                <td>218</td>
+                            </tr>
+                            <tr>
+                                <td>04</td>
+                                <td class="txt_left"><a href="#">도서 대출 연장 안내</a></td>
+                                <td></td>
+                                <td>2026.04.20</td>
+                                <td>219</td>
+                            </tr>
+                            <tr>
+                                <td>05</td>
+                                <td class="txt_left"><a href="#">신간 도서 추천 목록</a></td>
+                                <td><img src="../images/file_icon.png" alt="파일" class="table_file_icon"
+                                        style="width:14px;"></td>
+                                <td>2026.04.25</td>
+                                <td>220</td>
+                            </tr>
+                            <tr>
+                                <td>06</td>
+                                <td class="txt_left"><a href="#">서점 방문 고객 이벤트</a></td>
+                                <td></td>
+                                <td>2026.05.01</td>
+                                <td>221</td>
+                            </tr>
+                            <tr>
+                                <td>07</td>
+                                <td class="txt_left"><a href="#">여름 독서 캠프 안내</a></td>
+                                <td><img src="../images/file_icon.png" alt="파일" class="table_file_icon"
+                                        style="width:14px;"></td>
+                                <td>2026.05.10</td>
+                                <td>222</td>
+                            </tr>
+                            <tr>
+                                <td>08</td>
+                                <td class="txt_left"><a href="#">도서관 회원 가입 혜택</a></td>
+                                <td></td>
+                                <td>2026.05.15</td>
+                                <td>223</td>
+                            </tr>
+                            <tr>
+                                <td>09</td>
+                                <td class="txt_left"><a href="#">도서관 이용 규칙</a></td>
+                                <td></td>
+                                <td>2026.05.20</td>
+                                <td>150</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td class="txt_left"><a href="#">신간 도서 목록</a></td>
+                                <td></td>
+                                <td>2026.05.25</td>
+                                <td>300</td>
+                            </tr>
+                            <tr>
+                                <td>11</td>
+                                <td class="txt_left"><a href="#">추천 도서 이벤트</a></td>
+                                <td></td>
+                                <td>2026.06.01</td>
+                                <td>180</td>
+                            </tr>
+                            <tr>
+                                <td>12</td>
+                                <td class="txt_left"><a href="#">아동 독서 프로그램</a></td>
+                                <td></td>
+                                <td>2026.06.05</td>
+                                <td>120</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- 하단 페이지네이션 바 (기존 공통 클래스 및 번호판 레이아웃 완벽 재활용) -->
+                    <div class="meetings_pagination_bar">
+                        <button type="button" class="page_btn prev_page_btn"><img src="../images/left btn.png"
+                                alt="이전 페이지"></button>
+                        <ul class="page_number_list">
+                            <li class="num_item active">1</li>
+                            <li class="num_item">2</li>
+                            <li class="num_item">3</li>
+                        </ul>
+                        <button type="button" class="page_btn next_page_btn"><img src="../images/right btn.png"
+                                alt="다음 페이지"></button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="section_wrap05">
+                <div class="content_wrap">
+                    <h1>책·볕을 이제 <span>모바일</span>에서도!</h1>
+                    <p>
+                        모임 일정, 대여 및 구매 등 모바일로도
+                        <br> 편하게 만나볼 수 있습니다
+                    </p>
+                    <ul class="download_link">
+                        <li><a href="#"><img src="../images/Store download button2.png" alt="애플스토어"></a></li>
+                        <li><a href="#"><img src="../images/Store download button.png" alt="구글 플레이스토어"></a></li>
+                    </ul>
+                    <div class="text_flow">
+                        <p> You are light you alright <img src="../images/light_02_ivory.png" alt="빛 아이콘" width="32px">
+                            You
+                            are
+                            light you alright <img src="../images/light_02_ivory.png" alt="빛 아이콘" width="32px"> You are
+                            light
+                            you
+                            alright <img src="../images/light_02_ivory.png" alt="빛 아이콘" width="32px"> You are light you
+                            alright
+                            <img src="../images/light_02_ivory.png" alt="빛 아이콘" width="32px">
+                        </p>
+                        <p> You are light you alright <img src="../images/light_02_ivory.png" alt="빛 아이콘" width="32px">
+                            You
+                            are
+                            light you alright <img src="../images/light_02_ivory.png" alt="빛 아이콘" width="32px"> You are
+                            light
+                            you
+                            alright <img src="../images/light_02_ivory.png" alt="빛 아이콘" width="32px"> You are light you
+                            alright
+                            <img src="../images/light_02_ivory.png" alt="빛 아이콘" width="32px">
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="footer_wrap">
+                <div class="footer">
+                    <div class="footer_top">
+                        <img src="../images/logo_white(vertical).png" alt="푸터로고">
+                        <ul class="sns_link">
+                            <li><a href="#"><img src="../images/LinkedIn.png" alt="링크드인"></a></li>
+                            <li><a href="#"><img src="../images/Facebook.png" alt="페이스북"></a></li>
+                            <li><a href="#"><img src="../images/Instagram.png" alt="인스타그램"></a></li>
+                            <li><a href="#"><img src="../images/X.png" alt="X"></a></li>
+                            <li><a href="#"><img src="../images/Youtube.png" alt="유튜브"></a></li>
+                        </ul>
+                    </div>
+                    <div class="footer_container">
+                        <ul class="footer_menu">
+                            <h3 class="footer_title">SHOP</h3>
+                            <li><a href="#">책 구매/책 대여</a></li>
+                            <li><a href="#">위시리스트</a></li>
+                            <li><a href="#">마이페이지</a></li>
+                        </ul>
+                        <ul class="footer_menu">
+                            <h3 class="footer_title">ABOUT</h3>
+                            <li><a href="#">브랜드 소개</a></li>
+                            <li><a href="#">공지사항</a></li>
+                            <li><a href="#">채용 정보</a></li>
+                        </ul>
+                        <ul class="footer_menu">
+                            <h3 class="footer_title">SUPPORT</h3>
+                            <li><a href="#">자주 묻는 질문(FAQ)</a></li>
+                            <li><a href="#">오시는 길</a></li>
+                        </ul>
+                        <ul class="footer_menu">
+                            <h3 class="footer_title">POLICIES</h3>
+                            <li><a href="#">배송 정책</a></li>
+                            <li><a href="#">환불 정책</a></li>
+                        </ul>
+                    </div>
+                    <p class="copyright">
+                        © 2025 책·볕. All rights reserved.
+                    </p>
+                    <ul class="link">
+                        <li><a href="#"><strong>개인정보 처리방침</strong></a></li>
+                        <li><a href="#">이용약관</a></li>
+                        <li><a href="#">쿠키 설정</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </main>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="../js/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <script src="../js/script.js"></script>
+    <script>
+        AOS.init(); 
+    </script>
+</body>
+
+</html>

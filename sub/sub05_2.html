@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="1320">
+    <meta name="description" content="Counter Up - jQuery Plugin Demo">
+    <meta name="author" content="Benjamin Intal">
+    <link rel="author" href="https://plus.google.com/113101541449927918834" />
+    <link rel="icon" type="../image/png" sizes="32x32" href="../images/favicon.png">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./index.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=MapoFlowerIsland:wght@400&display=swap" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+    <title>책·볕</title>
+</head>
+
+<body>
+    <div id="wrap_wrap">
+        <main class="main-home">
+            <a href="#wrap_wrap" class="top">
+                <img src="../images/top_long_arrow.png" alt="top버튼" width="40%">
+            </a>
+
+            <div id="header_wrap">
+                <div class="container header green_header">
+                    <h1 class="logo"><a href="../index.html"><img src="../images/logo_green.png" alt="책볕" width="56px"
+                                style="filter: brightness(0) cubic-bezier(0,0,0,0); stroke: #26321F;"></a></h1>
+                    <ul class="gnb">
+                        <li><a href="sub01.html">책볕소개</a></li>
+                        <li><a href="sub02.html">책볕도서</a></li>
+                        <li><a href="sub03.html">책볕자리</a></li>
+                        <li><a href="sub04.html">책볕굿즈</a></li>
+                        <li>
+                            <a href="sub05_1.html">안내</a>
+                            <ul class="sub">
+                                <li><a href="sub05_1.html">공지사항</a></li>
+                                <li><a href="sub05_2.html">안내사항</a></li>
+                                <li><a href="#">F&Q</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="util">
+                        <li><a href="#">나의 서재</a></li>
+                        <li><a href="#">알림</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="sub05_2_section01_wrap">
+                <h1 class="main_title">안내사항</h1>
+                <div class="section01_top">
+                    <table class="alert">
+                        <tr>
+                            <th>운영시간</th>
+                            <td>
+                                월 - 금 : 10:00 - 24:00
+                                <br> 주말 및 공휴일 : 10:00 - 22:00
+                                <br> ✅ 연중무휴
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>라운지 <br> 사용안내 </th>
+                            <td>
+                                월 - 금 : 10:00 - 23:30
+                                <br> 주말 및 공휴일 : 10:00 - 21:30
+                                <br> ✅ 연중무휴
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>문의</th>
+                            <td>
+                                ☎️ 051-091-0218
+                                <br> 월 - 금 : 10:00 - 18:00
+                                <br> 주말 및 공휴일 휴무
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>이메일</th>
+                            <td>yju530@booklight.co.kr</td>
+                        </tr>
+                    </table>
+
+                    <div class="alarm">
+                        <div class="heading-2">
+                            책볕의 소식을 받아보세요
+                        </div>
+                        <div class="paragraph">
+                            새로운 책 입고, 모임 소식, 추천 도서까지 책볕의 모든 소식을 이메일로 받아보세요.
+                        </div>
+                        <div class="container2">
+                            <div class="email_input">
+                                <div class="input_wrap">
+                                    <input type="text" placeholder="이메일 주소 입력" style="width: 500px;">
+                                </div>
+                            </div>
+                            <div class="subscribe_button">
+                                구독
+                            </div>
+                        </div>
+                        <div class="paragraph2">
+                            구독함으로써 이용약관과 개인정보 처리방침에 동의합니다.
+                        </div>
+                    </div>
+                </div>
+                <div class="section01_bottom">
+                    <h1 class="main_title">오시는 길</h1>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1548.7035479666524!2d129.1017378358956!3d35.191650876288776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35689371c8a635a9%3A0xcd1e581f08721d34!2z7Jio7LKc7LKcIOy5tO2OmOqxsOumrA!5e0!3m2!1sko!2skr!4v1778826686162!5m2!1sko!2skr"
+                        width="1320" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <ul class="road">
+                        <li>
+                            <strong>🅿️ 주차장</strong>
+                            <br>
+                            <p>카페 오른쪽 주차장이 마련되어있으나 협소하니 주의바랍니다</p>
+                        </li>
+                        <li>
+                            <strong>🚌 대중교통</strong>
+                            <br>
+                            <p>버스: 36, 189-1, 동래구 2, 210, 52, 86, 87
+                                <br> 지하철: 동해선 안락역 1번 출구, 도보 16분</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section_wrap05">
+                <div class="content_wrap">
+                    <h1>책·볕을 이제 <span>모바일</span>에서도!</h1>
+                    <p>
+                        모임 일정, 대여 및 구매 등 모바일로도
+                        <br> 편하게 만나볼 수 있습니다
+                    </p>
+                    <ul class="download_link">
+                        <li><a href="#"><img src="../images/Store download button2.png" alt="애플스토어"></a></li>
+                        <li><a href="#"><img src="../images/Store download button.png" alt="구글 플레이스토어"></a></li>
+                    </ul>
+                    <div class="text_flow">
+                        <p> You are light you alright <img src="../images/light_02_ivory.png" alt="빛 아이콘" width="32px">
+                            You
+                            are
+                            light you alright <img src="../images/light_02_ivory.png" alt="빛 아이콘" width="32px"> You are
+                            light
+                            you
+                            alright <img src="../images/light_02_ivory.png" alt="빛 아이콘" width="32px"> You are light you
+                            alright
+                            <img src="../images/light_02_ivory.png" alt="빛 아이콘" width="32px">
+                        </p>
+                        <p> You are light you alright <img src="../images/light_02_ivory.png" alt="빛 아이콘" width="32px">
+                            You
+                            are
+                            light you alright <img src="../images/light_02_ivory.png" alt="빛 아이콘" width="32px"> You are
+                            light
+                            you
+                            alright <img src="../images/light_02_ivory.png" alt="빛 아이콘" width="32px"> You are light you
+                            alright
+                            <img src="../images/light_02_ivory.png" alt="빛 아이콘" width="32px">
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="footer_wrap">
+                <div class="footer">
+                    <div class="footer_top">
+                        <img src="../images/logo_white(vertical).png" alt="푸터로고">
+                        <ul class="sns_link">
+                            <li><a href="#"><img src="../images/LinkedIn.png" alt="링크드인"></a></li>
+                            <li><a href="#"><img src="../images/Facebook.png" alt="페이스북"></a></li>
+                            <li><a href="#"><img src="../images/Instagram.png" alt="인스타그램"></a></li>
+                            <li><a href="#"><img src="../images/X.png" alt="X"></a></li>
+                            <li><a href="#"><img src="../images/Youtube.png" alt="유튜브"></a></li>
+                        </ul>
+                    </div>
+                    <div class="footer_container">
+                        <ul class="footer_menu">
+                            <h3 class="footer_title">SHOP</h3>
+                            <li><a href="#">책 구매/책 대여</a></li>
+                            <li><a href="#">위시리스트</a></li>
+                            <li><a href="#">마이페이지</a></li>
+                        </ul>
+                        <ul class="footer_menu">
+                            <h3 class="footer_title">ABOUT</h3>
+                            <li><a href="#">브랜드 소개</a></li>
+                            <li><a href="#">공지사항</a></li>
+                            <li><a href="#">채용 정보</a></li>
+                        </ul>
+                        <ul class="footer_menu">
+                            <h3 class="footer_title">SUPPORT</h3>
+                            <li><a href="#">자주 묻는 질문(FAQ)</a></li>
+                            <li><a href="#">오시는 길</a></li>
+                        </ul>
+                        <ul class="footer_menu">
+                            <h3 class="footer_title">POLICIES</h3>
+                            <li><a href="#">배송 정책</a></li>
+                            <li><a href="#">환불 정책</a></li>
+                        </ul>
+                    </div>
+                    <p class="copyright">
+                        © 2025 책·볕. All rights reserved.
+                    </p>
+                    <ul class="link">
+                        <li><a href="#"><strong>개인정보 처리방침</strong></a></li>
+                        <li><a href="#">이용약관</a></li>
+                        <li><a href="#">쿠키 설정</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </main>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="../js/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <script src="../js/script.js"></script>
+    <script>
+        AOS.init(); 
+    </script>
+</body>
+
+</html>
