@@ -2946,7 +2946,8 @@ body {
   left: auto !important;
   top: 50% !important;
   transform: translateY(-50%) !important;
-  margin: 0 !important; /* 기존 마이너스 마진 마법 걷어내기 */
+  margin: 0 !important;
+  /* 기존 마이너스 마진 마법 걷어내기 */
   z-index: 10;
   color: #888780;
   font-size: 14px;
@@ -2958,7 +2959,8 @@ body {
   width: 12px !important;
   height: auto !important;
   margin-left: 6px !important;
-  transform: rotate(0deg) !important; /* 모임 전용 회전 속성 초기화 */
+  transform: rotate(0deg) !important;
+  /* 모임 전용 회전 속성 초기화 */
   vertical-align: middle;
 }
 
@@ -3362,7 +3364,7 @@ body {
   padding: 80px 0;
 }
 
-.swiper {
+.mySwiper2 {
   margin-top: 60px;
   width: 1280px;
   height: 520px;
@@ -3371,7 +3373,7 @@ body {
   box-sizing: border-box;
 }
 
-.swiper-slide {
+.mySwiper2 .swiper-slide {
   display: block;
   font-size: 18px;
   color: #fff;
@@ -3393,17 +3395,17 @@ body {
   background: url(../images/goods_slider03.png) no-repeat center;
 }
 
-.swiper-slide .title {
+.mySwiper2 .swiper-slide .title {
   font-size: 42px;
   font-weight: 600;
 }
 
-.swiper-slide .subtitle {
+.mySwiper2 .swiper-slide .subtitle {
   font-size: 21px;
   font-weight: 400;
 }
 
-.swiper-slide .text {
+.mySwiper2 .swiper-slide .text {
   font-size: 16px;
   max-width: 400px;
   line-height: 1.3;
@@ -3651,8 +3653,10 @@ body {
 /* 게시판 전체 레이아웃 바깥 틀 */
 #sub05_section01_wrap {
   width: 1920px;
-  background-color: #fffdf9; /* 책볕 감성 미색 무드 유지 */
-  padding: 140px 0 100px 0 !important; /* 상단 고정 헤더 영역을 피해 여백 확보 */
+  background-color: #fffdf9;
+  /* 책볕 감성 미색 무드 유지 */
+  padding: 140px 0 100px 0 !important;
+  /* 상단 고정 헤더 영역을 피해 여백 확보 */
   display: flex;
   justify-content: center;
 }
@@ -3678,19 +3682,23 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: none !important; /* 모임 전용 하단 라인 해제 */
+  border-bottom: none !important;
+  /* 모임 전용 하단 라인 해제 */
   padding-bottom: 0;
   margin-bottom: 16px;
 }
 
 .notice_container .search_box {
-  width: 1300px; /* 시안처럼 화면 끝까지 늘어나는 와이드 서치바 조율 */
+  width: 1300px;
+  /* 시안처럼 화면 끝까지 늘어나는 와이드 서치바 조율 */
 }
 
 .notice_container .search_box input {
   background-color: transparent !important;
-  border: 1px solid #88878066 !important; /* 이미지 속 가느다란 스크롤 라인 매칭 */
-  border-radius: 8px !important;           /* 사각형에 가까운 부드러운 곡선 변경 */
+  border: 1px solid #88878066 !important;
+  /* 이미지 속 가느다란 스크롤 라인 매칭 */
+  border-radius: 8px !important;
+  /* 사각형에 가까운 부드러운 곡선 변경 */
   padding: 14px 20px 14px 45px;
 }
 
@@ -3704,7 +3712,8 @@ body {
 .notice_container .header_right .sort_select {
   position: absolute;
   right: 30px;
-  margin-top: -46px; /* 서치바 안쪽 우측 끝으로 합류 유도 */
+  margin-top: -46px;
+  /* 서치바 안쪽 우측 끝으로 합류 유도 */
   color: #888780;
   font-size: 14px;
 }
@@ -3738,7 +3747,8 @@ body {
   font-size: 14px;
   color: #555555;
   padding: 18px 0;
-  border-bottom: 1px solid #8887801a; /* 은은하게 들어가는 회색 가로선 */
+  border-bottom: 1px solid #8887801a;
+  /* 은은하게 들어가는 회색 가로선 */
   text-align: center;
   vertical-align: middle;
 }
@@ -3760,7 +3770,8 @@ body {
 }
 
 .notice_table .txt_left a:hover {
-  color: #c56928; /* 제목 호버 시 책볕 테마 컬러 강조 */
+  color: #c56928;
+  /* 제목 호버 시 책볕 테마 컬러 강조 */
   text-decoration: underline;
 }
 
@@ -3781,40 +3792,47 @@ body {
 }
 
 /* =======================안내사항========================== */
-#sub05_2_section01_wrap{
+#sub05_2_section01_wrap {
   width: 1320px;
   height: 1600px;
-  background-color: #fffdf9; /* 책볕 감성 미색 무드 유지 */
-  padding: 140px 0 100px 0 !important; /* 상단 고정 헤더 영역을 피해 여백 확보 */
+  background-color: #fffdf9;
+  /* 책볕 감성 미색 무드 유지 */
+  padding: 140px 0 100px 0 !important;
+  /* 상단 고정 헤더 영역을 피해 여백 확보 */
 }
 
-.section01_top{
+.section01_top {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 30px;
 }
-.alert{
+
+.alert {
   width: 630px;
   height: 364px;
   border-collapse: collapse;
 
 }
-.alert tr{
+
+.alert tr {
   border-bottom: 0.5px solid #888780;
 }
-.alert th{
+
+.alert th {
   background-color: #F3EBDF;
   padding: 30px;
   width: 30%;
   font-weight: 400;
   color: #1E1D1C;
 }
-.alert td{
+
+.alert td {
   padding: 30px;
   color: #888780;
 }
+
 /* ==========================================================================
    [수정완료] sub05_2.html - 이메일 구독 박스 찌그러짐 해결 및 가로 너비 확장
    ========================================================================== */
@@ -3828,7 +3846,7 @@ body {
   box-sizing: border-box;
   background-color: #fff;
   border-radius: 25px;
-  
+
   /* 자식 요소들이 수직으로 예쁘게 흐르도록 설정 */
   display: flex;
   flex-direction: column;
@@ -3840,30 +3858,37 @@ body {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  gap: 12px; /* 입력창과 구독 버튼 사이의 다정한 여백 확보 */
+  gap: 12px;
+  /* 입력창과 구독 버튼 사이의 다정한 여백 확보 */
   margin-bottom: 18px;
 }
 
 /* 이메일 입력창 감싸는 박스의 비율 최적화 */
 .section01_top .alarm .email_input {
-  flex: 1; /* 남은 가로 공간을 채우도록 유도 */
+  flex: 1;
+  /* 남은 가로 공간을 채우도록 유도 */
 }
 
 .section01_top .alarm .input_wrap {
-  width: 100% !important; /* 부모 너비에 꽉 차게 설정 */
+  width: 100% !important;
+  /* 부모 너비에 꽉 차게 설정 */
 }
 
 /* [핵심 보정] 이메일 인풋 창 내부 속성 초기화 */
 .section01_top .alarm .input_wrap input {
-  width: 100% !important; /* 인라인에 박혀있던 고정 500px를 무력화하고 유연하게 대처 */
-  box-sizing: border-box;  /* 패딩이 너비(width)를 침범하여 찌그러트리는 버그 방지 */
+  width: 100% !important;
+  /* 인라인에 박혀있던 고정 500px를 무력화하고 유연하게 대처 */
+  box-sizing: border-box;
+  /* 패딩이 너비(width)를 침범하여 찌그러트리는 버그 방지 */
 }
 
 /* [핵심 수정] 구독 버튼이 찌그러지지 않도록 가로 width 확대 및 고정 */
 .section01_top .alarm .subscribe_button {
-  width: 120px !important;       /* 원하시는 만큼 버튼 가로 너비를 넓게 확장 완료 */
+  width: 120px !important;
+  /* 원하시는 만큼 버튼 가로 너비를 넓게 확장 완료 */
   height: 48px;
-  flex-shrink: 0 !important;    /* [가장 중요] 공간이 부족해도 절대 버튼이 찌그러지지 않도록 차단 */
+  flex-shrink: 0 !important;
+  /* [가장 중요] 공간이 부족해도 절대 버튼이 찌그러지지 않도록 차단 */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3880,13 +3905,15 @@ body {
   background-color: #a3531b;
 }
 
-.section01_bottom{
+.section01_bottom {
   margin-top: 160px;
 }
-.section01_bottom .main_title{
+
+.section01_bottom .main_title {
   margin-bottom: 30px;
 }
-.road li{
+
+.road li {
   margin: 20px 0;
   color: #888780;
   font-size: 20px;
@@ -3896,9 +3923,18 @@ body {
    sub05_3.html - 밝은 배경 전용 폰트 및 더하기 버튼 색상 보정
    ========================================================================== */
 
+#sub05_section01_wrap_3 {
+  width: 1320px;
+  height: 1080px;
+  background-color: #fffdf9;
+  /* 책볕 감성 미색 무드 유지 */
+  padding: 140px 0 100px 0 !important;
+}
+
 /* 1. 질문(기본 상태) 폰트 컬러를 선명한 차콜 브라운(#1E1D1C)으로 변경 */
 .fq_page_container .notice_fq_style .title {
-  color: #1e1d1c !important; /* 가독성을 위해 어두운 톤으로 강제 지정 */
+  color: #1e1d1c !important;
+  /* 가독성을 위해 어두운 톤으로 강제 지정 */
   font-weight: 500;
   transition: color 0.2s ease;
 }
@@ -3927,7 +3963,97 @@ body {
 
 /* 4. 클릭 시 열리는 답변(text_info) 상자 내부 텍스트 컬러 보정 */
 .fq_page_container .notice_fq_style .text_info {
-  color: #444444 !important; /* 연한 회색 배경 위에 또렷하게 읽히도록 다크 그레이 매칭 */
+  color: #444444 !important;
+  /* 연한 회색 배경 위에 또렷하게 읽히도록 다크 그레이 매칭 */
   font-size: 15px;
   line-height: 1.75;
+}
+
+
+/* =========================나의 서재=========================== */
+#sub06_section01_wrap{
+  width: 1920px;
+  height: 2160px;
+  position: relative;
+  background: url(../images/mypage_mainbg.png) no-repeat;
+}
+/* ==========================================================================
+   sub06 - 아래로 가기 화살표 끄덕임(포커싱) 애니메이션 효과
+   ========================================================================== */
+
+.scroll_btn {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+}
+
+.scroll_btn p {
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #fff; /* 배경 무드에 따라 조율 */
+}
+
+/* 화살표가 위아래로 부드럽게 고개를 내리듯 반복 서행 */
+.scroll_btn .down_white {
+  display: block;
+  margin: 0 auto;
+  animation: nodDownArrow 1.5s ease-in-out infinite;
+}
+
+@keyframes nodDownArrow {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px); /* 8px만큼 아래로 다정하게 내려앉음 */
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* sub06_section02_wrap */
+#sub06_section02_wrap{
+  width: 1920px;
+  height: 1080px;
+  background: url(../images/mypage_desk.png) no-repeat;
+}
+.section02{
+  display: flex;
+  justify-content: space-between;
+}
+.lnb_wrap{
+  width: 320px;
+  height: 100%;
+}
+.id_card{
+  width: 100%;
+  height: 130px;
+  transition: all 0.3 ease-in-out;
+  background:url(../images/id_card_front.png) no-repeat;
+}
+.id_card:hover{
+  background: url(../images/id_card_behind.png) no-repeat;
+  transform:rotateX(180deg);
+  transition: all 0.3 ease-in-out;
+}
+/* 뒤집히는 css 찾기 */
+.contents_wrap{
+  width: 900px;
+  height: 100%;
+}
+.mypage_title{
+  color: #fffdf9;
+}
+.mypage_subtitle{
+  color: #A08060;
+}
+.calendar{
+  width: 1200px;
+  height: 920px;
+  background: url(../images/calendar_bg.png) no-repeat;
 }
