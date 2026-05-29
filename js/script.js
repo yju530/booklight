@@ -1,5 +1,15 @@
+/* ==========================================================================
+   책볕 프로젝트 통합 메인 자바스크립트 제어 시트 (script.js)
+   [수정완료] sub04 굿즈 스토어 카테고리 탭 스위칭 및 가격 스타일 연동 복구
+   ========================================================================== */
+
 $(function () {
-    // === [공통] GNB 서브메뉴 제어 ===
+
+    // ==========================================================================
+    // ■ 1. [전역 공통 제어 구역] - 헤더, 탑버튼, 아코디언, 하트 애니메이션
+    // ==========================================================================
+
+    // [공통] GNB 서브메뉴 페이드 드롭다운 제어
     $(".sub").hide();
     $(".gnb>li:last-child").mouseenter(function () {
         $(this).children(".sub").stop().fadeIn(400);
@@ -8,73 +18,63 @@ $(function () {
         $(this).children(".sub").stop().fadeOut(400);
     });
 
-    // === [공통] 탑버튼 및 헤더 스크롤 제어 ===
-    $(function () {
-        // === [공통] 탑버튼 클릭 시 부드럽게 최상단 이동 (Smooth Scroll) ===
-        $('.top').on('click', function (e) {
-            e.preventDefault(); // a 태그의 기본 순간 이동 막기
-            $('html, body').stop().animate({
-                scrollTop: 0
-            }, 800, 'swing'); // 0.8초 동안 부드럽게 상승 (작동 안 될 경우 'swing'으로 변경 가능)
-        });
+    // [공통] 탑버튼 클릭 시 부드럽게 최상단 이동 (Smooth Scroll)
+    $('.top').on('click', function (e) {
+        e.preventDefault();
+        $('html, body').stop().animate({
+            scrollTop: 0
+        }, 800, 'swing');
+    });
 
-        // === [공통] 탑버튼 노출 및 헤더 스크롤 제어 ===
-        $(window).scroll(function () {
-            var height = $(window).scrollTop();
-            if (height > 1080) {
-                $('.top').fadeIn();
-            } else {
-                $('.top').fadeOut();
-            }
-        });
-
-        var didScroll;
-        var lastScrollTop = 0;
-        var delta = 5;
-        var navbarHeight = $('#header_wrap').outerHeight();
-
-        $(window).scroll(function (event) {
-            didScroll = true;
-        });
-
-        setInterval(function () {
-            if (didScroll) {
-                hasScrolled();
-                didScroll = false;
-            }
-        }, 250);
-
-        function hasScrolled() {
-            var st = $(this).scrollTop();
-            if (Math.abs(lastScrollTop - st) <= delta) return;
-
-            if (st > lastScrollTop && st > navbarHeight) {
-                $('#header_wrap').removeClass('nav-down').addClass('nav-up');
-            } else {
-                if (st + $(window).height() < $(document).height()) {
-                    $('#header_wrap').removeClass('nav-up').addClass('nav-down');
-                }
-            }
-            lastScrollTop = st;
+    // [공통] 윈도우 스크롤 감지 - 탑버튼 노출 및 숨김 페이드 제어
+    $(window).scroll(function () {
+        var height = $(window).scrollTop();
+        if (height > 1080) {
+            $('.top').fadeIn();
+        } else {
+            $('.top').fadeOut();
         }
     });
 
-    // === [공통] 탑버튼 클릭 시 부드럽게 위로 이동 (Smooth Scroll) ===
-    $('.top').on('click', function (e) {
-        e.preventDefault(); // a 태그 기본 이동 막기
-        $('html, body').stop().animate({
-            scrollTop: 0
-        }, 800, 'easeInOutQuint'); // 800ms(0.8초) 동안 부드럽게 상승 (속도는 취향에 맞게 수정 가능)
+    // [공통] 스크롤 방향 감지 기반 헤더 업/다운 상하 자동 숨김 로직
+    var didScroll;
+    var lastScrollTop = 0;
+    var delta = 5;
+    var navbarHeight = $('#header_wrap').outerHeight();
+
+    $(window).scroll(function (event) {
+        didScroll = true;
     });
 
-    // === [공통] 안내(FAQ) 아코디언 제어 ===
+    setInterval(function () {
+        if (didScroll) {
+            hasScrolled();
+            didScroll = false;
+        }
+    }, 250);
+
+    function hasScrolled() {
+        var st = $(this).scrollTop();
+        if (Math.abs(lastScrollTop - st) <= delta) return;
+
+        if (st > lastScrollTop && st > navbarHeight) {
+            $('#header_wrap').removeClass('nav-down').addClass('nav-up');
+        } else {
+            if (st + $(window).height() < $(document).height()) {
+                $('#header_wrap').removeClass('nav-up').addClass('nav-down');
+            }
+        }
+        lastScrollTop = st;
+    }
+
+    // [공통] 안내(FAQ) 게시판 아코디언 목록 슬라이딩 다운 및 플러스 회전 제어
     $(".fq_wrap> ul> li").click(function () {
         $(this).children(".text_info").slideToggle();
         $(this).siblings().children(".text_info").slideUp();
         $(this).toggleClass("turn").siblings().removeClass("turn");
     });
 
-    // === [공통] 커스텀 마우스 커서 이벤트 (section03 영역) ===
+    // [공통] 커스텀 매직 마우스 커서 따라다니기 핸들러 (section03 활성화)
     const cursor = document.querySelector('.custom-cursor');
     const targetSections = document.querySelectorAll('.section03_left, .section03_right');
 
@@ -90,47 +90,47 @@ $(function () {
         });
     }
 
-    // === [공통] 하트 찜하기 튕김 애니메이션 통합 관리 (기존 하트 & 새 하트 동시 지원) ===
-    $(document).on('click', '.recommend_group .heart_btn, .meetings_grid_wrap .heart_btn', function (e) {
+    // [공통] 하트 찜하기 통통 튀는 바운스 애니메이션 통합 처리
+    $(document).on('click', '.recommend_group .heart_btn, .meetings_grid_wrap .heart_btn, .goods_btns .heart_btn', function (e) {
         e.preventDefault();
         e.stopPropagation();
 
         var $btn = $(this);
         var $heartImg = $btn.find('img');
-        var currentSrc = $heartImg.attr('src'); // 현재 클릭한 하트의 이미지 경로 추출
+        var currentSrc = $heartImg.attr('src');
 
-        // 1. 기존에 돌고 있던 애니메이션 클래스 제거 (연타 시 오작동 방지) 
         $btn.removeClass('ani-bounce');
 
-        // 2. 미세한 딜레이를 주어 애니메이션을 재가동하고, 이미지 종류별로 각각 토글 처리 
         setTimeout(function () {
             $btn.addClass('ani-bounce');
 
-            // [조건 1] 만약 클릭한 하트가 'images02' 폴더의 새 하트라면 [cite: 69, 70]
             if (currentSrc.indexOf('heart_off.png') !== -1 || currentSrc.indexOf('heart_on.png') !== -1) {
                 if (currentSrc.indexOf('heart_off.png') !== -1) {
-                    $heartImg.attr('src', '../images02/heart_on.png');  // 새 하트 켜기 [cite: 70]
+                    $heartImg.attr('src', '../images02/heart_on.png');
                 } else {
-                    $heartImg.attr('src', '../images02/heart_off.png'); // 새 하트 끄기 [cite: 70]
+                    $heartImg.attr('src', '../images02/heart_off.png');
                 }
             }
-            // [조건 2] 그 외에 기존 'images' 폴더의 모임용 하트라면 [cite: 49]
             else {
                 if (currentSrc.indexOf('like btn off.png') !== -1) {
-                    $heartImg.attr('src', '../images/like btn on.png');  // 기존 하트 켜기
+                    $heartImg.attr('src', '../images/like btn on.png');
                 } else {
-                    $heartImg.attr('src', '../images/like btn off.png'); // 기존 하트 끄기
+                    $heartImg.attr('src', '../images/like btn off.png');
                 }
             }
         }, 5);
 
-        // 3. 애니메이션이 종료되면 클래스 자동 제거
         $btn.one('animationend webkitAnimationEnd oAnimationEnd', function () {
             $btn.removeClass('ani-bounce');
         });
     });
 
-    // === [sub01] 메인 비주얼 호버 슬라이드 ===
+
+    // ==========================================================================
+    // ■ 2. [각 서브 페이지별 고유 기능 구역] - sub01, sub02, sub03, sub04, sub06
+    // ==========================================================================
+
+    // === [sub01: 책볕소개] 메인 층별 비주얼 호버 확장 슬라이드 기능 ===
     var winW = $(".mainviewcont").outerWidth(),
         target = $('.main_visual .visual'),
         target2 = $('.main_visual .visual_view'),
@@ -163,7 +163,7 @@ $(function () {
         });
     }
 
-    // === [sub02] 지금 가장 많이 읽는 책 슬라이드 (section01) ===
+    // === [sub02: 책볕도서] 지금 가장 많이 읽는 책 슬라이드 (section01) ===
     var moveWidth = $('.slider-container').width() * 0.55;
 
     $('.next-btn').on('click', function () {
@@ -183,10 +183,12 @@ $(function () {
     });
 
     $(window).on('resize', function () {
-        moveWidth = $('.slider-container').width() * 0.55;
+        if ($('.slider-container').length > 0) {
+            moveWidth = $('.slider-container').width() * 0.55;
+        }
     });
 
-    // === [sub02] 오늘의 서랍 폴더 기능 (section02) ===
+    // === [sub02: 책볕도서] 오늘의 서랍 폴더 탭 활성화 체인저 (section02) ===
     $('.bookmark-btn').on('click', function (e) {
         e.preventDefault();
         var $currentFolder = $(this).parent('.folder-item');
@@ -197,7 +199,7 @@ $(function () {
         $('.folder_content').eq($currentIdx).addClass('on').siblings('.folder_content').removeClass('on');
     });
 
-    // === [sub02] 신간도서 마우스 드래그 스크롤 ===
+    // === [sub02: 책볕도서] 신간도서 구역 가로 마우스 드래그 스크롤 액션 ===
     let isDown = false;
     let startX;
     let scrollLeft;
@@ -219,14 +221,14 @@ $(function () {
         this.scrollLeft = scrollLeft - walk;
     });
 
-    // === [sub02] 전체도서 4열 그리드 탭 전환 통합 기능 (section03) ===
+    // === [sub02: 책볕도서] 전체도서 장르 탭 메뉴 전환 기능 (section03) ===
     $('#sub02_section03_wrap .filter_tab_menu').on('click', '.tab_item', function () {
         var tabIndex = $(this).index();
         $(this).addClass('active').siblings().removeClass('active');
         $('#sub02_section03_wrap .tab_content').eq(tabIndex).addClass('active').siblings().removeClass('active');
     });
 
-    // 기존 단순 북마크용 온 오프 바인딩 처리 (기능 유지)
+    // 전체도서 내부 하트 찜하기 개별 클래스 바인딩
     document.querySelectorAll('.sub02_tab_container .bookname').forEach(function (element) {
         element.addEventListener('click', function (e) {
             e.preventDefault();
@@ -234,7 +236,7 @@ $(function () {
         });
     });
 
-    // === [sub03] 책볕자리 장르 필터 판넬 스위칭 (section01) ===
+    // === [sub03: 책볕자리] 상단 카테고리 필터 판넬 스위칭 제어 (section01) ===
     $('.sub02_sec01_tab_menu').on('click', '.sub02_sec01_tab_item', function () {
         $('.sub02_sec01_tab_item').removeClass('active');
         $(this).addClass('active');
@@ -247,7 +249,7 @@ $(function () {
         $targetPane.find('.sub02_sec01_card').removeClass('active').first().addClass('active');
     });
 
-    // === [sub03] 추천 도서 상세 오버레이 페이드 효과 ===
+    // === [sub03: 책볕자리] 추천 도서 목록 마우스 호버 오버레이 패이드인/아웃 ===
     $(".img_overlay").hide();
     $(".books>li").mouseenter(function () {
         $(this).find(".img_overlay").stop().fadeIn(200);
@@ -255,55 +257,219 @@ $(function () {
         $(this).find(".img_overlay").stop().fadeOut(200);
     });
 
-    // === [sub03] 전체 모임 장르 필터 스위칭 기능 + 장르 변경 시 페이지네이션 1페이지 강제 초기화 ===
-    $('.meetings_header .filter_tab_menu').on('click', '.tab_item', function () {
+    // === [🔥 sub04: 책볕굿즈] 굿즈 스토어 전용 독립 카테고리 필터 스위칭 가동 구역 ===
+    $('#sub04_section02_wrap .filter_tab_menu').on('click', '.tab_item', function () {
         var tabIndex = $(this).index();
 
-        $('.meetings_header .tab_item').removeClass('active');
+        // 탭 스타일 활성화 교체
+        $('#sub04_section02_wrap .tab_item').removeClass('active');
         $(this).addClass('active');
 
-        // 장르 상판 박스 스위칭
-        $('.meetings_container .meetings_grid_wrap').eq(tabIndex).addClass('active').siblings('.meetings_grid_wrap').removeClass('active');
+        // 해당하는 상품 그리드 노출 제어
+        var $allWraps = $('#sub04_section02_wrap .meetings_container .meetings_grid_wrap');
+        $allWraps.removeClass('active');
 
-        // [추가 핵심] 장르 탭을 바꿨을 때는 하단 번호 및 내부 페이지를 무조건 '1페이지' 상태로 강제 복구 리셋합니다.
-        $('.page_number_list .num_item').eq(0).addClass('active').siblings().removeClass('active');
-        $('.meetings_grid_wrap.active .page-group').eq(0).addClass('active').siblings().removeClass('active');
+        var $activeGrid = $allWraps.eq(tabIndex);
+        $activeGrid.addClass('active');
+
+        // 탭 전환 시 무조건 하단 페이지네이션 번호판을 [1페이지]로 강제 리셋
+        $('#sub04_section02_wrap .meetings_pagination_bar .page_number_list .num_item').eq(0).addClass('active').siblings().removeClass('active');
+        $allWraps.find('.page-group').removeClass('active');
+        $activeGrid.find('.page-group').eq(0).addClass('active');
+
+        // 조건 처리: 오직 2페이지 분량이 들어있는 "전체" 탭(인덱스 1번)일 때만 하단 페이지 번호판을 노출시킴
+        if (tabIndex === 1) {
+            $('#sub04_section02_wrap .meetings_pagination_bar').show();
+            $('#sub04_section02_wrap .total_count .count_num').text('14'); // 전체 개수 세팅
+        } else {
+            $('#sub04_section02_wrap .meetings_pagination_bar').hide();
+            // 각 개별 탭의 실제 상품 개수 카운팅 노출
+            var currentLiCount = $activeGrid.find('.goods_grid_list li').length;
+            $('#sub04_section02_wrap .total_count .count_num').text(currentLiCount);
+        }
     });
 
-    // === [sub03 추가] 하단 페이지 번호 및 이전/다음 버튼 동작 스크립트 기능 ===
+    // === [sub03 & sub04 통합] 하단 페이지네이션 번호(1, 2) 클릭 인터랙션 구역 ===
+    $('.meetings_pagination_bar').on('click', '.num_item', function (e) {
+        e.preventDefault();
+        var pageIndex = $(this).index();
 
-    // 1. 페이지 넘버 클릭 제어
-    $('.meetings_pagination_bar').on('click', '.num_item', function () {
-        var pageIndex = $(this).index(); // 클릭한 숫자의 인덱스 추출 (0=1p, 1=2p, 2=3p)
-
-        // 버튼 번호 시각 효과 토글
         $(this).addClass('active').siblings().removeClass('active');
 
-        // 현재 활성화된 장르(.active)의 서랍 내부 안에서만 해당 페이지 그룹 노출
-        $('.meetings_grid_wrap.active .page-group').eq(pageIndex).addClass('active').siblings().removeClass('active');
+        var $currentContainer = $(this).closest('.meetings_container');
+        var $activeGrid = $currentContainer.find('.meetings_grid_wrap.active');
+
+        // 해당 활성 탭 내부의 page-group 슬라이드 교체 스위칭
+        $activeGrid.find('.page-group').removeClass('active');
+        $activeGrid.find('.page-group').eq(pageIndex).addClass('active');
+
+        var targetOffset = $currentContainer.offset().top - 60;
+        $('html, body').stop().animate({ scrollTop: targetOffset }, 400, 'swing');
     });
 
-    // 2. 이전 페이지 버튼 클릭 제어
+    // 이전 페이지 화살표 버튼 제어
     $('.meetings_pagination_bar').on('click', '.prev_page_btn', function () {
-        // 활성화된 페이지 숫자의 형제 번호 추출
-        var currentPageIdx = $('.page_number_list .num_item.active').index();
-
-        if (currentPageIdx > 0) { // 1페이지보다 클 때만 뒤로 이동 가능
-            $('.page_number_list .num_item').eq(currentPageIdx - 1).trigger('click');
+        var currentPageIdx = $(this).siblings('.page_number_list').find('.num_item.active').index();
+        if (currentPageIdx > 0) {
+            $(this).siblings('.page_number_list').find('.num_item').eq(currentPageIdx - 1).trigger('click');
         }
     });
 
-    // 3. 다음 페이지 버튼 클릭 제어
+    // 다음 페이지 화살표 버튼 제어
     $('.meetings_pagination_bar').on('click', '.next_page_btn', function () {
-        var currentPageIdx = $('.page_number_list .num_item.active').index();
-        var totalPages = $('.page_number_list .num_item').length; // 총 페이지 수 = 3
-
-        if (currentPageIdx < totalPages - 1) { // 마지막 페이지 번호 전까지만 작동
-            $('.page_number_list .num_item').eq(currentPageIdx + 1).trigger('click');
+        var currentPageIdx = $(this).siblings('.page_number_list').find('.num_item.active').index();
+        var totalPages = $(this).siblings('.page_number_list').find('.num_item').length;
+        if (currentPageIdx < totalPages - 1) {
+            $(this).siblings('.page_number_list').find('.num_item').eq(currentPageIdx + 1).trigger('click');
         }
     });
 
-    // === [공통] 카운터 애니메이션 실행 명령어 ===
+    // ==========================================================================
+    // ■ [sub05_1: 공지사항] 테이블 행 데이터 페이지네이션 유기적 연동 처리
+    // ==========================================================================
+    if ($('.notice_container').length > 0) {
+
+        // 초기 로드 시 1페이지 데이터만 노출시키고 나머지는 숨김
+        function initNoticePage() {
+            $('.notice_table tbody tr').hide();
+            $('.notice_table tbody tr[data-page="1"]').show();
+        }
+        initNoticePage();
+
+        // 번호판(1, 2, 3) 클릭 시 동작
+        $('.notice_container .page_number_list').on('click', '.num_item', function (e) {
+            e.preventDefault();
+
+            // 클릭한 대상 활성화 스타일 스위칭
+            $(this).addClass('active').siblings().removeClass('active');
+
+            // 활성화된 페이지 번호 가져오기 (문자열 숫자로 변환)
+            var targetPage = $(this).text().trim();
+
+            // 전체 tr을 숨긴 후, 해당 data-page 값을 가진 행만 노출
+            $('.notice_table tbody tr').hide();
+            $('.notice_table tbody tr[data-page="' + targetPage + '"]').fadeIn(200);
+
+            // 페이지 전환 후 게시판 상단으로 부드러운 화면 포커싱 스크롤
+            var targetOffset = $('.notice_container').offset().top - 80;
+            $('html, body').stop().animate({ scrollTop: targetOffset }, 400);
+        });
+
+        // 이전(Prev) 화살표 버튼 클릭 제어
+        $('.notice_container .prev_page_btn').on('click', function () {
+            var currentIdx = $('.notice_container .page_number_list .num_item.active').index();
+            if (currentIdx > 0) {
+                $('.notice_container .page_number_list .num_item').eq(currentIdx - 1).trigger('click');
+            }
+        });
+
+        // 다음(Next) 화살표 버튼 클릭 제어
+        $('.notice_container .next_page_btn').on('click', function () {
+            var currentIdx = $('.notice_container .page_number_list .num_item.active').index();
+            var totalPages = $('.notice_container .page_number_list .num_item').length;
+            if (currentIdx < totalPages - 1) {
+                $('.notice_container .page_number_list .num_item').eq(currentIdx + 1).trigger('click');
+            }
+        });
+    }
+    // === [sub06: 나의서재] 책상 확인하기 버튼 클릭 스크롤 다운 ===
+    $('.scroll_btn').on('click', function (e) {
+        e.preventDefault();
+
+        var targetHref = $(this).attr('href');
+        var $target = $(targetHref);
+
+        if ($target.length > 0) {
+            var targetOffset = $target.offset().top;
+            $('html, body').stop().animate({
+                scrollTop: targetOffset
+            }, 800, 'swing');
+        }
+    });
+
+    // LNB 아이콘 고정 스위칭 로직
+    $(function () {
+        function switchIcon($img, status) {
+            if (!$img.length) return;
+            var src = $img.attr('src');
+
+            if (status === 'on') {
+                if (src && src.indexOf('_off.png') !== -1) {
+                    $img.attr('src', src.replace('_off.png', '_on.png'));
+                }
+            } else if (status === 'off') {
+                if (src && src.indexOf('_on.png') !== -1) {
+                    $img.attr('src', src.replace('_on.png', '_off.png'));
+                }
+            }
+        }
+
+        $('.lnb > li.active').each(function () {
+            switchIcon($(this).find('img'), 'on');
+        });
+
+        $('.lnb > li').on('mouseenter', function () {
+            if ($(this).hasClass('active')) return;
+            var $img = $(this).find('img');
+            switchIcon($img, 'on');
+        }).on('mouseleave', function () {
+            if ($(this).hasClass('active')) return;
+            var $img = $(this).find('img');
+            switchIcon($img, 'off');
+        });
+
+        $('.lnb > li').on('click', function () {
+            $('.lnb > li.active').each(function () {
+                var $prevImg = $(this).find('img');
+                switchIcon($prevImg, 'off');
+            });
+
+            $('.lnb > li').removeClass('active');
+            $(this).addClass('active');
+
+            var $currentImg = $(this).find('img');
+            switchIcon($currentImg, 'on');
+        });
+    });
+
+    // 나의 서재 일정 캘린더 연동 스크립트
+    $(function () {
+        $('.days_grid').on('click', '.day_cell', function () {
+            if ($(this).hasClass('other_month')) return;
+
+            $('.day_cell').removeClass('is_selected');
+            $(this).addClass('is_selected');
+
+            var targetPageId = $(this).attr('data-target');
+            $('.calendar_page_item').removeClass('active');
+
+            if (targetPageId && $('#' + targetPageId).length > 0) {
+                $('#' + targetPageId).addClass('active');
+            } else {
+                $('#page_default').addClass('active');
+                var clickedDateNum = $(this).text();
+                $('#page_default h3').text('5월 ' + clickedDateNum + '일의 기록');
+            }
+        });
+    });
+
+    // 마이페이지 도서 / 굿즈 캡슐 버튼 탭 전환
+    $(document).ready(function () {
+        $('.purchase_tab_menu .tab_btn').on('click', function () {
+            $('.purchase_tab_menu .tab_btn').removeClass('active');
+            $(this).addClass('active');
+
+            var targetPane = $(this).attr('data-tab');
+            $('.purchase_list_dynamic_matrix .purchase_pane_box').removeClass('active');
+            $('#' + targetPane).addClass('active');
+        });
+    });
+
+
+    // ==========================================================================
+    // ■ 3. [외부 라이브러리 및 플러그인 컴포넌트 초기화 구역]
+    // ==========================================================================
+
     if ($('.counter').length > 0 && typeof $.fn.counterUp !== 'undefined') {
         $('.counter').counterUp({
             delay: 10,
@@ -311,7 +477,6 @@ $(function () {
         });
     }
 
-    // === [공통] Swiper 플러그인 컴포넌트 초기화 ===
     if ($('.mySwiper4').length > 0) {
         var swiper = new Swiper(".mySwiper4", {
             effect: "coverflow",
@@ -331,7 +496,7 @@ $(function () {
         });
     }
 
-    var swiper = new Swiper(".mySwiper", {
+    var swiper = new Swiper(".mySwiper2", {
         spaceBetween: 30,
         centeredSlides: true,
         autoplay: {
@@ -349,29 +514,5 @@ $(function () {
             prevEl: ".swiper-button-prev",
         },
     });
-});
 
-// === [sub04 전용] 굿즈 스토어 카테고리 필터 및 페이지네이션 자동 제어 ===
-$('.meetings_header .filter_tab_menu').on('click', '.tab_item', function () {
-    var tabIndex = $(this).index();
-
-    $('.meetings_header .tab_item').removeClass('active');
-    $(this).addClass('active');
-
-    // 1. 장르 상판 박스 스위칭 (기존 로직 유지)
-    $('.meetings_container .meetings_grid_wrap').eq(tabIndex).addClass('active').siblings('.meetings_grid_wrap').removeClass('active');
-
-    // 2. 무조건 1페이지 상태로 강제 복구 리셋
-    $('.page_number_list .num_item').eq(0).addClass('active').siblings().removeClass('active');
-    $('.meetings_grid_wrap.active .page-group').eq(0).addClass('active').siblings().removeClass('active');
-
-    // [핵심 추가 로직] 현재 활성화된 탭 내부의 실제 제품(li) 개수를 판별
-    var productCount = $('.meetings_grid_wrap.active .meetings_grid_list li').length;
-
-    // 한 화면 기준인 12개 이하일 경우 하단 페이지네이션 바 자체를 자동으로 숨김 처리
-    if (productCount <= 12) {
-        $('.meetings_pagination_bar').hide(); // 12개 이하면 2페이지로 갈 필요가 없으므로 숨김
-    } else {
-        $('.meetings_pagination_bar').show(); // 12개를 초과하는 '전체' 탭 등에서는 다시 노출
-    }
 });
