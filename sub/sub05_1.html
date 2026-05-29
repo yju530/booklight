@@ -4,27 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="1320">
-    <meta name="description" content="Counter Up - jQuery Plugin Demo">
-    <meta name="author" content="Benjamin Intal">
-    <link rel="author" href="https://plus.google.com/113101541449927918834" />
     <link rel="icon" type="../image/png" sizes="32x32" href="../images/favicon.png">
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="./index.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=MapoFlowerIsland:wght@400&display=swap" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-
-    <title>책·볕</title>
+    <title>책·볕 - 공지사항</title>
 </head>
 
 <body>
@@ -36,65 +18,57 @@
 
             <div id="header_wrap">
                 <div class="container header green_header">
-                    <h1 class="logo"><a href="../index.html"><img src="../images/logo_green.png" alt="책볕" width="56px"
-                                style="filter: brightness(0) cubic-bezier(0,0,0,0); stroke: #26321F;"></a></h1>
-                    <ul class="gnb">
-                        <li><a href="sub01.html">책볕소개</a></li>
-                        <li><a href="sub02.html">책볕도서</a></li>
-                        <li><a href="sub03.html">책볕자리</a></li>
-                        <li><a href="sub04.html">책볕굿즈</a></li>
-                        <li>
-                            <a href="sub05_1.html">안내</a>
-                            <ul class="sub">
-                                <li><a href="sub05_1.html">공지사항</a></li>
-                                <li><a href="sub05_2.html">안내사항</a></li>
-                                <li><a href="sub05_3.html">F&Q</a></li>
+                    <h1 class="logo"><a href="../index.html"><img src="../images/logo_green.png" alt="책볕"
+                                width="56px"></a></h1>
+
+                    <div id="header_wrap">
+                        <div class="container header green_header">
+                            <h1 class="logo"><a href="../index.html"><img src="../images/logo_green.png" alt="책볕"
+                                        width="56px"
+                                        style="filter: brightness(0) cubic-bezier(0,0,0,0); stroke: #26321F;"></a></h1>
+                            <ul class="gnb">
+                                <li><a href="sub01.html">책볕소개</a></li>
+                                <li><a href="sub02.html">책볕도서</a></li>
+                                <li><a href="sub03.html">책볕자리</a></li>
+                                <li><a href="sub04.html">책볕굿즈</a></li>
+                                <li>
+                                    <a href="sub05_1.html">안내</a>
+                                    <ul class="sub">
+                                        <li><a href="sub05_1.html">공지사항</a></li>
+                                        <li><a href="sub05_2.html">안내사항</a></li>
+                                        <li><a href="sub05_3.html">F&Q</a></li>
+                                    </ul>
+                                </li>
                             </ul>
-                        </li>
-                    </ul>
-                    <ul class="util">
-                        <li><a href="#">나의 서재</a></li>
-                        <li><a href="#">알림</a></li>
-                    </ul>
+                            <ul class="util">
+                                <li><a href="sub06.html">나의 서재</a></li>
+                                <li><a href="#">알림</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- ==========================================================================
-     [구현완료] sub05_1.html - 공지사항 게시판 레이아웃 (image_acfb07.png 반영)
-     ========================================================================== -->
             <div id="sub05_section01_wrap">
                 <div class="notice_container">
-
-                    <!-- 대제목 -->
                     <h1 class="notice_main_title">공지사항</h1>
 
-                    <!-- 상단 컨트롤러 바 (기존 검색창 및 정렬 클래스 적극 재활용) -->
-                    <div class="meetings_header">
-                        <div class="header_left">
-                            <!-- 인풋 상자 내부에 검색 버튼과 필터 버튼을 모두 자식 요소로 포함시킵니다 -->
-                            <div class="search_box notice_search_block">
-                                <!-- 1. 왼쪽 돋보기 아이콘 -->
-                                <button type="button" class="search_btn">
-                                    <img src="../images02/search02.png" alt="검색하기">
-                                </button>
-
-                                <!-- 2. 중앙 입력창 -->
-                                <input type="text" placeholder="검색어를 입력해주세요">
-
-                                <!-- 3. 우측 끝 필터 버튼 (인풋 내부 정렬을 위해 서치박스 안으로 합류) -->
-                                <div class="sort_select notice_filter_btn">
-                                    <span>필터 <img src="../images02/down-arrow.png" alt="더보기"></span>
-                                </div>
+                    <div class="wide_search_wrap">
+                        <div class="wide_search_inner">
+                            <button type="button" class="wide_search_icon_btn">
+                                <img src="../images02/search02.png" alt="검색하기">
+                            </button>
+                            <input type="text" placeholder="검색어를 입력해주세요">
+                            <div class="wide_inline_filter_btn">
+                                <span>필터 <img src="../images02/down-arrow.png" alt="더보기" width="12px"></span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- 총 개수 카운터 (기존 클래스 재활용) -->
                     <div class="total_count">
-                        총 <span class="count_num">30</span>개
+                        총 <span class="count_num">10</span>개
                     </div>
 
-                    <!-- 게시판 데이터 테이블 (새로 설계) -->
                     <table class="notice_table">
                         <thead>
                             <tr>
@@ -106,8 +80,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- 중요 공지사항 또는 최신글 라인들 -->
-                            <tr>
+                            <tr data-page="3">
                                 <td>01</td>
                                 <td class="txt_left"><a href="#">서점 이용 안내 관련 공지사항</a> <span class="badge_new">🆕</span>
                                 </td>
@@ -116,7 +89,7 @@
                                 <td>2026.04.15</td>
                                 <td>218</td>
                             </tr>
-                            <tr>
+                            <tr data-page="3">
                                 <td>02</td>
                                 <td class="txt_left"><a href="#">라운지 이용 안내 관련 공지사항</a> <span class="badge_new">🆕</span>
                                 </td>
@@ -124,7 +97,7 @@
                                 <td>2026.04.15</td>
                                 <td>218</td>
                             </tr>
-                            <tr>
+                            <tr data-page="3">
                                 <td>03</td>
                                 <td class="txt_left"><a href="#">주차장 이용 안내 관련 공지사항</a> <span class="badge_new">🆕</span>
                                 </td>
@@ -132,75 +105,74 @@
                                 <td>2026.04.15</td>
                                 <td>218</td>
                             </tr>
-                            <tr>
+                            <tr data-page="3">
                                 <td>04</td>
                                 <td class="txt_left"><a href="#">도서 대출 연장 안내</a></td>
                                 <td></td>
                                 <td>2026.04.20</td>
                                 <td>219</td>
                             </tr>
-                            <tr>
+
+                            <tr data-page="2">
                                 <td>05</td>
-                                <td class="txt_left"><a href="#">신간 도서 추천 목록</a></td>
-                                <td><img src="../images/file_icon.png" alt="파일" class="table_file_icon"
-                                        style="width:14px;"></td>
-                                <td>2026.04.25</td>
-                                <td>220</td>
-                            </tr>
-                            <tr>
-                                <td>06</td>
-                                <td class="txt_left"><a href="#">서점 방문 고객 이벤트</a></td>
-                                <td></td>
+                                <td class="txt_left"><a href="#">[이벤트] 5월 가정의 달 책볕 책방 특별전 안내</a></td>
+                                <td><img src="../images/file_icon.png" alt="파일" class="table_file_icon" style="width:14px;"></td>
                                 <td>2026.05.01</td>
-                                <td>221</td>
+                                <td>142</td>
                             </tr>
-                            <tr>
+                            <tr data-page="2">
+                                <td>06</td>
+                                <td class="txt_left"><a href="#">시스템 정기 점검에 따른 웹사이트 이용 제한 안내</a></td>
+                                <td></td>
+                                <td>2026.05.03</td>
+                                <td>98</td>
+                            </tr>
+                            <tr data-page="2">
                                 <td>07</td>
-                                <td class="txt_left"><a href="#">여름 독서 캠프 안내</a></td>
-                                <td><img src="../images/file_icon.png" alt="파일" class="table_file_icon"
-                                        style="width:14px;"></td>
+                                <td class="txt_left"><a href="#">상반기 우수 독서 동아리 지원 사업 안내</a></td>
+                                <td><img src="../images/file_icon.png" alt="파일" class="table_file_icon" style="width:14px;"></td>
+                                <td>2026.05.01</td>
+                                <td>325</td>
+                            </tr>
+                            <tr data-page="2">
+                                <td>07</td>
+                                <td class="txt_left"><a href="#">상반기 우수 독서 동아리 지원 사업 선정 결과 공지</a></td>
+                                <td><img src="../images/file_icon.png" alt="파일" class="table_file_icon" style="width:14px;"></td>
                                 <td>2026.05.10</td>
-                                <td>222</td>
+                                <td>175</td>
                             </tr>
-                            <tr>
+
+                            <tr data-page="1">
                                 <td>08</td>
-                                <td class="txt_left"><a href="#">도서관 회원 가입 혜택</a></td>
+                                <td class="txt_left"><a href="#">책볕 야간 개장 서점 '볕밤' 시범 운영 안내</a></td>
                                 <td></td>
-                                <td>2026.05.15</td>
-                                <td>223</td>
+                                <td>2026.05.28</td>
+                                <td>312</td>
                             </tr>
-                            <tr>
+                            <tr data-page="1">
                                 <td>09</td>
-                                <td class="txt_left"><a href="#">도서관 이용 규칙</a></td>
+                                <td class="txt_left"><a href="#">신간 도서 정기 입고 지연 안내 및 양해 말씀</a></td>
                                 <td></td>
-                                <td>2026.05.20</td>
-                                <td>150</td>
+                                <td>2026.05.18</td>
+                                <td>85</td>
                             </tr>
-                            <tr>
+                            <tr data-page="1">
                                 <td>10</td>
-                                <td class="txt_left"><a href="#">신간 도서 목록</a></td>
-                                <td></td>
-                                <td>2026.05.25</td>
-                                <td>300</td>
+                                <td class="txt_left"><a href="#">[공모전] 제1회 책볕 창작 시·에세이 공모전 결과 공표</a></td>
+                                <td><img src="../images/file_icon.png" alt="파일" class="table_file_icon" style="width:14px;"></td>
+                                <td>2026.05.20</td>
+                                <td>860</td>
                             </tr>
-                            <tr>
-                                <td>11</td>
-                                <td class="txt_left"><a href="#">추천 도서 이벤트</a></td>
-                                <td></td>
-                                <td>2026.06.01</td>
-                                <td>180</td>
-                            </tr>
-                            <tr>
-                                <td>12</td>
-                                <td class="txt_left"><a href="#">아동 독서 프로그램</a></td>
-                                <td></td>
-                                <td>2026.06.05</td>
-                                <td>120</td>
+                            <tr data-page="1">
+                                <td>10</td>
+                                <td class="txt_left"><a href="#">[공모전] 제1회 책볕 창작 시·에세이 공모전 사전 안내</a></td>
+                                <td><img src="../images/file_icon.png" alt="파일" class="table_file_icon" style="width:14px;"></td>
+                                <td>2026.05.10</td>
+                                <td>420</td>
                             </tr>
                         </tbody>
                     </table>
 
-                    <!-- 하단 페이지네이션 바 (기존 공통 클래스 및 번호판 레이아웃 완벽 재활용) -->
                     <div class="meetings_pagination_bar">
                         <button type="button" class="page_btn prev_page_btn"><img src="../images/left btn.png"
                                 alt="이전 페이지"></button>
@@ -212,10 +184,8 @@
                         <button type="button" class="page_btn next_page_btn"><img src="../images/right btn.png"
                                 alt="다음 페이지"></button>
                     </div>
-
                 </div>
             </div>
-
             <div class="section_wrap05">
                 <div class="content_wrap">
                     <h1>책·볕을 이제 <span>모바일</span>에서도!</h1>
@@ -298,13 +268,10 @@
                     </ul>
                 </div>
             </div>
-
         </main>
     </div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="../js/jquery-ui.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
     <script src="../js/script.js"></script>
