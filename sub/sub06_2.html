@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="1320">
+    <meta name="description" content="Counter Up - jQuery Plugin Demo">
+    <meta name="author" content="Benjamin Intal">
+    <link rel="author" href="https://plus.google.com/113101541449927918834" />
+    <link rel="icon" type="../image/png" sizes="32x32" href="../images/favicon.png">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./index.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=MapoFlowerIsland:wght@400&display=swap" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+    <title>책·볕</title>
+</head>
+
+<body>
+    <div id="wrap_wrap">
+        <main class="main-home">
+            <a href="#wrap_wrap" class="top">
+                <img src="../images/top_long_arrow.png" alt="top버튼" width="40%">
+            </a>
+            <div id="header_wrap">
+                <div class="container header">
+                    <h1 class="logo"><a href="../index.html"><img src="../images/logo_white.png" alt="책볕"
+                                width="56px"></a></h1>
+                    <ul class="gnb">
+                        <li><a href="sub01.html">책볕소개</a></li>
+                        <li><a href="sub02.html">책볕도서</a></li>
+                        <li><a href="sub03.html">책볕자리</a></li>
+                        <li><a href="sub04.html">책볕굿즈</a></li>
+                        <li>
+                            <a href="sub05_1.html">안내</a>
+                            <ul class="sub">
+                                <li><a href="sub05_1.html">공지사항</a></li>
+                                <li><a href="sub05_2.html">안내사항</a></li>
+                                <li><a href="sub05_3.html">F&Q</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="util">
+                        <li><a href="sub06.html">나의 서재</a></li>
+                        <li><a href="#">알림</a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div id="sub06_section01_wrap">
+                <a href="#sub06_section02_wrap" class="scroll_btn">
+                    <p>책상 확인하기</p>
+                    <img src="../images/down_white.png" alt="아래로" width="32px" class="down_white">
+                </a>
+            </div>
+            <div id="sub06_section02_wrap">
+                <div class="section02">
+                    <div class="lnb_wrap">
+                        <div class="card">
+                            <div class="card-front">
+                                <h2>책·볕 ID카드</h2>
+                                <h1>이책볕 님</h1>
+                                <p>No. 2026-1202</p>
+                            </div>
+                            <div class="card-back">
+                                <h2>회원정보</h2>
+                                <p>
+                                    이메일 seo***@naver.com
+                                    <br> 가입일 2024.08.31
+                                </p>
+                            </div>
+                        </div>
+                        <p class="mypage_subtitle">나의 서재</p>
+                        <ul class="lnb">
+                            <li>
+                                <a href="sub06.html">
+                                    <div class="img_box">
+                                        <img src="../mypage_icon/calender_off.png" alt="일정">
+                                    </div>
+                                    <div class="title_box">
+                                        <h2>나의 일정</h2>
+                                        <p>모임 · 반납일 · 책볕 이벤트</p>
+                                    </div>
+                                    <div class="alarm">
+                                        <p>7</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="sub06_1.html">
+                                    <div class="img_box">
+                                        <img src="../mypage_icon/buy_off.png" alt="구매">
+                                    </div>
+                                    <div class="title_box">
+                                        <h2>구매 내역</h2>
+                                        <p>책 · 굿즈 주문 목록</p>
+                                    </div>
+                                    <div class="alarm">
+                                        <p>12</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="active">
+                                <a href="sub06_2.html">
+                                    <div class="img_box">
+                                        <img src="../mypage_icon/heart_off.png" alt="찜한 목록">
+                                    </div>
+                                    <div class="title_box">
+                                        <h2>찜한 목록</h2>
+                                        <p>책 · 모임 · 굿즈</p>
+                                    </div>
+                                    <div class="alarm">
+                                        <p>11</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="sub06_3.html">
+                                    <div class="img_box">
+                                        <img src="../mypage_icon/safe_off.png" alt="회원정보">
+                                    </div>
+                                    <div class="title_box">
+                                        <h2>회원정보 수정</h2>
+                                        <p>프로필 · 개인정보 · 알림</p>
+                                    </div>
+                                    <div class="alarm">
+                                        <p>1</p>
+                                    </div>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="contents_wrap">
+                        <h1 class="main_title mypage_title">찜한 목록</h1>
+                        <p class="sub_title mypage_subtitle">총 16건</p>
+
+                        <div class="liked_tab_menu">
+                            <button type="button" class="tab_btn active" data-tab="liked_meeting_pane"> 모임</button>
+                            <button type="button" class="tab_btn" data-tab="liked_book_pane">도서</button>
+                            <button type="button" class="tab_btn" data-tab="liked_goods_pane"> 굿즈</button>
+                        </div>
+
+                        <div class="liked_main_board">
+                            <div class="liked_header_cta_zone">
+                                <a href="sub03.html" class="dynamic_explore_btn">
+                                    <span class="cta_txt">더 많은 모임 보러가기</span>
+                                    <span class="cta_arrow">→</span>
+                                </a>
+                            </div>
+                            <div class="liked_list_dynamic_matrix">
+
+                                <div id="liked_meeting_pane" class="liked_pane_box active">
+                                    <div class="liked_container_matrix">
+                                        <div class="liked_board_canvas">
+                                            <ul class="liked_grid_matrix_list">
+                                                <li>
+                                                    <a href="#" class="card_link">
+                                                        <div class="group_top"><img src="../bookcover/book (21).jpg"
+                                                                alt="모임 이미지" class="card_main_img"></div>
+                                                        <div class="meetings_card_bottom">
+                                                            <div class="meetings_card_top">
+                                                                <h1 class="book_title">일홍 작가 모임(평일)</h1>
+                                                                <div class="tag_heart_row">
+                                                                    <button type="button" class="heart_btn"><img
+                                                                            src="../images02/heart_on.png" alt="찜하기"
+                                                                            width="24px"></button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="info_list">
+                                                                <p class="location"><img src="../images/place_icon.png"
+                                                                        alt="장소"> 책볕 라운지
+                                                                    C-2</p>
+                                                                <p class="date"><img src="../images/calendar_icon.png"
+                                                                        alt="일시"> 05.10
+                                                                    (일) / 오후 07:30</p>
+                                                            </div>
+                                                            <div class="meetings_bottom_sub">
+                                                                <p class="meetings_people"><img
+                                                                        src="../images/group_icon(2).png" alt="인원">
+                                                                    <strong>3</strong> / 5
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="card_link">
+                                                        <div class="group_top"><img src="../bookcover/book (26).jpg"
+                                                                alt="모임 이미지" class="card_main_img"></div>
+                                                        <div class="meetings_card_bottom">
+                                                            <div class="meetings_card_top">
+                                                                <h1 class="book_title">한로로</h1>
+                                                                <div class="tag_heart_row">
+                                                                    <button type="button" class="heart_btn"><img
+                                                                            src="../images02/heart_on.png" alt="찜하기"
+                                                                            width="24px"></button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="info_list">
+                                                                <p class="location"><img src="../images/place_icon.png"
+                                                                        alt="장소"> 책볕 라운지
+                                                                    A-1</p>
+                                                                <p class="date"><img src="../images/calendar_icon.png"
+                                                                        alt="일시"> 05.14
+                                                                    (목) / 오후 07:30</p>
+                                                            </div>
+                                                            <div class="meetings_bottom_sub">
+                                                                <p class="meetings_people"><img
+                                                                        src="../images/group_icon(2).png" alt="인원">
+                                                                    <strong>3</strong> / 3
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="card_link">
+                                                        <div class="group_top"><img src="../bookcover/book (61).jpg"
+                                                                alt="모임 이미지" class="card_main_img"></div>
+                                                        <div class="meetings_card_bottom">
+                                                            <div class="meetings_card_top">
+                                                                <h1 class="book_title">노르웨이의 숲</h1>
+                                                                <div class="tag_heart_row">
+                                                                    <button type="button" class="heart_btn"><img
+                                                                            src="../images02/heart_on.png" alt="찜하기"
+                                                                            width="24px"></button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="info_list">
+                                                                <p class="location"><img src="../images/place_icon.png"
+                                                                        alt="장소"> 책볕 라운지
+                                                                    B-2</p>
+                                                                <p class="date"><img src="../images/calendar_icon.png"
+                                                                        alt="일시"> 05.17
+                                                                    (일) / 오후 01:30</p>
+                                                            </div>
+                                                            <div class="meetings_bottom_sub">
+                                                                <p class="meetings_people"><img
+                                                                        src="../images/group_icon(2).png" alt="인원">
+                                                                    <strong>4</strong> / 5
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="card_link">
+                                                        <div class="group_top"><img src="../bookcover/book (1).jpg"
+                                                                alt="모임 이미지" class="card_main_img"></div>
+                                                        <div class="meetings_card_bottom">
+                                                            <div class="meetings_card_top">
+                                                                <h1 class="book_title">혼모노 완독하기!</h1>
+                                                                <div class="tag_heart_row">
+                                                                    <button type="button" class="heart_btn"><img
+                                                                            src="../images02/heart_on.png" alt="찜하기"
+                                                                            width="24px"></button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="info_list">
+                                                                <p class="location"><img src="../images/place_icon.png"
+                                                                        alt="장소"> 책볕 라운지
+                                                                    C-2</p>
+                                                                <p class="date"><img src="../images/calendar_icon.png"
+                                                                        alt="일시"> 05.17
+                                                                    (일) / 오후 04:30</p>
+                                                            </div>
+                                                            <div class="meetings_bottom_sub">
+                                                                <p class="meetings_people"><img
+                                                                        src="../images/group_icon(2).png" alt="인원">
+                                                                    <strong>3</strong> / 3
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="liked_book_pane" class="liked_pane_box">
+                                    <div class="liked_container_matrix">
+                                        <div class="liked_board_canvas">
+                                            <ul class="liked_grid_matrix_list liked_books">
+                                                <li>
+                                                    <a href="#">
+                                                        <img src="../bookcover/book (1).jpg" alt="혼모노">
+                                                        <h4 class="bookname">혼모노</h4>
+                                                        <p class="author">성해나</p>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <img src="../bookcover/book (2).jpg" alt="오만과 편견">
+                                                        <h4 class="bookname">오만과 편견</h4>
+                                                        <p class="author">제인 오스틴</p>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <img src="../bookcover/book (3).jpg" alt="안녕이라 그랬어">
+                                                        <h4 class="bookname">안녕이라 그랬어</h4>
+                                                        <p class="author">김애란</p>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <img src="../bookcover/book (15).jpg" alt="다정한 사람이 이긴다">
+                                                        <h4 class="bookname">다정한 사람이 이긴다</h4>
+                                                        <p class="author">이해인</p>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="liked_goods_pane" class="liked_pane_box">
+                                    <div class="goods_container_matrix">
+                                        <div class="liked_board_canvas">
+                                            <ul class="liked_grid_matrix_list liked_goods_store">
+
+                                                <li>
+                                                    <a href="#" class="card_link">
+                                                        <div class="goods_thumb">
+                                                            <img src="../images/goods_keyring01.png" alt="햇빛키링"
+                                                                class="card_main_img">
+                                                        </div>
+                                                        <div class="goods_info">
+                                                            <div class="goods_top">
+                                                                <h1 class="goods_title">햇빛키링</h1>
+                                                                <p class="goods_author">책볕서점</p>
+                                                            </div>
+                                                            <div class="goods_meta">
+                                                                <p class="goods_price">6,000원</p>
+                                                                <div class="goods_btns">
+                                                                    <button type="button" class="heart_btn">
+                                                                        <img src="../images02/heart_on.png" alt="찜완료"
+                                                                            width="24px">
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="#" class="card_link">
+                                                        <div class="goods_thumb">
+                                                            <img src="../images/goods_keyring02.png" alt="햇살키링"
+                                                                class="card_main_img">
+                                                        </div>
+                                                        <div class="goods_info">
+                                                            <div class="goods_top">
+                                                                <h1 class="goods_title">햇살키링</h1>
+                                                                <p class="goods_author">책볕서점</p>
+                                                            </div>
+                                                            <div class="goods_meta">
+                                                                <p class="goods_price">6,000원</p>
+                                                                <div class="goods_btns">
+                                                                    <button type="button" class="heart_btn">
+                                                                        <img src="../images02/heart_on.png" alt="찜완료"
+                                                                            width="24px">
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="#" class="card_link">
+                                                        <div class="goods_thumb">
+                                                            <img src="../images/goods_keyring01.png" alt="햇살키링"
+                                                                class="card_main_img">
+                                                        </div>
+                                                        <div class="goods_info">
+                                                            <div class="goods_top">
+                                                                <h1 class="goods_title">햇살키링</h1>
+                                                                <p class="goods_author">책볕서점</p>
+                                                            </div>
+                                                            <div class="goods_meta">
+                                                                <p class="goods_price">6,000원</p>
+                                                                <div class="goods_btns">
+                                                                    <button type="button" class="heart_btn">
+                                                                        <img src="../images02/heart_on.png" alt="찜완료"
+                                                                            width="24px">
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div id="footer_wrap">
+                <div class="footer">
+                    <div class="footer_top">
+                        <img src="../images/logo_white(vertical).png" alt="푸터로고">
+                        <ul class="sns_link">
+                            <li><a href="#"><img src="../images/LinkedIn.png" alt="링크드인"></a></li>
+                            <li><a href="#"><img src="../images/Facebook.png" alt="페이스북"></a></li>
+                            <li><a href="#"><img src="../images/Instagram.png" alt="인스타그램"></a></li>
+                            <li><a href="#"><img src="../images/X.png" alt="X"></a></li>
+                            <li><a href="#"><img src="../images/Youtube.png" alt="유튜브"></a></li>
+                        </ul>
+                    </div>
+                    <div class="footer_container">
+                        <ul class="footer_menu">
+                            <h3 class="footer_title">SHOP</h3>
+                            <li><a href="#">책 구매/책 대여</a></li>
+                            <li><a href="#">위시리스트</a></li>
+                            <li><a href="#">마이페이지</a></li>
+                        </ul>
+                        <ul class="footer_menu">
+                            <h3 class="footer_title">ABOUT</h3>
+                            <li><a href="#">브랜드 소개</a></li>
+                            <li><a href="#">공지사항</a></li>
+                            <li><a href="#">채용 정보</a></li>
+                        </ul>
+                        <ul class="footer_menu">
+                            <h3 class="footer_title">SUPPORT</h3>
+                            <li><a href="#">자주 묻는 질문(FAQ)</a></li>
+                            <li><a href="#">오시는 길</a></li>
+                        </ul>
+                        <ul class="footer_menu">
+                            <h3 class="footer_title">POLICIES</h3>
+                            <li><a href="#">배송 정책</a></li>
+                            <li><a href="#">환불 정책</a></li>
+                        </ul>
+                    </div>
+                    <p class="copyright">
+                        © 2025 책·볕. All rights reserved.
+                    </p>
+                    <ul class="link">
+                        <li><a href="#"><strong>개인정보 처리방침</strong></a></li>
+                        <li><a href="#">이용약관</a></li>
+                        <li><a href="#">쿠키 설정</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </main>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="../js/jquery-ui.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <script src="../js/script.js"></script>
+    <script>
+        AOS.init(); 
+    </script>
+</body>
+
+</html>

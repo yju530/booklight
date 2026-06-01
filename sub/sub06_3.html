@@ -97,7 +97,7 @@
                                     </div>
                                 </a>
                             </li>
-                            <li  class="active">
+                            <li>
                                 <a href="sub06_1.html">
                                     <div class="img_box">
                                         <img src="../mypage_icon/buy_off.png" alt="구매">
@@ -125,7 +125,7 @@
                                     </div>
                                 </a>
                             </li>
-                            <li>
+                            <li class="active">
                                 <a href="sub06_3.html">
                                     <div class="img_box">
                                         <img src="../mypage_icon/safe_off.png" alt="회원정보">
@@ -142,185 +142,171 @@
 
                         </ul>
                     </div>
-                    <div class="contents_wrap">
-                        <h1 class="main_title mypage_title">구매 내역</h1>
-                        <p class="sub_title mypage_subtitle">총 7건 · 도서 4권 · 굿즈 3건</p>
+                    <div class="contents_wrap edit_profile_page">
+                        <h1 class="main_title mypage_title">회원정보 수정</h1>
+                        <p class="sub_title mypage_subtitle">세부 설정 사항</p>
 
-                        <div class="purchase_tab_menu">
-                            <button type="button" class="tab_btn active" data-tab="book_purchase_zone">도서</button>
-                            <button type="button" class="tab_btn" data-tab="goods_purchase_zone"> 굿즈</button>
+                        <div id="profile_step_1" class="edit_pane_box active">
+                            <div class="edit_profile_board">
+                                <div class="profile_inner_flex">
+
+                                    <div class="profile_side_zone">
+                                        <div class="avatar_box">
+                                            <img src="../images/bookcafe_person.jpeg" alt="프로필" class="avatar_img">
+                                            <label for="avatar_file" class="avatar_edit_btn">
+                                                <span class="pencil_icon">✏️</span>
+                                            </label>
+                                            <input type="file" id="avatar_file" style="display:none;">
+                                        </div>
+                                        <div class="intro_input_box">
+                                            <label>한 줄 소개</label>
+                                            <textarea placeholder="자신을 표현하는 소개글을 작성해주세요"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="profile_main_form">
+                                        <div class="form_grid_row">
+                                            <div class="input_group">
+                                                <label>아이디</label>
+                                                <input type="text" value="cheekbyeot_user">
+                                            </div>
+                                            <div class="input_group">
+                                                <label>비밀번호</label>
+                                                <input type="password" value="password">
+                                            </div>
+                                        </div>
+                                        <div class="form_grid_row">
+                                            <div class="input_group">
+                                                <label>이름</label>
+                                                <input type="text" value="홍길동">
+                                            </div>
+                                            <div class="input_group">
+                                                <label>닉네임</label>
+                                                <input type="text" value="뺨바이굿">
+                                            </div>
+                                        </div>
+                                        <div class="form_grid_row">
+                                            <div class="input_group">
+                                                <label>휴대폰 번호</label>
+                                                <input type="text" value="010-0000-0000">
+                                            </div>
+                                            <div class="input_group">
+                                                <label>이메일 주소</label>
+                                                <input type="email" value="example@email.com">
+                                            </div>
+                                        </div>
+
+                                        <div class="single_row_group">
+                                            <h3 class="group_heading">기본 배송지</h3>
+                                            <div class="input_group">
+                                                <label>주소</label>
+                                                <input type="text" value="[48000] 부산광역시 동구 대방로 12">
+                                            </div>
+                                        </div>
+
+                                        <div class="single_row_group">
+                                            <h3 class="group_heading">관심 도서 장르</h3>
+                                            <div class="genre_tag_cloud">
+                                                <span class="genre_chip active">전체</span>
+                                                <span class="genre_chip">소설</span>
+                                                <span class="genre_chip">에세이</span>
+                                                <span class="genre_chip">자기계발</span>
+                                                <button type="button" class="add_genre_btn">+</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="purchase_main_board">
+                        <div id="profile_step_2" class="edit_pane_box">
+                            <div class="edit_profile_board">
+                                <div class="profile_inner_flex">
 
-                            <div class="purchase_search_wrapper">
-                                <div class="search_input_inner">
-                                    <input type="text" placeholder="주문한 상품명을 입력하세요.">
-                                    <button type="button" class="search_submit_btn">
-                                        <img src="../images02/search02.png" alt="검색" width="20">
-                                    </button>
-                                </div>
-                                <div class="status_main_select">
-                                    <select name="main_delivery_filter">
-                                        <option value="all">배송중</option>
-                                        <option value="ready">배송대기</option>
-                                        <option value="complete">배송완료</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="purchase_filter_status_line">
-                                <div class="order_toggle_box">
-                                    <select name="order_type_filter">
-                                        <option value="all_order">📦 모든 주문</option>
-                                        <option value="month_3">최근 3개월</option>
-                                        <option value="month_6">최근 6개월</option>
-                                    </select>
-                                </div>
-                                <div class="total_inner_count">
-                                    총 <strong class="count_highlight">7</strong>건의 구매 내역
-                                </div>
-                            </div>
-
-                            <div class="purchase_list_dynamic_matrix">
-
-                                <div id="book_purchase_zone" class="purchase_pane_box active">
-                                    <div class="vertical_scroll_tray">
-
-                                        <div class="date_group_divider">MAY 10, 2026</div>
-
-                                        <div class="purchase_card_row">
-                                            <div class="prod_thumb_title_col">
-                                                <div class="prod_img"><img src="../bookcover/book (29).jpg"
-                                                        alt="싯다르타"></div>
-                                                <div class="prod_details">
-                                                    <h4>싯다르타</h4>
-                                                    <p class="author_maker">헤르만 헤세</p>
-                                                    <span class="order_serial">ORD-2026-0510-001 <button
-                                                            class="copy_sn_btn"></button></span>
-                                                </div>
-                                            </div>
-                                            <div class="prod_price_status_col">
-                                                <div class="prod_price">32,000원</div>
-                                                <div class="status_badge shipping">배송중</div>
-                                            </div>
+                                    <div class="profile_side_zone">
+                                        <div class="avatar_box">
+                                            <img src="../images/bookcafe_person.jpeg" alt="프로필" class="avatar_img">
+                                            <label for="avatar_file" class="avatar_edit_btn">
+                                                <span class="pencil_icon">✏️</span>
+                                            </label>
+                                            <input type="file" id="avatar_file" style="display:none;">
                                         </div>
 
-                                        <div class="purchase_card_row">
-                                            <div class="prod_thumb_title_col">
-                                                <div class="prod_img"><img src="../bookcover/book (37).jpg" alt="브람스">
-                                                </div>
-                                                <div class="prod_details">
-                                                    <h4>브람스를 좋아하세요</h4>
-                                                    <p class="author_maker">프랑수아즈 사강</p>
-                                                    <span class="order_serial">ORD-2026-0510-002 <button
-                                                            class="copy_sn_btn"></button></span>
-                                                </div>
-                                            </div>
-                                            <div class="prod_price_status_col">
-                                                <div class="prod_price">25,500원</div>
-                                                <div class="status_badge shipping_ready">배송대기중</div>
-                                            </div>
+                                        <div class="intro_input_box">
+                                            <label>한 줄 소개</label>
+                                            <textarea placeholder="자신을 표현하는 소개글을 작성해주세요" disabled></textarea>
                                         </div>
-
-                                        <div class="purchase_card_row">
-                                            <div class="prod_thumb_title_col">
-                                                <div class="prod_img"><img src="../bookcover/book (27).jpg" alt="모순">
-                                                </div>
-                                                <div class="prod_details">
-                                                    <h4>모순</h4>
-                                                    <p class="author_maker">양귀자</p>
-                                                    <span class="order_serial">ORD-2026-0510-003 <button
-                                                            class="copy_sn_btn"></button></span>
-                                                </div>
-                                            </div>
-                                            <div class="prod_price_status_col">
-                                                <div class="prod_price">28,800원</div>
-                                                <div class="status_badge shipping_complete">배송완료</div>
-                                            </div>
-                                        </div>
-
-                                        <div class="date_group_divider">MAY 5, 2026</div>
-                                        <div class="purchase_card_row">
-                                            <div class="prod_thumb_title_col">
-                                                <div class="prod_img"><img src="../bookcover/book (61).jpg" alt="상실의 시대">
-                                                </div>
-                                                <div class="prod_details">
-                                                    <h4>상실의 시대 (원전 번역판)</h4>
-                                                    <p class="author_maker">무라카미 하루키</p>
-                                                    <span class="order_serial">ORD-2026-0505-012 <button
-                                                            class="copy_sn_btn"></button></span>
-                                                </div>
-                                            </div>
-                                            <div class="prod_price_status_col">
-                                                <div class="prod_price">15,800원</div>
-                                                <div class="status_badge shipping_complete">배송완료</div>
-                                            </div>
-                                        </div>
-
                                     </div>
-                                </div>
 
-                                <div id="goods_purchase_zone" class="purchase_pane_box">
-                                    <div class="vertical_scroll_tray">
+                                    <div class="profile_main_form">
+                                        <h3 class="group_heading">알림 및 수신 동의</h3>
 
-                                        <div class="date_group_divider">MAY 24, 2026</div>
-                                        <div class="purchase_card_row">
-                                            <div class="prod_thumb_title_col">
-                                                <div class="prod_img"><img src="../images/goods_keyring01.png" alt="햇빛키링">
-                                                </div>
-                                                <div class="prod_details">
-                                                    <h4>[책볕 단독] 한정판 햇빛 키링 (오브제 에디션)</h4>
-                                                    <p class="author_maker">책볕 자자체 디자인 팀</p>
-                                                    <span class="order_serial">ORD-2026-0524-089 <button
-                                                            class="copy_sn_btn"></button></span>
-                                                </div>
+                                        <div class="toggle_setting_row">
+                                            <div class="toggle_txt">
+                                                <h4>마케팅 수신 동의</h4>
+                                                <p>이벤트 신규 도서설명회 소식 안내</p>
                                             </div>
-                                            <div class="prod_price_status_col">
-                                                <div class="prod_price">6,000원</div>
-                                                <div class="status_badge shipping">배송중</div>
-                                            </div>
+                                            <label class="switch_inside_btn">
+                                                <input type="checkbox" checked>
+                                                <span class="slider_round"></span>
+                                            </label>
                                         </div>
-                                        <div class="purchase_card_row">
-                                            <div class="prod_thumb_title_col">
-                                                <div class="prod_img"><img src="../images/goods_keyring02.png" alt="햇빛키링">
-                                                </div>
-                                                <div class="prod_details">
-                                                    <h4>[책볕 단독] 한정판 햇살 키링 (오브제 에디션)</h4>
-                                                    <p class="author_maker">책볕 자자체 디자인 팀</p>
-                                                    <span class="order_serial">ORD-2026-0524-089 <button
-                                                            class="copy_sn_btn"></button></span>
-                                                </div>
+
+                                        <div class="toggle_setting_row">
+                                            <div class="toggle_txt">
+                                                <h4>모임 알림</h4>
+                                                <p>책모임이 신청 상황 변경 알림</p>
                                             </div>
-                                            <div class="prod_price_status_col">
-                                                <div class="prod_price">6,000원</div>
-                                                <div class="status_badge shipping">배송중</div>
-                                            </div>
+                                            <label class="switch_inside_btn">
+                                                <input type="checkbox">
+                                                <span class="slider_round"></span>
+                                            </label>
                                         </div>
-                                        <div class="purchase_card_row">
-                                            <div class="prod_thumb_title_col">
-                                                <div class="prod_img"><img src="../images/goods_mugcup.png" alt="머그컵">
-                                                </div>
-                                                <div class="prod_details">
-                                                    <h4>머그컵</h4>
-                                                    <p class="author_maker">책볕 자자체 디자인 팀</p>
-                                                    <span class="order_serial">ORD-2026-0524-089 <button
-                                                            class="copy_sn_btn"></button></span>
-                                                </div>
+
+                                        <div class="sns_linkage_zone">
+                                            <h3 class="group_heading">연동 계정</h3>
+
+                                            <div class="sns_connect_row">
+                                                <span>카카오</span>
+                                                <button type="button" class="sns_status_badge connected">연동됨</button>
                                             </div>
-                                            <div class="prod_price_status_col">
-                                                <div class="prod_price">18,500원</div>
-                                                <div class="status_badge shipping">배송중</div>
+                                            <div class="sns_connect_row">
+                                                <span>네이버</span>
+                                                <button type="button" class="sns_status_badge">미연동</button>
+                                            </div>
+                                            <div class="sns_connect_row">
+                                                <span>구글</span>
+                                                <button type="button" class="sns_status_badge">미연동</button>
                                             </div>
                                         </div>
 
+                                        <div class="form_action_bar">
+                                            <button type="button" class="leave_membership_btn">회원 탈퇴</button>
+                                            <div class="right_btns">
+                                                <button type="button" class="cancel_edit_btn">취소</button>
+                                                <button type="button" class="submit_save_btn">변경사항 저장</button>
+                                            </div>
+                                        </div>
                                     </div>
+
                                 </div>
-
                             </div>
-
                         </div>
 
+                        <div class="meetings_pagination_bar edit_profile_pagination">
+                            <button type="button" class="page_btn prev_step_btn">
+                                <img src="../images/left btn.png" alt="이전" width="32px">
+                            </button>
+                            <ul class="page_number_list">
+                                <li class="num_item active" data-step="1">1</li>
+                                <li class="num_item" data-step="2">2</li>
+                            </ul>
+                            <button type="button" class="page_btn next_step_btn">
+                                <img src="../images/right btn.png" alt="다음" width="32px">
+                            </button>
+                        </div>
+                        <img src="../images/sticker.png" alt="배경 꾸미기 요소" class="sticker">
                     </div>
                 </div>
             </div>
