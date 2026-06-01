@@ -1033,7 +1033,7 @@ body {
   font-weight: 300;
 }
 
-.alarm {
+.section03_right .alarm {
   width: 100%;
   height: 187px;
   border-top: 1px solid rgba(136, 135, 128, 0.2);
@@ -4191,19 +4191,23 @@ body {
   padding: 30px;
   box-sizing: border-box;
 }
-.card-front h2{
+
+.card-front h2 {
   color: #c56928;
   font-weight: 400;
   font-size: 14px;
 }
-.card-front h1{
+
+.card-front h1 {
   color: #1E1D1C;
   font-family: 'MapoFlowerIsland';
   font-weight: 400;
 }
-.card-front p{
+
+.card-front p {
   color: #888780;
 }
+
 .card-back {
   background: url(../images/id_card_behind.png) no-repeat;
   background-size: contain;
@@ -4211,14 +4215,17 @@ body {
   padding: 30px;
   box-sizing: border-box;
 }
-.card-back h2{
+
+.card-back h2 {
   color: #D99744;
   font-weight: 500;
   font-size: 14px;
 }
-.card-back p{
+
+.card-back p {
   font-weight: 300;
 }
+
 .contents_wrap {
   width: 920px;
   height: 100%;
@@ -4238,38 +4245,46 @@ body {
    ■ 마이페이지 LNB 서브메뉴(좌측 탭) 호버 및 활성화(선택) 전체 디자인 가이드
    ========================================================================== */
 
-.lnb{
+.lnb {
   margin-top: 20px;
 }
+
 /* 1. LNB 기본 리스트 아이템 스타일 및 부드러운 전환 효과 추가 */
-.lnb > li {
-    border-radius: 20px !important;
-    border: 1px solid #e1d9cd00 !important;  /* 부드러운 외곽 테두리선 */
-    margin-bottom: 12px;                  /* 메뉴 간의 여백 (간격 조정) */
-    overflow: hidden;                     /* 내부 링크 라운드 크롭 */
-    transition: all 0.3s ease-in-out !important; /* 호버 시 스르륵 바뀌는 애니메이션 */
+.lnb>li {
+  border-radius: 20px !important;
+  border: 1px solid #e1d9cd00 !important;
+  /* 부드러운 외곽 테두리선 */
+  margin-bottom: 12px;
+  /* 메뉴 간의 여백 (간격 조정) */
+  overflow: hidden;
+  /* 내부 링크 라운드 크롭 */
+  transition: all 0.3s ease-in-out !important;
+  /* 호버 시 스르륵 바뀌는 애니메이션 */
 }
 
 /* 2. LNB 내부 링크(텍스트 및 정렬 구조) 초기화 */
-.lnb > li > a {
-    display: flex ;
-    justify-content: space-between ;
-    align-items: center ;
-    width: 100% ;
-    height: 100% ;
-    padding: 18px 25px ;        /* 내부 클릭 영역 충분히 확보 */
-    color: #4a4a4a ;            /* 기본 갈색/어두운 글자색 */
-    font-size: 16px;
-    font-weight: 500 ;
-    transition: all 0.3s ease-in-out ;
+.lnb>li>a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 18px 25px;
+  /* 내부 클릭 영역 충분히 확보 */
+  color: #4a4a4a;
+  /* 기본 갈색/어두운 글자색 */
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease-in-out;
 }
 
 /* 3. LNB 내부에 들어있는 아이콘 기본 스타일 (텍스트와 정렬 맞춤) */
-.lnb > li > a img {
-    display: block !important;
-    max-height: 24px;                     /* 아이콘 이미지 높이 제한 고정 */
-    object-fit: contain;
-    transition: all 0.3s ease-in-out !important;
+.lnb>li>a img {
+  display: block !important;
+  max-height: 24px;
+  /* 아이콘 이미지 높이 제한 고정 */
+  object-fit: contain;
+  transition: all 0.3s ease-in-out !important;
 }
 
 /* ==========================================================================
@@ -4277,22 +4292,23 @@ body {
    ========================================================================== */
 
 /* 4. 마우스를 올렸을 때 또는 클릭되어 활성화되었을 때 외곽 박스색 변경 */
-.lnb > li:hover,
-.lnb > li.active {
-    background-color: #C8853A1F !important; 
-    border-color: #C8853A59 !important;     
-    box-shadow: 0 4px 15px rgba(12, 27, 51, 0.15); 
+.lnb>li:hover,
+.lnb>li.active {
+  background-color: #C8853A1F !important;
+  border-color: #C8853A59 !important;
+  box-shadow: 0 4px 15px rgba(12, 27, 51, 0.15);
 }
 
 /* 5. 호버 및 활성화 상태일 때 내부 텍스트 글자색을 흰색(#fff)으로 강제 반전 */
-.lnb > li:hover > a,
-.lnb > li.active > a {
-    color: #D99744 !important; 
+.lnb>li:hover>a,
+.lnb>li.active>a {
+  color: #D99744 !important;
 }
 
-.title_box{
-  width: 200px;
+.title_box {
+  min-width: 200px;
 }
+
 .title_box h2 {
   color: #816140;
   font-size: 18px;
@@ -4301,11 +4317,13 @@ body {
 .title_box p {
   color: #C0A888;
 }
-.alarm{
+
+.alarm {
   width: 10%;
   height: 100%;
 }
-.alarm p{
+
+.alarm p {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -4322,152 +4340,167 @@ body {
 .calendar {
   background: url(../images/calendar_bg.png) no-repeat;
   border-radius: 24px;
-  padding:30px;
+  padding: 30px;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.02);
   margin-top: 20px;
 }
 
 /* 달력 헤더 (년/월 및 내비 버튼) */
 .calendar_header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 22px;
-    padding: 0 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+  padding: 0 4px;
 }
 
 .current_ym {
-    font-size: 17px;
-    font-weight: 700;
-    color: #fffdff;
+  font-size: 17px;
+  font-weight: 700;
+  color: #fffdff;
 }
 
 .current_ym span {
-    margin: 0 4px;
+  margin: 0 4px;
 }
 
 .calendar_header .nav_btn {
-    width: 34px;
-    height: 34px;
-    cursor: pointer;
-    font-weight: bold;
-    color: #fffdf9;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease;
+  width: 34px;
+  height: 34px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #fffdf9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
 }
 
 .calendar_header .nav_btn:hover {
-    color: #c56928;
+  color: #c56928;
 }
 
 /* 요일 라인 그리드 배치 */
 .weekdays_row {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    text-align: center;
-    font-weight: 600;
-    font-size: 13px;
-    color: #fffdf9;
-    margin-bottom: 14px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-weight: 600;
+  font-size: 13px;
+  color: #fffdf9;
+  margin-bottom: 14px;
 }
 
 /* 주말 전용 고유 컬러 설정 */
-.weekdays_row .sun, .days_grid .sun { color: #ef4444 !important; }
-.weekdays_row .sat, .days_grid .sat { color: #3b82f6 !important; }
+.weekdays_row .sun,
+.days_grid .sun {
+  color: #ef4444 !important;
+}
+
+.weekdays_row .sat,
+.days_grid .sat {
+  color: #3b82f6 !important;
+}
 
 /* 날짜판 정밀 그리드 */
 .days_grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    row-gap: 12px;
-    text-align: center;
-    margin-bottom: 18px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  row-gap: 12px;
+  text-align: center;
+  margin-bottom: 18px;
 }
 
 /* 날짜 개별 셀 공통 디자인 */
 .day_cell {
-    position: relative;
-    height: 42px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 14px;
-    font-weight: 500;
-    color: #fffdf9;
-    cursor: pointer;
-    z-index: 1;
+  position: relative;
+  height: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fffdf9;
+  cursor: pointer;
+  z-index: 1;
 }
 
 /* 💡 조건: 선택 및 호버 시 크기가 부드럽게 늘어나는 원형 트랜지션 애니메이션 전용 가상요소 */
 .day_cell::before {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: transparent;
-    z-index: -1;
-    transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1); /* 부드럽게 팝업되는 원형 인터페이스 애니메이션 */
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: transparent;
+  z-index: -1;
+  transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  /* 부드럽게 팝업되는 원형 인터페이스 애니메이션 */
 }
 
 /* 호버 시 은은하게 퍼지는 베이지/그레이 쿠션 */
 .day_cell:not(.other_month):not(.is_selected):hover::before {
-    width: 38px;
-    height: 38px;
-    background: rgba(38, 50, 31, 0.05);
+  width: 38px;
+  height: 38px;
+  background: rgba(38, 50, 31, 0.05);
 }
 
 /* 이전달/다음달 흐린 글자 처리 */
 .day_cell.other_month {
-    color: #888780 !important;
-    cursor: default;
+  color: #888780 !important;
+  cursor: default;
 }
 
 /* 💡 조건 1: 오늘 날짜 색상 분리 (시안 고유의 깊고 웅장한 네이비 원판 서클) */
 .day_cell.is_today::before {
-    width: 38px;
-    height: 38px;
-    background: #D99744; /* 오늘 날짜만의 고유 정체성 색상 */
+  width: 38px;
+  height: 38px;
+  background: #D99744;
+  /* 오늘 날짜만의 고유 정체성 색상 */
 }
+
 .day_cell.is_today {
-    color: #ffffff !important;
-    font-weight: 700;
+  color: #ffffff !important;
+  font-weight: 700;
 }
 
 /* 💡 조건 2: 내가 선택한 날짜 색상 분리 (책볕 시안 고유의 정갈한 딥그린 무드) */
 .day_cell.is_selected::before {
-    width: 38px;
-    height: 38px;
-    background: #26321F !important; /* 내가 마우스로 클릭해 선택한 날짜 고유 색상 */
+  width: 38px;
+  height: 38px;
+  background: #26321F !important;
+  /* 내가 마우스로 클릭해 선택한 날짜 고유 색상 */
 }
+
 .day_cell.is_selected {
-    color: #ffffff !important;
-    font-weight: 700;
+  color: #ffffff !important;
+  font-weight: 700;
 }
 
 /* 오늘이면서 동시에 유저가 마우스로 눌렀을 때 가독성을 위해 선택 색상이 우선순위를 쥐도록 방어 보정 */
 .day_cell.is_today.is_selected::before {
-    background: #26321F !important;
+  background: #26321F !important;
 }
 
 /* 💡 조건 3: 날짜 밑에 동그라미 모양의 미니 스페셜 이벤트 존재 표시 알림 */
 .day_cell.has_event::after {
-    content: '';
-    position: absolute;
-    bottom: 3px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: #ef4444; /* 이벤트 표시 전용 미니 닷 */
+  content: '';
+  position: absolute;
+  bottom: 3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #ef4444;
+  /* 이벤트 표시 전용 미니 닷 */
 }
+
 /* 원형 색상판이 채워진 활성 상태일 때 시각 가독성을 확보하기 위해 이벤트 점 색상 반전 보정 */
 .day_cell.has_event.is_selected::after,
 .day_cell.has_event.is_today::after {
-    background: #facc15; /* 짙은 바탕 위에서는 화사한 노란색 점으로 스위칭 */
+  background: #facc15;
+  /* 짙은 바탕 위에서는 화사한 노란색 점으로 스위칭 */
 }
 
 /* ==========================================================================
@@ -4476,50 +4509,53 @@ body {
 
 /* 날짜 셀의 정렬 축을 수직으로 고정하여 숫자가 위, 점 컨테이너가 아래에 오도록 유도 */
 .day_cell {
-    display: flex;
-    flex-direction: column !important;
-    justify-content: center !important;
-    align-items: center !important;
-    position: relative;
+  display: flex;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  position: relative;
 }
 
 /* 기존 가상 요소 닷 리셋 초기화 */
 .day_cell::after {
-    display: none !important;
+  display: none !important;
 }
 
 /* 💡 점들을 감싸는 하단 전용 독립 그릇 바 */
 .event_dot_container {
-    position: absolute;
-    bottom: 5px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 3px; /* 점과 점 사이의 정갈한 간격 여백 */
-    width: auto;
-    height: 5px;
-    z-index: 5;
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+  /* 점과 점 사이의 정갈한 간격 여백 */
+  width: auto;
+  height: 5px;
+  z-index: 5;
 }
 
 /* 개별 미니 원형 점 공통 분모 */
 .event_dot_container .dot {
-    display: inline-block;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    transition: all 0.2s ease;
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
 }
 
 /* 🟠 반납일 일정 점 전용 색상 */
 .event_dot_container .dot.return {
-    background-color: #f97316 !important; /* 주황색 닷 */
+  background-color: #f97316 !important;
+  /* 주황색 닷 */
 }
 
 /* 🟡 모임 일정 점 전용 색상 */
 .event_dot_container .dot.meeting {
-    background-color: #D99744 !important; /* 초록색 닷 */
+  background-color: #D99744 !important;
+  /* 초록색 닷 */
 }
 
 
@@ -4528,49 +4564,57 @@ body {
 ========================================================================== */
 .calendar_pages_container {
   padding: 30px;
-    width: 100%;
-    min-height: 110px;
+  width: 100%;
+  min-height: 110px;
 }
 
 .calendar_page_item {
-    display: none; /* 기본 초기 상태에는 화면에서 닫아둠 */
-    background: #ffffff;
-    border: 1px solid #e2e8f0;
-    border-radius: 16px;
-    padding: 16px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.01);
-    font-size: 14px;
-    color: #1E1D1C;
-    line-height: 1.6;
+  display: none;
+  /* 기본 초기 상태에는 화면에서 닫아둠 */
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.01);
+  font-size: 14px;
+  color: #1E1D1C;
+  line-height: 1.6;
 }
 
 /* 활성화 토글되었을 때 부드러운 페이드인과 함께 위로 안착되는 모션 효과 연출 */
 .calendar_page_item.active {
-    display: block;
-    animation: smoothFadePageUp 0.35s ease-out forwards;
+  display: block;
+  animation: smoothFadePageUp 0.35s ease-out forwards;
 }
 
 @keyframes smoothFadePageUp {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .calendar_page_item h3 {
-    font-size: 15px;
-    color: #26321F;
-    font-weight: 700;
-    margin-bottom: 6px;
+  font-size: 15px;
+  color: #26321F;
+  font-weight: 700;
+  margin-bottom: 6px;
 }
 
 .calendar_page_item hr {
-    border: 0;
-    height: 1px;
-    background: #f1f5f9;
-    margin-bottom: 10px;
+  border: 0;
+  height: 1px;
+  background: #f1f5f9;
+  margin-bottom: 10px;
 }
 
 .calendar_page_item p {
-    margin-bottom: 4px;
+  margin-bottom: 4px;
 }
 
 /* ==========================================================================
@@ -4579,265 +4623,951 @@ body {
 
 /* 상단 카테고리 탭 (도서 / 굿즈 캡슐 버튼 단락) */
 .purchase_tab_menu {
-    display: flex;
-    gap: 10px;
-    margin: 20px 0;
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
 }
 
 .purchase_tab_menu .tab_btn {
-    padding: 10px 24px;
-    font-size: 14px;
-    font-weight: 500;
-    border: 1px solid #D997442E;
-    background-color: transparent;
-    background-color: #D997441F;
-    color: #D99744; /* 나무 배경 위에 뜨도록 흰색 기본 배합 */
-    border-radius: 30px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    transition: all 0.25s ease;
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid #D997442E;
+  background-color: transparent;
+  background-color: #D997441F;
+  color: #D99744;
+  /* 나무 배경 위에 뜨도록 흰색 기본 배합 */
+  border-radius: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: all 0.25s ease;
 }
 
 /* 탭 버튼 활성화(active) 되었을 때의 흰색 반전 무드 */
 .purchase_tab_menu .tab_btn.active {
-    background-color: #ffffff !important;
-    border-color: #ffffff !important;
-    color: #4e3419 !important; /* 짙은 브라운 톤 반전 */
-    font-weight: bold;
+  background-color: #ffffff !important;
+  border-color: #ffffff !important;
+  color: #4e3419 !important;
+  /* 짙은 브라운 톤 반전 */
+  font-weight: bold;
 }
 
 /* 💡 메인 백그라운드 크림 화이트 판넬 보드 크기 */
 .purchase_main_board {
-    width: 100%;
-    background: #ffffff;
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
 }
 
 /* 💡 시안 100% 반영: 상단 알약 모양 크림-베이지 검색창 랩 */
 .purchase_search_wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
 }
 
 .search_input_inner {
-    position: relative;
-    width: 100%;
-    max-width: 450px; /* 컴팩트 사이즈 캡슐 필드 */
-    height: 44px;
-    background-color: #f4ece1; /* 시안 특유의 크림 베이지 톤 */
-    border-radius: 25px;
-    padding: 0 50px 0 20px;
+  position: relative;
+  width: 100%;
+  max-width: 450px;
+  /* 컴팩트 사이즈 캡슐 필드 */
+  height: 44px;
+  background-color: #f4ece1;
+  /* 시안 특유의 크림 베이지 톤 */
+  border-radius: 25px;
+  padding: 0 50px 0 20px;
 }
 
 .search_input_inner input {
-    width: 100%;
-    height: 100%;
-    border: none;
-    background: transparent;
-    font-size: 14px;
-    color: #4e3419;
-    outline: none;
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  color: #4e3419;
+  outline: none;
 }
 
 .search_input_inner input::placeholder {
-    color: #bfa88f;
+  color: #bfa88f;
 }
 
 /* 인풋 내부 우측 골드 돋보기 단추 */
 .search_submit_btn {
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    border: none;
-    background: transparent;
-    cursor: pointer;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  cursor: pointer;
 }
 
 /* 우측 배송중 드롭다운 필터 박스 */
 .status_main_select select {
-    border: none;
-    background: transparent;
-    font-size: 15px;
-    font-weight: 500;
-    color: #6d5b47;
-    cursor: pointer;
-    padding-right: 15px;
-    outline: none;
+  border: none;
+  background: transparent;
+  font-size: 15px;
+  font-weight: 500;
+  color: #6d5b47;
+  cursor: pointer;
+  padding-right: 15px;
+  outline: none;
 }
 
 /* [상단 레이어 2] 모든 주문 토글 필터 및 텍스트 카운터 정렬 선 */
 .purchase_filter_status_line {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #f2ece4;
-    padding-bottom: 15px;
-    margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #f2ece4;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 .order_toggle_box select {
-    border: 1px solid #e5dcce;
-    padding: 8px 14px;
-    border-radius: 8px;
-    font-size: 13px;
-    color: #555;
-    background-color: #ffffff;
-    cursor: pointer;
-    outline: none;
+  border: 1px solid #e5dcce;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #555;
+  background-color: #ffffff;
+  cursor: pointer;
+  outline: none;
 }
 
 .total_inner_count {
-    font-size: 14px;
-    color: #666;
+  font-size: 14px;
+  color: #666;
 }
 
 .total_inner_count .count_highlight {
-    color: #222;
-    font-weight: 700;
+  color: #222;
+  font-weight: 700;
 }
 
 /* ==========================================================================
    💡 핵심: 오른편 세로 스크롤바 작동 보드 구역 테두리
 ========================================================================== */
 .purchase_list_dynamic_matrix {
-    width: 100%;
+  width: 100%;
 }
 
 .purchase_pane_box {
-    display: none; /* 기본 숨김 */
+  display: none;
+  /* 기본 숨김 */
 }
 
 .purchase_pane_box.active {
-    display: block; /* 활성 탭 스위칭 매칭 출력 */
+  display: block;
+  /* 활성 탭 스위칭 매칭 출력 */
 }
 
 /* 우측 수직 스크롤 트레이 바인딩 */
 .vertical_scroll_tray {
-    max-height: 480px; /* 고정 높이를 주어 스크롤 박스로 기능 유도 */
-    overflow-y: auto;
-    padding-right: 15px; /* 스크롤바와 콘텐츠가 겹치지 않게 여백 추가 */
+  max-height: 480px;
+  /* 고정 높이를 주어 스크롤 박스로 기능 유도 */
+  overflow-y: auto;
+  padding-right: 15px;
+  /* 스크롤바와 콘텐츠가 겹치지 않게 여백 추가 */
 }
 
 /* 💡 시안의 우측 얇은 파스텔톤 세로 스크롤바 커스텀 */
 .vertical_scroll_tray::-webkit-scrollbar {
-    width: 6px; /* 아주 슬림한 세로 스크롤 폭 */
+  width: 6px;
+  /* 아주 슬림한 세로 스크롤 폭 */
 }
 
 .vertical_scroll_tray::-webkit-scrollbar-track {
-    background: transparent; /* 트랙은 투명하게 비워둠 */
+  background: transparent;
+  /* 트랙은 투명하게 비워둠 */
 }
 
 .vertical_scroll_tray::-webkit-scrollbar-thumb {
-    background: #eddcc657; /* 시안 속 연한 골드 베이지 스크롤 핀 컬러 매칭 */
-    border-radius: 10px;
+  background: #eddcc657;
+  /* 시안 속 연한 골드 베이지 스크롤 핀 컬러 매칭 */
+  border-radius: 10px;
 }
 
 /* 날짜 구분선 구분 단락 */
 .date_group_divider {
-    font-size: 13px;
-    font-weight: bold;
-    color: #9e8e7c;
-    letter-spacing: 0.5px;
-    margin: 20px 0 12px 0;
-    padding-bottom: 4px;
+  font-size: 13px;
+  font-weight: bold;
+  color: #9e8e7c;
+  letter-spacing: 0.5px;
+  margin: 20px 0 12px 0;
+  padding-bottom: 4px;
 }
 
 /* 구매 리스트 카드 행 블록 정렬 */
 .purchase_card_row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 0;
-    border-bottom: 1px solid #f9f6f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid #f9f6f0;
 }
 
 .purchase_card_row:last-child {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 /* 좌측 상품 이미지 + 명세 정보 정렬 */
 .prod_thumb_title_col {
-    display: flex;
-    align-items: center;
-    gap: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .prod_img {
-    width: 65px;
-    height: 90px;
-    background: #f7f7f7;
-    overflow: hidden;
-    border-radius: 4px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+  width: 65px;
+  height: 90px;
+  background: #f7f7f7;
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
 }
 
 .prod_img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .prod_details h4 {
-    font-size: 16px;
-    font-weight: bold;
-    color: #222;
-    margin-bottom: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #222;
+  margin-bottom: 4px;
 }
 
 .prod_details .author_maker {
-    font-size: 13px;
-    color: #888;
-    margin-bottom: 6px;
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 6px;
 }
 
 .prod_details .order_serial {
-    font-size: 12px;
-    color: #b5b5b5;
-    font-family: 'Courier New', Courier, monospace;
+  font-size: 12px;
+  color: #b5b5b5;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 /* 우측 가격 및 상태 플렉스 */
 .prod_price_status_col {
-    display: flex;
-    align-items: center;
-    gap: 40px;
+  display: flex;
+  align-items: center;
+  gap: 40px;
 }
 
 .prod_price {
-    font-size: 16px;
-    font-weight: bold;
-    color: #222;
+  font-size: 16px;
+  font-weight: bold;
+  color: #222;
 }
 
 /* 시안 맞춤형 라운드 배송 딱지 배지 */
 .status_badge {
-    font-size: 12px;
-    font-weight: bold;
-    padding: 6px 14px;
-    border-radius: 15px;
-    text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 6px 14px;
+  border-radius: 15px;
+  text-align: center;
 }
 
 /* 배송중 상태 (연한 베이지) */
 .status_badge.shipping {
-    background-color: #faebd7;
-    color: #d2b48c;
+  background-color: #faebd7;
+  color: #d2b48c;
 }
 
 /* 배송대기중 상태 (소프트 그레이) */
 .status_badge.shipping_ready {
-    background-color: #e6e8ea;
-    color: #90a4ae;
+  background-color: #e6e8ea;
+  color: #90a4ae;
 }
 
 /* 배송완료 상태 (시안 속 다정한 오렌지 레드 뱃지 연출) */
 .status_badge.shipping_complete {
-    background-color: #ffebe9;
-    color: #ff6b6b;
+  background-color: #ffebe9;
+  color: #ff6b6b;
+}
+
+/* ==========================================================================
+   ■ [수정완료] sub06_2.html - 찜한 목록 전용 알약형 탭 및 크래프트 보드 레이아웃
+   ========================================================================== */
+.liked_list_dynamic_matrix {
+  width: 100%;
+}
+
+.liked_pane_box {
+  display: none;
+  /* 기본 숨김 */
+}
+
+.liked_pane_box.active {
+  display: block;
+  /* 활성 탭 스위칭 매칭 출력 */
+}
+
+.liked_tab_menu {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.liked_tab_menu .tab_btn {
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid #D997442E;
+  background-color: transparent;
+  background-color: #D997441F;
+  color: #D99744;
+  /* 나무 배경 위에 뜨도록 흰색 기본 배합 */
+  border-radius: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: all 0.25s ease;
+}
+
+/* 탭 버튼 활성화(active) 되었을 때의 흰색 반전 무드 */
+.liked_tab_menu .tab_btn.active {
+  background-color: #ffffff !important;
+  border-color: #ffffff !important;
+  color: #4e3419 !important;
+  /* 짙은 브라운 톤 반전 */
+  font-weight: bold;
+}
+
+/* 💡 메인 백그라운드 크림 화이트 판넬 보드 크기 */
+.liked_main_board {
+  width: 100%;
+  height: 100%;
+  background: url(../images/mypage_like_group_bg.png) no-repeat;
+  border-radius: 20px;
+  padding: 60px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+  position: relative;
+}
+
+.liked_grid_matrix_list {
+  flex-wrap: wrap;
+  display: flex;
+  /* gap: 30px; */
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.liked_grid_matrix_list li {
+  background-color: #fff;
+  transition: all 0.3s linear;
+  padding: 12px;
+  margin-bottom: 50px;
+  box-shadow: 0px 0px 15px #00000010;
+}
+
+.liked_grid_matrix_list li:nth-child(1) {
+  transform: rotate(-4deg);
+}
+
+.liked_grid_matrix_list li:nth-child(2) {
+  transform: rotate(4deg);
+}
+
+.liked_grid_matrix_list li:nth-child(3) {
+  transform: rotate(-4deg);
+}
+
+.liked_grid_matrix_list li:nth-child(4) {
+  transform: rotate(-4deg);
+}
+
+.liked_grid_matrix_list li:hover {
+  transform: translateY(-10px);
+  transition: all 0.3s linear;
+  box-shadow: 5px 5px 15px #00000049;
+}
+
+.liked_grid_matrix_list li .card_main_img {
+  height: 120px;
+}
+
+.liked_grid_matrix_list li .meetings_card_bottom {
+  padding: 0;
+}
+
+.liked_grid_matrix_list li .meetings_card_bottom .book_title {
+  max-width: 130px;
+  font-size: 15px;
+  margin: 0;
+}
+
+.liked_grid_matrix_list li .meetings_card_bottom .info_list .location {
+  font-size: 14px;
+}
+
+.liked_grid_matrix_list li .meetings_card_bottom .info_list .date {
+  font-size: 14px;
+}
+
+/* 찜한 도서 */
+.liked_books li {
+  height: 180px;
+  width: 200px;
+}
+
+.liked_books li a img {
+  height: 90px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.liked_books li a .bookname {
+  font-size: 16px;
+  max-width: 150px;
+}
+
+.liked_books li a .bookname::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  background: url('../images02/heart_on.png') no-repeat center / contain;
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* 찜한 굿즈 리스트 */
+/* ==========================================================================
+   [완전 청정] 마이페이지 찜한 굿즈 탭(sub06_2) 정배열 및 CTA 빌드 완전판
+   ========================================================================== */
+
+/* 1. 굿즈 탭 전용 4열 그리드 배치 및 뒤틀림 회전 리셋 */
+.liked_goods_store {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* 모임방에서 흘러나온 회전 속성을 초기화하고 정갈한 흰색 카드로 안착 */
+.liked_goods_store li {
+  transform: rotate(0deg);
+  background-color: #ffffff;
+  border-radius: 4px;
+  padding: 16px;
+  box-sizing: border-box;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.liked_goods_store li:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* 2. 썸네일 이미지 크롭 및 가로세로 비율 강제 고정 */
+.liked_goods_store .goods_thumb {
+  width: 100%;
+  height: 150px;
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: #f7f7f7;
+}
+
+.liked_goods_store .goods_thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* 가로세로 찌그러짐 방지 */
+}
+
+/* 3. 가격 명세 및 하트 버튼 가로 행 칼정렬 */
+.liked_goods_store .goods_info {
+  padding: 14px 4px 0 4px;
+}
+
+.liked_goods_store .goods_title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1e1d1c;
+  margin-bottom: 2px;
+}
+
+.liked_goods_store .goods_author {
+  font-size: 13px;
+  color: #888780;
+  margin-bottom: 12px;
+}
+
+.liked_goods_store .goods_meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #f8f5f0;
+  padding-top: 10px;
+}
+
+.liked_goods_store .goods_price {
+  font-size: 16px;
+  font-weight: 800;
+  color: #1e1d1c;
+  margin: 0;
+}
+
+.liked_goods_store .goods_btns button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+/* ==========================================================================
+   [완전 독립] 마이페이지 찜한목록 탭 우측 연동형 CTA 버튼 디자인팩
+   ========================================================================== */
+.liked_header_cta_zone{
+  position: absolute;
+  bottom: 25%;
+  right: 5%;
+}
+/* 탭 메뉴와 CTA 버튼을 양끝 정렬시키는 거실 정렬 */
+.liked_menu_header_row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  padding-bottom: 8px;
+}
+
+/* 탭 바 자체 마진 초기화 (부모가 통제하므로 제거) */
+.liked_menu_header_row .liked_tab_menu {
+  margin: 0;
+}
+
+/* 실시간 연동형 캡슐 CTA 버튼 정석 스타일 */
+.liked_header_cta_zone .dynamic_explore_btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background-color: transparent;
+  border: 1px solid #fffdf9;
+  /* 부드러운 오렌지 브라운 톤 라인 */
+  border-radius: 30px;
+  color: #fffdf9;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 버튼 마우스 호버 시 책볕 브랜드 고유 무드로 세련되게 반전 */
+.liked_header_cta_zone .dynamic_explore_btn:hover {
+  background-color: #D99744;
+  border: 1px solid #D99744;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(217, 151, 68, 0.25);
+}
+
+/* 화살표가 오른쪽으로 스르륵 밀리는 위트 있는 트랜지션 모션 */
+.liked_header_cta_zone .dynamic_explore_btn .cta_arrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.liked_header_cta_zone .dynamic_explore_btn:hover .cta_arrow {
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   회원정보 수정 페이지
+   ========================================================================== */
+/* ==========================================================================
+   [완전 독립] 회원정보 수정 및 세부 설정(sub06_2) 시안 100% 매칭 디자인팩
+   ========================================================================== */
+
+/* 1. 기본 판넬 상자 숨김 및 스위칭 레이아웃 설정 */
+.edit_profile_page {
+  background: url(../images/calendar_bg.png) no-repeat;
+  background-size: cover;
+  padding: 40px;
+  position: relative;
+}
+
+.sticker {
+  position: absolute;
+  bottom: 100px;
+  left: 50px;
+}
+
+.edit_profile_page .edit_pane_box {
+  display: none;
+  width: 100%;
+}
+
+.edit_profile_page .edit_pane_box.active {
+  display: block;
+}
+
+.edit_profile_board {
+  width: 100%;
+  margin-top: 24px;
+}
+
+.profile_inner_flex {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+/* 2. 왼쪽 구역 : 아바타 및 한줄 소개 박스 */
+.profile_side_zone {
+  min-width: 190px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar_box {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin-bottom: 24px;
+}
+
+.avatar_img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.avatar_edit_btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 32px;
+  height: 32px;
+  background-color: #26321F;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+
+.intro_input_box {
+  width: 100%;
+  text-align: left;
+}
+
+.intro_input_box label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: #A08060;
+  margin-bottom: 8px;
+}
+
+/* 💡 [요청 조건 3] 호버했을 때 인풋/텍스트에어리어 배경색만 차분하게 짙어짐 */
+.intro_input_box textarea {
+  width: 100%;
+  height: 150px;
+  padding: 16px;
+  background-color: #fcfaf6;
+  border: 1px solid #e1d9cd;
+  border-radius: 12px;
+  font-size: 13px;
+  color: #1e1d1c;
+  outline: none;
+  resize: none;
+  transition: border-color 0.25s ease, background-color 0.25s ease;
+}
+
+.intro_input_box textarea:hover,
+.profile_main_form input:hover {
+  background-color: #f3ebdf !important;
+  /* 마우스 올리면 배경색 짙어짐 */
+}
+
+/* 💡 [요청 조건 2] 작성하고 있을 시(Focus) 테두리가 진해지도록 마킹 */
+.intro_input_box textarea:focus,
+.profile_main_form input:focus {
+  border-color: #26321F !important;
+  /* 포커스 시 책볕 시그니처 딥그린 */
+  background-color: #ffffff !important;
+}
+
+/* 3. 오른쪽 구역 : 인풋 폼 양식 필드 정렬 */
+.profile_main_form {
+  width: 640px;
+}
+
+.form_grid_row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 16px;
+}
+
+.profile_main_form .input_group {
+  width: 308px;
+  text-align: left;
+}
+
+.profile_main_form .input_group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 400;
+  color: #efefef;
+  margin-bottom: 6px;
+}
+
+.profile_main_form .input_group input {
+  width: 100%;
+  height: 44px;
+  padding: 0 16px;
+  background-color: #fcfaf6;
+  border: 1px solid #e1d9cd;
+  /* [요청 조건 1] 기본은 은은하고 연한 컬러 */
+  border-radius: 12px;
+  font-size: 14px;
+  color: #1e1d1c;
+  outline: none;
+  transition: border-color 0.25s ease, background-color 0.25s ease;
+}
+
+.single_row_group {
+  width: 100%;
+  text-align: left;
+  margin-top: 24px;
+}
+
+.group_heading {
+  font-size: 15px;
+  font-weight: 700;
+  color: #A08060;
+  margin-bottom: 12px;
+  border-bottom: 1px solid rgba(160, 128, 96, 0.15);
+  padding-bottom: 6px;
+}
+
+.single_row_group .input_group {
+  width: 100%;
+}
+
+/* 4. 장르 태그 디자인 구역 */
+.genre_tag_cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.genre_chip {
+  padding: 8px 18px;
+  border: 1px solid #e1d9cd;
+  background-color: #ffffff;
+  border-radius: 20px;
+  font-size: 13px;
+  color: #888780;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.genre_chip:hover,
+.genre_chip.active {
+  border-color: #D99744;
+  color: #D99744;
+  background-color: #fdfaf5;
+}
+
+.add_genre_btn {
+  width: 34px;
+  height: 34px;
+  border: 1px dashed #e1d9cd;
+  background: none;
+  border-radius: 50%;
+  color: #888780;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 5. 2페이지 전용 수신 동의 알림 토글 스위치 아키텍처 */
+.toggle_setting_row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(225, 217, 205, 0.5);
+  border-radius: 14px;
+  padding: 16px 20px;
+  margin-bottom: 12px;
+  text-align: left;
+}
+
+.toggle_txt h4 {
+  font-size: 15px;
+  font-weight: 500;
+  color: #fffdf9;
+}
+
+.toggle_txt p {
+  font-size: 12px;
+  color: #efefef;
+  margin-top: 2px;
+}
+
+/* 토글 단추 둥근 원형 원리 */
+.switch_inside_btn {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 26px;
+}
+
+.switch_inside_btn input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider_round {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  border-radius: 34px;
+  transition: .3s;
+}
+
+.slider_round:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  border-radius: 50%;
+  transition: .3s;
+}
+
+.switch_inside_btn input:checked+.slider_round {
+  background-color: #D99744;
+  /* 주황색 볕 켜짐 */
+}
+
+.switch_inside_btn input:checked+.slider_round:before {
+  transform: translateX(22px);
+}
+
+/* SNS 연동 리스트 */
+.sns_linkage_zone {
+  margin-top: 30px;
+  text-align: left;
+}
+
+.sns_connect_row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 4px;
+  border-bottom: 1px solid rgba(225, 217, 205, 0.3);
+  font-size: 14px;
+  color: #efefef;
+}
+
+.sns_status_badge {
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  background-color: rgba(225, 217, 205, 0.4);
+  border: 1px solid #e1d9cd;
+  color: #888780;
+  cursor: pointer;
+}
+
+.sns_status_badge.connected {
+  background-color: #fff4e6;
+  border-color: #D99744;
+  color: #D99744;
+  font-weight: 700;
+}
+
+/* 6. 액션 하단 기능 단추 바 */
+.form_action_bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(225, 217, 205, 0.5);
+}
+
+.leave_membership_btn {
+  background: none;
+  border: 1px solid #e1d9cd;
+  padding: 10px 20px;
+  border-radius: 8px;
+  color: #888780;
+  cursor: pointer;
+}
+
+.right_btns {
+  display: flex;
+  gap: 12px;
+}
+
+.cancel_edit_btn {
+  background-color: #e6e6e6;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 10px;
+  color: #555;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.submit_save_btn {
+  background-color: #26321F;
+  /* 변경사항 저장 단추 */
+  border: none;
+  padding: 12px 28px;
+  border-radius: 10px;
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(38, 50, 31, 0.2);
+}
+
+/* 7. 하단 2단 전용 페이지네이션 커스텀 마진 고정 */
+.edit_profile_pagination {
+  margin-top: 50px !important;
+}
+
+.edit_profile_pagination .page_btn {
+  background-color: #fff;
+  border-radius: 50px;
 }
