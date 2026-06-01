@@ -1,6 +1,6 @@
 /* ==========================================================================
    책볕 프로젝트 통합 메인 자바스크립트 제어 시트 (script.js)
-   [수정완료] sub04 굿즈 스토어 카테고리 탭 스위칭 및 가격 스타일 연동 복구
+   [수정완료] sub05_1 공지사항 페이지네이션 이중 실행 및 번호 점프 버그 완벽 수정
    ========================================================================== */
 
 $(function () {
@@ -289,8 +289,9 @@ $(function () {
         }
     });
 
-    // === [sub03 & sub04 통합] 하단 페이지네이션 번호(1, 2) 클릭 인터랙션 구역 ===
-    $('.meetings_pagination_bar').on('click', '.num_item', function (e) {
+    // === [sub03 & sub04 통합] 굿즈/모임방 전용 페이지네이션 클릭 인터랙션 구역 ===
+    // 타겟 범위를 .meetings_container 내부로 한정하여 공지사항 바와 겹치지 않게 철저히 격리
+    $('.meetings_container .meetings_pagination_bar').on('click', '.num_item', function (e) {
         e.preventDefault();
         var pageIndex = $(this).index();
 
@@ -307,16 +308,16 @@ $(function () {
         $('html, body').stop().animate({ scrollTop: targetOffset }, 400, 'swing');
     });
 
-    // 이전 페이지 화살표 버튼 제어
-    $('.meetings_pagination_bar').on('click', '.prev_page_btn', function () {
+    //이전 페이지 화살표 버튼 제어 (굿즈/모임 전용)
+    $('.meetings_container .meetings_pagination_bar').on('click', '.prev_page_btn', function () {
         var currentPageIdx = $(this).siblings('.page_number_list').find('.num_item.active').index();
         if (currentPageIdx > 0) {
             $(this).siblings('.page_number_list').find('.num_item').eq(currentPageIdx - 1).trigger('click');
         }
     });
 
-    // 다음 페이지 화살표 버튼 제어
-    $('.meetings_pagination_bar').on('click', '.next_page_btn', function () {
+    // 다음 페이지 화살표 버튼 제어 (굿즈/모임 전용)
+    $('.meetings_container .meetings_pagination_bar').on('click', '.next_page_btn', function () {
         var currentPageIdx = $(this).siblings('.page_number_list').find('.num_item.active').index();
         var totalPages = $(this).siblings('.page_number_list').find('.num_item').length;
         if (currentPageIdx < totalPages - 1) {
@@ -336,9 +337,10 @@ $(function () {
         }
         initNoticePage();
 
-        // 번호판(1, 2, 3) 클릭 시 동작
-        $('.notice_container .page_number_list').on('click', '.num_item', function (e) {
+        // 번호판(1, 2, 3) 클릭 시 동작 (오직 .notice_container 울타리 안에서만 반응하도록 밀폐 제어)
+        $('.notice_container .meetings_pagination_bar').on('click', '.num_item', function (e) {
             e.preventDefault();
+            e.stopPropagation(); // 이벤트가 상위로 퍼져 굿즈 로직을 건드리지 않도록 차단
 
             // 클릭한 대상 활성화 스타일 스위칭
             $(this).addClass('active').siblings().removeClass('active');
@@ -355,16 +357,18 @@ $(function () {
             $('html, body').stop().animate({ scrollTop: targetOffset }, 400);
         });
 
-        // 이전(Prev) 화살표 버튼 클릭 제어
-        $('.notice_container .prev_page_btn').on('click', function () {
+        // 이전(Prev) 화살표 버튼 클릭 제어 (공지사항 전용)
+        $('.notice_container .prev_page_btn').on('click', function (e) {
+            e.preventDefault();
             var currentIdx = $('.notice_container .page_number_list .num_item.active').index();
             if (currentIdx > 0) {
                 $('.notice_container .page_number_list .num_item').eq(currentIdx - 1).trigger('click');
             }
         });
 
-        // 다음(Next) 화살표 버튼 클릭 제어
-        $('.notice_container .next_page_btn').on('click', function () {
+        // 다음(Next) 화살표 버튼 클릭 제어 (공지사항 전용)
+        $('.notice_container .next_page_btn').on('click', function (e) {
+            e.preventDefault();
             var currentIdx = $('.notice_container .page_number_list .num_item.active').index();
             var totalPages = $('.notice_container .page_number_list .num_item').length;
             if (currentIdx < totalPages - 1) {
@@ -372,6 +376,7 @@ $(function () {
             }
         });
     }
+
     // === [sub06: 나의서재] 책상 확인하기 버튼 클릭 스크롤 다운 ===
     $('.scroll_btn').on('click', function (e) {
         e.preventDefault();
@@ -465,7 +470,85 @@ $(function () {
         });
     });
 
+    // 마이페이지 찜한 목록 모임/도서/굿즈 캡슐 버튼 탭 전환
+    $(document).ready(function () {
+        $('.liked_tab_menu .tab_btn').on('click', function () {
+            $('.liked_tab_menu .tab_btn').removeClass('active');
+            $(this).addClass('active');
 
+            var targetPane = $(this).attr('data-tab');
+            $('.liked_list_dynamic_matrix .liked_pane_box').removeClass('active');
+            $('#' + targetPane).addClass('active');
+        });
+    });
+
+    /* ==========================================================================
+       [마이페이지 sub06_2] 회원정보 수정 2단계 멀티 페이지네이션 스위칭 기능
+       ========================================================================== */
+    $(function () {
+        var currentProfileStep = 1;
+        var totalProfileSteps = 2;
+
+        // 페이지 번호 및 폼 화면 연동 함수
+        function switchProfilePage(stepNum) {
+            if (stepNum < 1 || stepNum > totalProfileSteps) return;
+
+            currentProfileStep = stepNum;
+
+            // 1. 폼 박스 컨테이너 스위칭
+            $('.edit_profile_page .edit_pane_box').removeClass('active');
+            $('#profile_step_' + currentProfileStep).addClass('active');
+
+            // 2. 하단 숫자 번호판 활성화 스위칭
+            $('.edit_profile_pagination .page_number_list .num_item').removeClass('active');
+            $('.edit_profile_pagination .page_number_list .num_item[data-step="' + currentProfileStep + '"]').addClass('active');
+        }
+
+        // 숫자 버튼 클릭 시
+        $('.edit_profile_pagination .page_number_list .num_item').on('click', function () {
+            var targetStep = $(this).data('step');
+            switchProfilePage(targetStep);
+        });
+
+        // 이전화살표(<) 버튼 클릭 시
+        $('.edit_profile_pagination .prev_step_btn').on('click', function () {
+            if (currentProfileStep > 1) {
+                switchProfilePage(currentProfileStep - 1);
+            }
+        });
+
+        // 다음화살표(>) 버튼 클릭 시
+        $('.edit_profile_pagination .next_step_btn').on('click', function () {
+            if (currentProfileStep < totalProfileSteps) {
+                switchProfilePage(currentProfileStep + 1);
+            }
+        });
+    });
+
+    /* ==========================================================================
+   [마이페이지 sub06_2] 탭 메뉴 전환 시 우측 CTA 버튼 목적지 동적 변경 로직
+   ========================================================================== */
+    $(function () {
+        // 탭 메뉴 버튼 클릭 시 작동
+        $('.liked_tab_menu .tab_btn').on('click', function () {
+            var targetPaneId = $(this).attr('data-tab');
+            var $ctaBtn = $('.dynamic_explore_btn');
+
+            // 🌟 클릭한 탭의 ID(목적지 서랍장)에 따라 우측 버튼을 동적으로 리포지셔닝
+            if (targetPaneId === 'liked_meeting_pane') {
+                $ctaBtn.attr('href', 'sub03.html');
+                $ctaBtn.find('.cta_txt').text('더 많은 모임 보러가기');
+            }
+            else if (targetPaneId === 'liked_book_pane') {
+                $ctaBtn.attr('href', 'sub02.html');
+                $ctaBtn.find('.cta_txt').text('더 많은 도서 보러가기');
+            }
+            else if (targetPaneId === 'liked_goods_pane') {
+                $ctaBtn.attr('href', 'sub04.html');
+                $ctaBtn.find('.cta_txt').text('더 많은 굿즈 보러가기');
+            }
+        });
+    });
     // ==========================================================================
     // ■ 3. [외부 라이브러리 및 플러그인 컴포넌트 초기화 구역]
     // ==========================================================================
