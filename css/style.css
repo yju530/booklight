@@ -801,7 +801,8 @@ body {
   width: 10000px;
   /*ul길이의 두배!*/
   display: flex;
-  padding: 30px 0;
+  gap: 50px;
+  padding: 50px 0;
   box-sizing: border-box;
   animation: rotate 25s linear infinite;
 }
@@ -1786,6 +1787,7 @@ body {
   width: 220px;
 }
 
+
 .bookname {
   font-size: 22px;
   line-height: 1.3;
@@ -1802,6 +1804,7 @@ body {
   padding-right: 30px;
   box-sizing: border-box;
 }
+
 
 .author {
   display: block;
@@ -1974,7 +1977,7 @@ body {
 
 .folder_overlay {
   width: 100%;
-  height: 420px;
+  height: 300px;
   background: url(../images/paper_9.png) no-repeat center;
   background-size: cover;
   position: absolute;
@@ -2275,6 +2278,13 @@ body {
   padding-right: 35px;
 }
 
+.bookname_on{
+  display: block;
+  width: 100%;
+  background: url('../images02/heart_on.png') no-repeat center right 0px/contain;
+  cursor: pointer;
+  z-index: 10;
+}
 
 /* 2. 가상 요소로 이미지 하트 아이콘 배치 */
 .bookname::before {
@@ -2294,6 +2304,9 @@ body {
   background-image: url('../images02/heart_on.png');
 }
 
+.bookname_v1{
+  font-size: 24px;
+}
 /* ====================== 책볕자리 ======================================================= */
 
 /* section01 */
@@ -5032,7 +5045,7 @@ body {
   max-width: 150px;
 }
 
-.liked_books li a .bookname::before {
+/* .liked_books li a .bookname::before {
   content: '';
   position: absolute;
   right: 0;
@@ -5043,7 +5056,7 @@ body {
   background: url('../images02/heart_on.png') no-repeat center / contain;
   cursor: pointer;
   z-index: 10;
-}
+} */
 
 /* 찜한 굿즈 리스트 */
 /* ==========================================================================
@@ -5137,11 +5150,12 @@ body {
 /* ==========================================================================
    [완전 독립] 마이페이지 찜한목록 탭 우측 연동형 CTA 버튼 디자인팩
    ========================================================================== */
-.liked_header_cta_zone{
+.liked_header_cta_zone {
   position: absolute;
   bottom: 25%;
   right: 5%;
 }
+
 /* 탭 메뉴와 CTA 버튼을 양끝 정렬시키는 거실 정렬 */
 .liked_menu_header_row {
   width: 100%;
