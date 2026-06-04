@@ -19,7 +19,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <title>책·볕</title>
 </head>
 
@@ -66,7 +66,7 @@
             </div>
             <div id="sub02_section01_wrap">
                 <div class="section01">
-                    <img src="../images/now_hashtag.png" alt="해시태그">
+                    <img src="../images/now_hashtag.png" alt="해시태그" class="animate__animated animate__pulse">
                     <h1 class="main_title">지금 가장 많은 분들이 읽고 있는 책들이에요</h1>
                     <p class="sub_title">가장 많은 분들이 선택한 이유를 확인해 보세요</p>
                     <div class="slider-container">
@@ -167,12 +167,12 @@
             </div>
             <div id="sub02_section02_wrap">
                 <div id="section02">
-                    <img src="../images/light_white.png" alt="빛 아이콘">
+                    <img src="../images/light_white.png" alt="빛 아이콘" data-aos="flip-left">
                     <!-- <img src="../images/daily_hashtag.png" alt="해시태그"> -->
                     <h1 class="main_title main_white">매일의 취향을 제안하는 오늘의 서랍</h1>
                     <p class="sub_title sub_white">지금 주목해야 할 책과 마음을 울리는 명언을 한곳에 담았습니다</p>
-                    <div class="folder-wrap">
-                        <div class="folder_overlay"></div>
+                    <div class="folder_overlay"></div>
+                    <div class="folder-wrap" data-aos="fade-up" data-aos-duration="3000">
                         <ul id="folder-container">
                             <li class="folder-item on"><a href="#" class="bookmark-btn">오늘의 도서</a></li>
                             <li class="folder-item"><a href="#" class="bookmark-btn">신간도서</a></li>
@@ -303,7 +303,7 @@
                     </div>
                 </div>
             </div>
-            <div id="sub02_section03_wrap">
+            <div id="sub02_section03_wrap" data-aos="fade-up" data-aos-duration="3000">
                 <div class="section03">
                     <h1 class="main_title">전체도서</h1>
                     <p class="sub_title">지금 책볕에 있는 책들</p>
