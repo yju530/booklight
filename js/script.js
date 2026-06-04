@@ -1,6 +1,6 @@
 /* ==========================================================================
    책볕 프로젝트 통합 메인 자바스크립트 제어 시트 (script.js)
-   [수정완료] sub05_1 공지사항 페이지네이션 이중 실행 및 번호 점프 버그 완벽 수정
+   [수정완료] 찜하기 통합 이벤트 리스너 이중 실행 방지 및 문법 오류 완벽 수정
    ========================================================================== */
 
 $(function () {
@@ -90,38 +90,47 @@ $(function () {
         });
     }
 
-    // [공통] 하트 찜하기 통통 튀는 바운스 애니메이션 통합 처리
-    $(document).on('click', '.recommend_group .heart_btn, .meetings_grid_wrap .heart_btn, .goods_btns .heart_btn', function (e) {
+    // ==========================================================================
+    // ★ [통합 핵심 수동 마크] 찜하기 통통 튀는 바운스 애니메이션 및 이미지/클래스 토글 통합 제어
+    // ==========================================================================
+    $(document).on('click', '.recommend_group .heart_btn, .meetings_grid_wrap .heart_btn, .goods_btns .heart_btn, .sub02_tab_container .bookname', function (e) {
         e.preventDefault();
         e.stopPropagation();
 
-        var $btn = $(this);
-        var $heartImg = $btn.find('img');
-        var currentSrc = $heartImg.attr('src');
-
-        $btn.removeClass('ani-bounce');
-
+        var $this = $(this);
+        
+        // 1. 애니메이션 클래스 초기화 및 부여
+        $this.removeClass('ani-bounce');
         setTimeout(function () {
-            $btn.addClass('ani-bounce');
-
-            if (currentSrc.indexOf('heart_off.png') !== -1 || currentSrc.indexOf('heart_on.png') !== -1) {
-                if (currentSrc.indexOf('heart_off.png') !== -1) {
-                    $heartImg.attr('src', '../images02/heart_on.png');
-                } else {
-                    $heartImg.attr('src', '../images02/heart_off.png');
-                }
-            }
+            $this.addClass('ani-bounce');
+            
+            // 2. 가상 요소(::before / ::after)를 사용하는 도서 타이틀형 (.bookname) 클래스 토글 제어
+            if ($this.hasClass('bookname')) {
+                $this.toggleClass('on');
+            } 
+            // 3. 실제 독립된 img 태그 단추를 사용하는 카드형 하트 이미지 토글 제어
             else {
-                if (currentSrc.indexOf('like btn off.png') !== -1) {
-                    $heartImg.attr('src', '../images/like btn on.png');
+                var $heartImg = $this.find('img');
+                var currentSrc = $heartImg.attr('src');
+
+                if (currentSrc.indexOf('heart_off.png') !== -1 || currentSrc.indexOf('heart_on.png') !== -1) {
+                    if (currentSrc.indexOf('heart_off.png') !== -1) {
+                        $heartImg.attr('src', '../images02/heart_on.png');
+                    } else {
+                        $heartImg.attr('src', '../images02/heart_off.png');
+                    }
                 } else {
-                    $heartImg.attr('src', '../images/like btn off.png');
+                    if (currentSrc.indexOf('like btn off.png') !== -1) {
+                        $heartImg.attr('src', '../images/like btn on.png');
+                    } else {
+                        $heartImg.attr('src', '../images/like btn off.png');
+                    }
                 }
             }
         }, 5);
 
-        $btn.one('animationend webkitAnimationEnd oAnimationEnd', function () {
-            $btn.removeClass('ani-bounce');
+        $this.one('animationend webkitAnimationEnd oAnimationEnd', function () {
+            $this.removeClass('ani-bounce');
         });
     });
 
@@ -228,14 +237,6 @@ $(function () {
         $('#sub02_section03_wrap .tab_content').eq(tabIndex).addClass('active').siblings().removeClass('active');
     });
 
-    // 전체도서 내부 하트 찜하기 개별 클래스 바인딩
-    document.querySelectorAll('.sub02_tab_container .bookname').forEach(function (element) {
-        element.addEventListener('click', function (e) {
-            e.preventDefault();
-            this.classList.toggle('on');
-        });
-    });
-
     // === [sub03: 책볕자리] 상단 카테고리 필터 판넬 스위칭 제어 (section01) ===
     $('.sub02_sec01_tab_menu').on('click', '.sub02_sec01_tab_item', function () {
         $('.sub02_sec01_tab_item').removeClass('active');
@@ -290,7 +291,6 @@ $(function () {
     });
 
     // === [sub03 & sub04 통합] 굿즈/모임방 전용 페이지네이션 클릭 인터랙션 구역 ===
-    // 타겟 범위를 .meetings_container 내부로 한정하여 공지사항 바와 겹치지 않게 철저히 격리
     $('.meetings_container .meetings_pagination_bar').on('click', '.num_item', function (e) {
         e.preventDefault();
         var pageIndex = $(this).index();
@@ -337,22 +337,17 @@ $(function () {
         }
         initNoticePage();
 
-        // 번호판(1, 2, 3) 클릭 시 동작 (오직 .notice_container 울타리 안에서만 반응하도록 밀폐 제어)
+        // 번호판(1, 2, 3) 클릭 시 동작
         $('.notice_container .meetings_pagination_bar').on('click', '.num_item', function (e) {
             e.preventDefault();
-            e.stopPropagation(); // 이벤트가 상위로 퍼져 굿즈 로직을 건드리지 않도록 차단
+            e.stopPropagation(); 
 
-            // 클릭한 대상 활성화 스타일 스위칭
             $(this).addClass('active').siblings().removeClass('active');
-
-            // 활성화된 페이지 번호 가져오기 (문자열 숫자로 변환)
             var targetPage = $(this).text().trim();
 
-            // 전체 tr을 숨긴 후, 해당 data-page 값을 가진 행만 노출
             $('.notice_table tbody tr').hide();
             $('.notice_table tbody tr[data-page="' + targetPage + '"]').fadeIn(200);
 
-            // 페이지 전환 후 게시판 상단으로 부드러운 화면 포커싱 스크롤
             var targetOffset = $('.notice_container').offset().top - 80;
             $('html, body').stop().animate({ scrollTop: targetOffset }, 400);
         });
@@ -393,166 +388,146 @@ $(function () {
     });
 
     // LNB 아이콘 고정 스위칭 로직
-    $(function () {
-        function switchIcon($img, status) {
-            if (!$img.length) return;
-            var src = $img.attr('src');
+    function switchIcon($img, status) {
+        if (!$img.length) return;
+        var src = $img.attr('src');
 
-            if (status === 'on') {
-                if (src && src.indexOf('_off.png') !== -1) {
-                    $img.attr('src', src.replace('_off.png', '_on.png'));
-                }
-            } else if (status === 'off') {
-                if (src && src.indexOf('_on.png') !== -1) {
-                    $img.attr('src', src.replace('_on.png', '_off.png'));
-                }
+        if (status === 'on') {
+            if (src && src.indexOf('_off.png') !== -1) {
+                $img.attr('src', src.replace('_off.png', '_on.png'));
+            }
+        } else if (status === 'off') {
+            if (src && src.indexOf('_on.png') !== -1) {
+                $img.attr('src', src.replace('_on.png', '_off.png'));
             }
         }
+    }
 
+    $('.lnb > li.active').each(function () {
+        switchIcon($(this).find('img'), 'on');
+    });
+
+    $('.lnb > li').on('mouseenter', function () {
+        if ($(this).hasClass('active')) return;
+        var $img = $(this).find('img');
+        switchIcon($img, 'on');
+    }).on('mouseleave', function () {
+        if ($(this).hasClass('active')) return;
+        var $img = $(this).find('img');
+        switchIcon($img, 'off');
+    });
+
+    $('.lnb > li').on('click', function () {
         $('.lnb > li.active').each(function () {
-            switchIcon($(this).find('img'), 'on');
+            var $prevImg = $(this).find('img');
+            switchIcon($prevImg, 'off');
         });
 
-        $('.lnb > li').on('mouseenter', function () {
-            if ($(this).hasClass('active')) return;
-            var $img = $(this).find('img');
-            switchIcon($img, 'on');
-        }).on('mouseleave', function () {
-            if ($(this).hasClass('active')) return;
-            var $img = $(this).find('img');
-            switchIcon($img, 'off');
-        });
+        $('.lnb > li').removeClass('active');
+        $(this).addClass('active');
 
-        $('.lnb > li').on('click', function () {
-            $('.lnb > li.active').each(function () {
-                var $prevImg = $(this).find('img');
-                switchIcon($prevImg, 'off');
-            });
-
-            $('.lnb > li').removeClass('active');
-            $(this).addClass('active');
-
-            var $currentImg = $(this).find('img');
-            switchIcon($currentImg, 'on');
-        });
+        var $currentImg = $(this).find('img');
+        switchIcon($currentImg, 'on');
     });
 
     // 나의 서재 일정 캘린더 연동 스크립트
-    $(function () {
-        $('.days_grid').on('click', '.day_cell', function () {
-            if ($(this).hasClass('other_month')) return;
+    $('.days_grid').on('click', '.day_cell', function () {
+        if ($(this).hasClass('other_month')) return;
 
-            $('.day_cell').removeClass('is_selected');
-            $(this).addClass('is_selected');
+        $('.day_cell').removeClass('is_selected');
+        $(this).addClass('is_selected');
 
-            var targetPageId = $(this).attr('data-target');
-            $('.calendar_page_item').removeClass('active');
+        var targetPageId = $(this).attr('data-target');
+        $('.calendar_page_item').removeClass('active');
 
-            if (targetPageId && $('#' + targetPageId).length > 0) {
-                $('#' + targetPageId).addClass('active');
-            } else {
-                $('#page_default').addClass('active');
-                var clickedDateNum = $(this).text();
-                $('#page_default h3').text('5월 ' + clickedDateNum + '일의 기록');
-            }
-        });
+        if (targetPageId && $('#' + targetPageId).length > 0) {
+            $('#' + targetPageId).addClass('active');
+        } else {
+            $('#page_default').addClass('active');
+            var clickedDateNum = $(this).text();
+            $('#page_default h3').text('5월 ' + clickedDateNum + '일의 기록');
+        }
     });
 
     // 마이페이지 도서 / 굿즈 캡슐 버튼 탭 전환
-    $(document).ready(function () {
-        $('.purchase_tab_menu .tab_btn').on('click', function () {
-            $('.purchase_tab_menu .tab_btn').removeClass('active');
-            $(this).addClass('active');
+    $('.purchase_tab_menu .tab_btn').on('click', function () {
+        $('.purchase_tab_menu .tab_btn').removeClass('active');
+        $(this).addClass('active');
 
-            var targetPane = $(this).attr('data-tab');
-            $('.purchase_list_dynamic_matrix .purchase_pane_box').removeClass('active');
-            $('#' + targetPane).addClass('active');
-        });
+        var targetPane = $(this).attr('data-tab');
+        $('.purchase_list_dynamic_matrix .purchase_pane_box').removeClass('active');
+        $('#' + targetPane).addClass('active');
     });
 
     // 마이페이지 찜한 목록 모임/도서/굿즈 캡슐 버튼 탭 전환
-    $(document).ready(function () {
-        $('.liked_tab_menu .tab_btn').on('click', function () {
-            $('.liked_tab_menu .tab_btn').removeClass('active');
-            $(this).addClass('active');
+    $('.liked_tab_menu .tab_btn').on('click', function () {
+        $('.liked_tab_menu .tab_btn').removeClass('active');
+        $(this).addClass('active');
 
-            var targetPane = $(this).attr('data-tab');
-            $('.liked_list_dynamic_matrix .liked_pane_box').removeClass('active');
-            $('#' + targetPane).addClass('active');
-        });
+        var targetPane = $(this).attr('data-tab');
+        $('.liked_list_dynamic_matrix .liked_pane_box').removeClass('active');
+        $('#' + targetPane).addClass('active');
     });
 
     /* ==========================================================================
        [마이페이지 sub06_2] 회원정보 수정 2단계 멀티 페이지네이션 스위칭 기능
        ========================================================================== */
-    $(function () {
-        var currentProfileStep = 1;
-        var totalProfileSteps = 2;
+    var currentProfileStep = 1;
+    var totalProfileSteps = 2;
 
-        // 페이지 번호 및 폼 화면 연동 함수
-        function switchProfilePage(stepNum) {
-            if (stepNum < 1 || stepNum > totalProfileSteps) return;
+    function switchProfilePage(stepNum) {
+        if (stepNum < 1 || stepNum > totalProfileSteps) return;
 
-            currentProfileStep = stepNum;
+        currentProfileStep = stepNum;
 
-            // 1. 폼 박스 컨테이너 스위칭
-            $('.edit_profile_page .edit_pane_box').removeClass('active');
-            $('#profile_step_' + currentProfileStep).addClass('active');
+        $('.edit_profile_page .edit_pane_box').removeClass('active');
+        $('#profile_step_' + currentProfileStep).addClass('active');
 
-            // 2. 하단 숫자 번호판 활성화 스위칭
-            $('.edit_profile_pagination .page_number_list .num_item').removeClass('active');
-            $('.edit_profile_pagination .page_number_list .num_item[data-step="' + currentProfileStep + '"]').addClass('active');
+        $('.edit_profile_pagination .page_number_list .num_item').removeClass('active');
+        $('.edit_profile_pagination .page_number_list .num_item[data-step="' + currentProfileStep + '"]').addClass('active');
+    }
+
+    $('.edit_profile_pagination .page_number_list .num_item').on('click', function () {
+        var targetStep = $(this).data('step');
+        switchProfilePage(targetStep);
+    });
+
+    $('.edit_profile_pagination .prev_step_btn').on('click', function () {
+        if (currentProfileStep > 1) {
+            switchProfilePage(currentProfileStep - 1);
         }
+    });
 
-        // 숫자 버튼 클릭 시
-        $('.edit_profile_pagination .page_number_list .num_item').on('click', function () {
-            var targetStep = $(this).data('step');
-            switchProfilePage(targetStep);
-        });
-
-        // 이전화살표(<) 버튼 클릭 시
-        $('.edit_profile_pagination .prev_step_btn').on('click', function () {
-            if (currentProfileStep > 1) {
-                switchProfilePage(currentProfileStep - 1);
-            }
-        });
-
-        // 다음화살표(>) 버튼 클릭 시
-        $('.edit_profile_pagination .next_step_btn').on('click', function () {
-            if (currentProfileStep < totalProfileSteps) {
-                switchProfilePage(currentProfileStep + 1);
-            }
-        });
+    $('.edit_profile_pagination .next_step_btn').on('click', function () {
+        if (currentProfileStep < totalProfileSteps) {
+            switchProfilePage(currentProfileStep + 1);
+        }
     });
 
     /* ==========================================================================
-   [마이페이지 sub06_2] 탭 메뉴 전환 시 우측 CTA 버튼 목적지 동적 변경 로직
-   ========================================================================== */
-    $(function () {
-        // 탭 메뉴 버튼 클릭 시 작동
-        $('.liked_tab_menu .tab_btn').on('click', function () {
-            var targetPaneId = $(this).attr('data-tab');
-            var $ctaBtn = $('.dynamic_explore_btn');
+       [마이페이지 sub06_2] 탭 메뉴 전환 시 우측 CTA 버튼 목적지 동적 변경 로직
+       ========================================================================== */
+    $('.liked_tab_menu .tab_btn').on('click', function () {
+        var targetPaneId = $(this).attr('data-tab');
+        var $ctaBtn = $('.dynamic_explore_btn');
 
-            // 🌟 클릭한 탭의 ID(목적지 서랍장)에 따라 우측 버튼을 동적으로 리포지셔닝
-            if (targetPaneId === 'liked_meeting_pane') {
-                $ctaBtn.attr('href', 'sub03.html');
-                $ctaBtn.find('.cta_txt').text('더 많은 모임 보러가기');
-            }
-            else if (targetPaneId === 'liked_book_pane') {
-                $ctaBtn.attr('href', 'sub02.html');
-                $ctaBtn.find('.cta_txt').text('더 많은 도서 보러가기');
-            }
-            else if (targetPaneId === 'liked_goods_pane') {
-                $ctaBtn.attr('href', 'sub04.html');
-                $ctaBtn.find('.cta_txt').text('더 많은 굿즈 보러가기');
-            }
-        });
+        if (targetPaneId === 'liked_meeting_pane') {
+            $ctaBtn.attr('href', 'sub03.html');
+            $ctaBtn.find('.cta_txt').text('더 많은 모임 보러가기');
+        }
+        else if (targetPaneId === 'liked_book_pane') {
+            $ctaBtn.attr('href', 'sub02.html');
+            $ctaBtn.find('.cta_txt').text('더 많은 도서 보러가기');
+        }
+        else if (targetPaneId === 'liked_goods_pane') {
+            $ctaBtn.attr('href', 'sub04.html');
+            $ctaBtn.find('.cta_txt').text('더 많은 굿즈 보러가기');
+        }
     });
+
     // ==========================================================================
     // ■ 3. [외부 라이브러리 및 플러그인 컴포넌트 초기화 구역]
     // ==========================================================================
-
     if ($('.counter').length > 0 && typeof $.fn.counterUp !== 'undefined') {
         $('.counter').counterUp({
             delay: 10,
@@ -561,7 +536,7 @@ $(function () {
     }
 
     if ($('.mySwiper4').length > 0) {
-        var swiper = new Swiper(".mySwiper4", {
+        var swiper4 = new Swiper(".mySwiper4", {
             effect: "coverflow",
             grabCursor: true,
             centeredSlides: true,
@@ -579,23 +554,25 @@ $(function () {
         });
     }
 
-    var swiper = new Swiper(".mySwiper2", {
-        spaceBetween: 30,
-        centeredSlides: true,
-        autoplay: {
-            delay: 2500,
-            disableOnInteraction: false,
-        },
-        speed: 600,
-        parallax: true,
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-        },
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-    });
+    if ($('.mySwiper2').length > 0) {
+        var swiper2 = new Swiper(".mySwiper2", {
+            spaceBetween: 30,
+            centeredSlides: true,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+            speed: 600,
+            parallax: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+    }
 
 });
