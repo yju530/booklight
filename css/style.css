@@ -2278,7 +2278,7 @@ body {
   padding-right: 35px;
 }
 
-.bookname_on{
+.bookname_on {
   display: block;
   width: 100%;
   background: url('../images02/heart_on.png') no-repeat center right 0px/contain;
@@ -2304,9 +2304,10 @@ body {
   background-image: url('../images02/heart_on.png');
 }
 
-.bookname_v1{
+.bookname_v1 {
   font-size: 24px;
 }
+
 /* ====================== 책볕자리 ======================================================= */
 
 /* section01 */
@@ -2571,8 +2572,8 @@ body {
 
 .drawer_wrap_bg {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 33%;
+  /* left: 50%; */
   z-index: 1;
 }
 
@@ -2593,16 +2594,28 @@ body {
 }
 
 .drawer_wrap {
+  width: 1200px;
+  margin: 0 auto;
   display: flex;
   z-index: 5;
 }
 
 .recommend_group {
   width: 1000px;
-  padding: 50px 70px 50px 20px;
+  padding: 20px;
   box-sizing: border-box;
   z-index: 5;
+}
 
+.recommend_group>h1,
+.recommend_books>h1 {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #fffdf9;
+  font-size: 22px;
+  margin-bottom: 20px;
+  font-weight: 500;
+  color: #c56928;
 }
 
 .group {
@@ -2726,41 +2739,56 @@ body {
 
 .recommend_books {
   z-index: 5;
-  padding: 50px 30px 50px 0;
+  padding: 20px;
+  box-sizing: border-box;
 
 }
 
+/* ==========================================================================
+   ■ [sub03: 책볕자리] 모임하기 좋은 도서 호버 오버레이 정밀 핏 박멸 코드
+   ========================================================================== */
 .books {
-  display: flex;
-  gap: 12px;
-}
-
-.books>li {
-  width: 50px;
-  height: 100%;
-  overflow: hidden;
-  position: relative;
+    display: flex;
+    gap: 10px;
 }
 
 .books>li:last-child {
-  transform: rotate(-6deg) translateX(15px);
+    transform: rotate(-6deg) translateX(15px);
+}
+
+.books>li a {
+    display: inline-block;
+    overflow: hidden;
+    width: 47px;
+    height: 409px;
+    position: relative;
+}
+
+.books>li a .img_box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .img_overlay {
-  width: 100%;
-  height: 100%;
-  background-color: #00000049;
-  position: absolute;
-  top: 0;
-  left: 0;
-  text-align: center;
-  color: #fffdf9;
-  padding-top: 300px;
+    width: 100% !important;
+    height: 100% !important;
+    background-color: rgba(0, 0, 0, 0.45); 
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    color: #fffdf9;
+    padding-top: 300px;
+    box-sizing: border-box;
+    z-index: 5;
 }
 
 .img_overlay>p {
-  background: url(../images02/right-up.png) no-repeat top 0 right 50%;
-  padding-top: 28px;
+    background: url(../images02/right-up.png) no-repeat top 0 right 50%;
+    padding-top: 28px;
+    margin: 0; 
 }
 
 /* sub03_section03_wrap */
@@ -4455,16 +4483,16 @@ body {
 .day_cell:not(.other_month):not(.is_selected):hover::before {
   width: 38px;
   height: 38px;
-  background: rgba(38, 50, 31, 0.05);
+  background: rgb(38, 50, 31);
 }
 
 /* 이전달/다음달 흐린 글자 처리 */
 .day_cell.other_month {
-  color: #888780 !important;
+  color: #888780;
   cursor: default;
 }
 
-/* 💡 조건 1: 오늘 날짜 색상 분리 (시안 고유의 깊고 웅장한 네이비 원판 서클) */
+/* 💡 조건 1: 오늘 날짜 색상 분리 */
 .day_cell.is_today::before {
   width: 38px;
   height: 38px;
@@ -4473,7 +4501,7 @@ body {
 }
 
 .day_cell.is_today {
-  color: #ffffff !important;
+  color: #ffffff;
   font-weight: 700;
 }
 
@@ -4481,18 +4509,17 @@ body {
 .day_cell.is_selected::before {
   width: 38px;
   height: 38px;
-  background: #26321F !important;
-  /* 내가 마우스로 클릭해 선택한 날짜 고유 색상 */
+  background: #26321F;
 }
 
 .day_cell.is_selected {
-  color: #ffffff !important;
+  color: #ffffff;
   font-weight: 700;
 }
 
 /* 오늘이면서 동시에 유저가 마우스로 눌렀을 때 가독성을 위해 선택 색상이 우선순위를 쥐도록 방어 보정 */
 .day_cell.is_today.is_selected::before {
-  background: #26321F !important;
+  background: #26321F;
 }
 
 /* 💡 조건 3: 날짜 밑에 동그라미 모양의 미니 스페셜 이벤트 존재 표시 알림 */
@@ -4567,7 +4594,7 @@ body {
 
 /* 🟡 모임 일정 점 전용 색상 */
 .event_dot_container .dot.meeting {
-  background-color: #D99744 !important;
+  background-color: #ffd900 !important;
   /* 초록색 닷 */
 }
 
@@ -5076,9 +5103,7 @@ body {
 
 /* 모임방에서 흘러나온 회전 속성을 초기화하고 정갈한 흰색 카드로 안착 */
 .liked_goods_store li {
-  transform: rotate(0deg);
   background-color: #ffffff;
-  border-radius: 4px;
   padding: 16px;
   box-sizing: border-box;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
@@ -5519,7 +5544,7 @@ body {
   font-size: 12px;
   background-color: rgba(225, 217, 205, 0.4);
   border: 1px solid #e1d9cd;
-  color: #888780;
+  color: #e1d9cd;
   cursor: pointer;
 }
 
