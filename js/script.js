@@ -98,16 +98,16 @@ $(function () {
         e.stopPropagation();
 
         var $this = $(this);
-        
+
         // 1. 애니메이션 클래스 초기화 및 부여
         $this.removeClass('ani-bounce');
         setTimeout(function () {
             $this.addClass('ani-bounce');
-            
+
             // 2. 가상 요소(::before / ::after)를 사용하는 도서 타이틀형 (.bookname) 클래스 토글 제어
             if ($this.hasClass('bookname')) {
                 $this.toggleClass('on');
-            } 
+            }
             // 3. 실제 독립된 img 태그 단추를 사용하는 카드형 하트 이미지 토글 제어
             else {
                 var $heartImg = $this.find('img');
@@ -259,6 +259,11 @@ $(function () {
     });
 
     // === [🔥 sub04: 책볕굿즈] 굿즈 스토어 전용 독립 카테고리 필터 스위칭 가동 구역 ===
+    // [보완 A] 페이지 초기 로드 시, 첫 번째 탭(BEST)은 1페이지뿐이므로 페이지네이션을 먼저 숨깁니다.
+    if ($('#sub04_section02_wrap').length > 0) {
+        $('#sub04_section02_wrap .meetings_pagination_bar').hide();
+    }
+
     $('#sub04_section02_wrap .filter_tab_menu').on('click', '.tab_item', function () {
         var tabIndex = $(this).index();
 
@@ -278,13 +283,14 @@ $(function () {
         $allWraps.find('.page-group').removeClass('active');
         $activeGrid.find('.page-group').eq(0).addClass('active');
 
-        // 조건 처리: 오직 2페이지 분량이 들어있는 "전체" 탭(인덱스 1번)일 때만 하단 페이지 번호판을 노출시킴
-        if (tabIndex === 1) {
+        // [보완 B] 조건 처리: '전체' 탭은 HTML 구조상 2번째 li이므로 타겟 인덱스가 1입니다. 
+        // 만약 '전체' 글씨를 가진 탭의 순서가 바뀌더라도 안전하게 대응하도록 클래스명(.total) 조건문도 함께 결합했습니다.
+        if (tabIndex === 1 || $(this).hasClass('total')) {
             $('#sub04_section02_wrap .meetings_pagination_bar').show();
-            $('#sub04_section02_wrap .total_count .count_num').text('14'); // 전체 개수 세팅
+            $('#sub04_section02_wrap .total_count .count_num').text('14'); // 전체 탭 실제 개수 강제 세팅 
         } else {
             $('#sub04_section02_wrap .meetings_pagination_bar').hide();
-            // 각 개별 탭의 실제 상품 개수 카운팅 노출
+            // 각 개별 탭의 실제 상품 개수 유기적 카운팅 노출 [cite: 119]
             var currentLiCount = $activeGrid.find('.goods_grid_list li').length;
             $('#sub04_section02_wrap .total_count .count_num').text(currentLiCount);
         }
@@ -340,7 +346,7 @@ $(function () {
         // 번호판(1, 2, 3) 클릭 시 동작
         $('.notice_container .meetings_pagination_bar').on('click', '.num_item', function (e) {
             e.preventDefault();
-            e.stopPropagation(); 
+            e.stopPropagation();
 
             $(this).addClass('active').siblings().removeClass('active');
             var targetPage = $(this).text().trim();
