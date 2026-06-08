@@ -134,7 +134,31 @@ $(function () {
         });
     });
 
+    $(function () {
+        // 1. .app-trigger(다운로드 버튼) 클릭 시 피그마 프로토타입 모달 열기
+        $('.app-trigger').on('click', function (e) {
+            e.preventDefault(); // 스토어 실제 이동 및 빈 링크 페이지 상단 튕김 강제 방어
 
+            // 디스플레이 렌더링 지연 깨짐 버그 방지용 리플로우 코드 적용
+            $('.app_modal_overlay').css('display', 'flex').get(0).offsetHeight;
+            $('.app_modal_overlay').addClass('show');
+            $('body').css('overflow', 'hidden'); // 뒷 배경 웹페이지의 스크롤 가두기
+        });
+
+        // 2. 닫기 버튼 또는 바깥 오버레이 영역 클릭 시 꺼짐 처리
+        $('.close_app_btn, .app_modal_overlay').on('click', function (e) {
+            // 내부 아이프레임 스크롤 조작 시 꺼지지 않도록 순수 오버레이 본체나 닫기 버튼일 때만 작동 조절
+            if ($(e.target).is('.app_modal_overlay') || $(e.target).is('.close_app_btn')) {
+                $('.app_modal_overlay').removeClass('show');
+
+                // 트랜지션 애니메이션 완료 시간(0.4초)에 맞춰 안전하게 레이어 숨김
+                setTimeout(function () {
+                    $('.app_modal_overlay').css('display', 'none');
+                    $('body').css('overflow', 'auto'); // 기존 메인 웹 스크롤 해제
+                }, 400);
+            }
+        });
+    });
     // ==========================================================================
     // ■ 2. [각 서브 페이지별 고유 기능 구역] - sub01, sub02, sub03, sub04, sub06
     // ==========================================================================
